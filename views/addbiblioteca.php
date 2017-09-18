@@ -452,7 +452,7 @@ and open the template in the editor.
                                         <span class="input-group-btn">
                                             <button class="btn btn-basic" type="button">$a</button>
                                         </span>
-                                        <input type="text" class="form-control" value="">
+                                        <input name="nota_bi" type="text" class="form-control" value="">
                                         <span class="input-group-btn">
                                             <button id="btn-nb" class="btn btn-danger" type="button"><i class="glyphicon glyphicon-trash"></i></button> 
                                         </span>
@@ -464,19 +464,19 @@ and open the template in the editor.
                                         <span class="input-group-btn">
                                             <button class="btn btn-basic" type="button">$a</button>
                                         </span>
-                                        <input type="text" class="form-control" value="">
+                                        <input name="notas" type="text" class="form-control" value="">
                                         <span class="input-group-btn">
                                             <button data-toogle="tooltip" title="Información variada" class="btn btn-basic" type="button">$g</button>
                                         </span>
-                                        <input type="text" class="form-control" value="">
+                                        <input name="notas_g" type="text" class="form-control" value="">
                                         <span class="input-group-btn">
                                             <button data-toogle="tooltip" title="Mensión de responsabilidad" class="btn btn-basic" type="button">$r</button>
                                         </span>
-                                        <input type="text" class="form-control" value="">
+                                        <input name="notas_r" type="text" class="form-control" value="">
                                         <span class="input-group-btn">
                                             <button data-toogle="tooltip" title="Tí-tulo" class="btn btn-basic" type="button">$t</button>
                                         </span>
-                                        <input type="text" class="form-control" value="">
+                                        <input name="notas_t" type="text" class="form-control" value="">
                                         <span class="input-group-btn">
                                             <button id="btn-nc" class="btn btn-danger" type="button"><i class="glyphicon glyphicon-trash"></i></button> 
                                         </span>
@@ -488,19 +488,19 @@ and open the template in the editor.
                                         <span class="input-group-btn">
                                             <button class="btn btn-basic" type="button">$a</button>
                                         </span>
-                                        <input name="extensión" type="text" class="form-control" value="">
+                                        <input name="resumen" type="text" class="form-control" value="">
                                         <span class="input-group-btn">
                                             <button class="btn btn-basic" type="button">$b</button>
                                         </span>
-                                        <input type="text" class="form-control">
+                                        <input name="resumen_b" type="text" class="form-control">
                                         <span class="input-group-btn">
                                             <button class="btn btn-basic" type="button">$c</button>
                                         </span>
-                                        <input type="text" class="form-control">
+                                        <input name="resumen_c" type="text" class="form-control">
                                         <span class="input-group-btn">
                                             <button class="btn btn-basic" type="button">$u</button>
                                         </span>
-                                        <input type="text" class="form-control">
+                                        <input name="resumen_u" type="text" class="form-control">
                                         <span class="input-group-btn">
                                             <button id="btn-resumen" class="btn btn-danger" type="button"><i class="glyphicon glyphicon-trash"></i></button> 
                                         </span>
@@ -512,11 +512,11 @@ and open the template in the editor.
                                         <span class="input-group-btn">
                                             <button data-toogle="tooltip" title="Epígrafe general" class="btn btn-default btn-warning" type="button">$a</button>
                                         </span>
-                                        <input type="text" class="form-control" value="">
+                                        <input name="temas" type="text" class="form-control" value="">
                                         <span class="input-group-btn">
                                             <button class="btn btn-default btn-success" type="button">$2</button>
                                         </span>
-                                        <input type="text" class="form-control" value="">
+                                        <input name="temas_2" type="text" class="form-control" value="">
                                         <span class="input-group-btn">
                                             <button id="btn-temas" class="btn btn-danger" type="button"><i class="glyphicon glyphicon-trash"></i></button> 
                                         </span>
@@ -528,19 +528,19 @@ and open the template in the editor.
                                         <span class="input-group-btn">
                                             <button data-toogle="tooltip" title="Nombre del autor" class="btn btn-warning" type="button">$a</button>
                                         </span>
-                                        <input name="extensión" type="text" class="form-control" value="">
+                                        <input name="personal" type="text" class="form-control" value="">
                                         <span class="input-group-btn">
                                             <button data-toogle="tooltip" title="Fechas" class="btn btn-basic" type="button">$d</button>
                                         </span>
-                                        <input type="text" class="form-control">
+                                        <input name="personal_d" type="text" class="form-control">
                                         <span class="input-group-btn">
                                             <button data-toogle="tooltip" title="Relación" class="btn btn-warning" type="button">$e</button>
                                         </span>
-                                        <input type="text" class="form-control">
+                                        <input name="personal_e" type="text" class="form-control">
                                         <span class="input-group-btn">
                                             <button data-toogle="tooltip" title="Pseudonimo" class="btn btn-success" type="button">$j</button>
                                         </span>
-                                        <input type="text" class="form-control">
+                                        <input name="personal_j" type="text" class="form-control">
                                         <span class="input-group-btn">
                                             <button id="btn-pers" class="btn btn-danger" type="button"><i class="glyphicon glyphicon-trash"></i></button> 
                                         </span>
@@ -555,15 +555,15 @@ and open the template in the editor.
                             <div class="container">
                                 <div class="input-group input-group-sm col-lg-10">
                                     <span class="input-group-addon">URL Documento:</span>
-                                    <input class="form-control" value="">
+                                    <input name="url" class="form-control" value="">
                                 </div>
                                 <div class="input-group input-group-sm col-lg-10">
                                     <span class="input-group-addon">Thumb URL:</span>
-                                    <input class="form-control" value="">
+                                    <input name="thumb" class="form-control" value="">
                                 </div>
                                 <div class="input-group input-group-sm col-lg-10">
                                     <span class="input-group-addon">Cover URL:</span>
-                                    <input class="form-control" value="">
+                                    <input name="cover" class="form-control" value="">
                                 </div>
                             </div>
                         </div>
@@ -582,15 +582,15 @@ and open the template in the editor.
                                 </div>
                                 <div class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
                                     <span class="input-group-addon"><strong>Ubicación:</strong></span>
-                                    <input name="nombre_ubicacion" type="text" class="form-control" value="">
+                                    <input name="ubicacion" type="text" class="form-control" value="">
                                     <span class="input-group-addon"><strong>Prefijo:</strong></span>
-                                    <input type="text" class="form-control">
+                                    <input name="prefijo" type="text" class="form-control">
                                     <span class="input-group-addon"><strong>Clasificación:</strong></span>
                                     <input name="clasificacion" type="text" class="form-control" value="">
                                 </div>
                                 <div class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
                                     <span class="input-group-addon"><strong>Biblioteca:</strong></span>
-                                    <input name="nombre_biblioteca" type="text" class="form-control" value="">
+                                    <input name="biblioteca" type="text" class="form-control" value="">
                                     <span class="input-group-addon"><strong>Vol. / No.:</strong></span>
                                     <input name="volno" type="text" class="form-control" value="">
                                 </div>
@@ -604,19 +604,19 @@ and open the template in the editor.
                                 </div>
                                 <div class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
                                     <span class="input-group-addon"><strong>Procedencia:</strong></span>
-                                    <input name="tipo_circ" type="text" class="form-control" value="">
+                                    <input name="proce" type="text" class="form-control" value="">
                                     <span class="input-group-addon"><strong>Tipo:</strong></span>
-                                    <input name="status" type="text" class="form-control" value="">
+                                    <input name="type" type="text" class="form-control" value="">
                                 </div>
                                 <div class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
                                     <span class="input-group-addon"><strong>Factura:</strong></span>
-                                    <input name="tipo_circ" type="text" class="form-control" value="">
+                                    <input name="fact" type="text" class="form-control" value="">
                                     <span class="input-group-addon"><strong>Precio:</strong></span>
-                                    <input name="status" type="text" class="form-control" value="">
+                                    <input name="precio" type="text" class="form-control" value="">
                                 </div>
                                 <div class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
                                     <span class="input-group-addon"><strong>Hiperlink:</strong></span>
-                                    <input name="notas" type="text" class="form-control" value="">
+                                    <input name="hyperlink" type="text" class="form-control" value="">
                                 </div>
                                 <div class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
                                     <span class="input-group-addon"><strong>Notas:</strong></span>

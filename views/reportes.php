@@ -65,6 +65,21 @@ and open the template in the editor.
                 text-decoration: none;
                 cursor: pointer;
             }
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
         </style>
     </head>
     <body>
@@ -134,13 +149,13 @@ and open the template in the editor.
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Fecha inicial:</label>
                                     <div class="col-sm-2">
-                                        <input id="id" type="text" class="form-control" placeholder="" value="">
+                                        <input id="fechai" type="date" class="form-control" placeholder="" value="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Fecha final:</label>
                                     <div class="col-sm-2">
-                                        <input id="name" type="text" class="form-control" placeholder="" value="">
+                                        <input id="fechaf" type="date" class="form-control" placeholder="" value="">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -155,11 +170,11 @@ and open the template in the editor.
                     <hr>
                     <div class="btn-group">
                         <button id="btn-preview" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-picture"></span> Preview</button>
-                        <button id="btn-print" type="button" class="btn btn-info"><span class="glyphicon glyphicon-print"></span> Print</button>
+                        <button name="b_print" type="button" class="btn btn-info ipt" onClick="printdiv('div_print')"><scan class="glyphicon glyphicon-print"></scan> Print</button>
                         <button id="btn-save" type="button" class="btn btn-success"><scan class="glyphicon glyphicon-save"></scan> Save</button>
                     </div>
-                </div>
-                <div id="contenedor">
+                    <div id="contenedor">
+                    </div>
                 </div>
             </div>
         </div>
@@ -188,9 +203,62 @@ and open the template in the editor.
         //});
     </script>
     <script type="text/javascript">
+                function printdiv(printpage)
+                {
+                    alert("¿Desea imprimir este reporte?");
+                    var headstr = "<html><head><title></title><img/></head><body>";
+                    var footstr = "</body>";
+                    var newstr = document.all.item(printpage).innerHTML;
+                    var oldstr = document.body.innerHTML;
+                    document.body.innerHTML = headstr + newstr + footstr;
+                    window.print();
+                    document.body.innerHTML = oldstr;
+                    return false;
+                }
+    </script>
+    <script type="text/javascript">
         $(document).ready(function () {
-            $("#btn-print").click(function () {
-                alert("¿Desea imprimir este reporte?");
+            $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+
+            $.ajax({
+                url: '../controller/reportCatMes.php',
+                data: {fechai: '', fechaf: ''},
+                type: "GET",
+                dataType: "text",
+                error: function () {
+                    console.log("Error en llamada ajax.");
+                },
+                success: function (sucess) {
+                    $('#contenedor').html(sucess);
+                }
+            });
+            $('#btn-preview').on('click', function () {
+                if (($('#fechai').val().trim() === '') && ($('#fechaf').val().trim() === '')) {
+                    $.ajax({
+                        url: '../controller/reportCatMes.php',
+                        data: {fechai: '', fechaf: ''},
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#contenedor').html(sucess);
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        url: '../controller/reportCatMes.php',
+                        data: {fechai: $('#fechai').val().trim(), fechaf: $('#fechaf').val().trim()},
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#contenedor').html(sucess);
+                        }
+                    });
                 }
             });
         });

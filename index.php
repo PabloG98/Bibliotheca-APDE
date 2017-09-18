@@ -118,6 +118,15 @@
             .fa:hover {
                 color: darkblue;
             }
+            footer {
+                background-color: #002C5B;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 40px;
+                color: white;
+                display: block;
+            }
         </style>
     </head>
     <body>
@@ -276,7 +285,11 @@
                 </div>
             </div>
         </div>
-
+        <div>
+            <footer class="text-center">
+                <p>© Copyright 2017 - APDE - Todos los derechos reservados</p>
+            </footer>
+        </div>
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
