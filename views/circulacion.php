@@ -111,6 +111,9 @@ and open the template in the editor.
                         <div class="panel-body">
                             <div class="form-horizontal">
                                 <div class="form-group">
+                                    <label class="col-sm-2 control-label">Fecha: <?php echo date("Y-m-d"); ?></label>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-sm-2 control-label">ID:</label>
                                     <div class="col-sm-2">
                                         <input id="id" type="text" class="form-control" placeholder="" value="">
@@ -138,13 +141,8 @@ and open the template in the editor.
                                     <div class="col-sm-2">
                                         <select class="form-control" name="typeuser" id="typeuser">
                                             <option value="alumno">Alumnos</option>
-                                            <option value="director">Directores</option>
-                                            <option value="subdirector">SubDirectores</option>
-                                            <option value="coordinador">Coordinadores</option>
-                                            <option value="docente">Docentes</option>
-                                            <option value="auxiliar">Auxiliares</option>
                                             <option value="administrativo">Administrativos</option>
-                                            <option value="colaborador">Colaborador</option>
+                                            <option value="colaborador">Colaboradores</option>
                                         </select>
                                     </div>
                                 </div>

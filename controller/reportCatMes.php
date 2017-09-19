@@ -1,11 +1,9 @@
 <?php
-
 require_once '../php/Connection.php';
 $fechai = filter_input(INPUT_GET, 'fechai');
 $fechaf = filter_input(INPUT_GET, 'fechaf');
 
-IF ($fechai === '' && $fechaf === '') {
-    
+if ($fechai === '' && $fechaf === '') { 
 } else {
     $query = mysqli_query(Connection::getInstance()->conectar(), "SELECT * FROM librarydb.inventario WHERE inventario.fecha_entrada BETWEEN '" . $fechai . "' AND '" . $fechaf . "'");
     if (mysqli_num_rows($query) != o) {
@@ -31,7 +29,7 @@ IF ($fechai === '' && $fechaf === '') {
             echo '<th>TOTAL';
             echo '</tr>';
             echo '<tr>';
-            echo '<td>' . $query;
+            echo '<td>' . $row;
             echo '</tr>';
             echo '</table>';
             echo '</div>';
@@ -45,9 +43,3 @@ IF ($fechai === '' && $fechaf === '') {
         echo '</div>';
     }
 }
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
