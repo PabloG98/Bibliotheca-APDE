@@ -1,35 +1,42 @@
 <?php
+
 require_once '../php/Connection.php';
 $fechai = filter_input(INPUT_GET, 'fechai');
 $fechaf = filter_input(INPUT_GET, 'fechaf');
 
-if ($fechai === '' && $fechaf === '') { 
+if ($fechai === '' && $fechaf === '') {
+    
 } else {
     $query = mysqli_query(Connection::getInstance()->conectar(), "SELECT * FROM librarydb.inventario WHERE inventario.fecha_entrada BETWEEN '" . $fechai . "' AND '" . $fechaf . "'");
+    echo '<hr><h2 class="text-center">ESTADÍSTICAS DE CATALOGACIÓN POR MES DEL ' . '<u>' . $fechai . '</u>' . ' AL ' . '<u>' . $fechaf . '</u>' . '</h2>';
+    echo '<div>';
+    echo '<table>';
+    echo '<tr>';
+    echo '<th>Categoría';
+    echo '<th>Enero';
+    echo '<th>Febrero';
+    echo '<th>Marzo';
+    echo '<th>Abril';
+    echo '<th>Mayo';
+    echo '<th>Junio';
+    echo '<th>Julio';
+    echo '<th>Agosto';
+    echo '<th>Septiembre';
+    echo '<th>Octubre';
+    echo '<th>Noviembre';
+    echo '<th>Diciembre';
+    echo '<th>TOTAL';
+    echo '</tr>';
+    echo '</table>';
+    echo '</div>';
     if (mysqli_num_rows($query) != o) {
         while ($row = mysqli_fetch_array($query)) {
             echo '<div id="div_print" class="text-center">';
-            echo '<h2>ESTADÍSTICAS DE CATALOGACIÓN POR MES DEL ' . $fechai . ' AL ' . $fechaf . '</h2>';
             echo '<div>';
             echo '<table>';
             echo '<tr>';
-            echo '<th>Categoría';
-            echo '<th>Enero';
-            echo '<th>Febrero';
-            echo '<th>Marzo';
-            echo '<th>Abril';
-            echo '<th>Mayo';
-            echo '<th>Junio';
-            echo '<th>Julio';
-            echo '<th>Agosto';
-            echo '<th>Septiembre';
-            echo '<th>Octubre';
-            echo '<th>Noviembre';
-            echo '<th>Diciembre';
-            echo '<th>TOTAL';
-            echo '</tr>';
             echo '<tr>';
-            echo '<td>' . $row;
+            echo '<td>' . $row["num_inventario"];
             echo '</tr>';
             echo '</table>';
             echo '</div>';

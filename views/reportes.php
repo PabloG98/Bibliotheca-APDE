@@ -102,6 +102,7 @@ and open the template in the editor.
                 <div class="col-sm-3 col-md-2 sidebar" style="background: #0b2e5c">
                     <ul class="nav nav-sidebar">
                         <li><a href="../index.php" style="color:white"><span class="glyphicon glyphicon-search"></span> Catalogación</a></li>
+                        <li><a href="circulacion.php" style="color:white"><span class="glyphicon glyphicon-globe"></span> Circulación</a></li>
                         <li class="active"><a href="" style="color:white"><span class="glyphicon glyphicon-list-alt"></span> Reportes</a></li>
                         <!--<li><a href="#">Analytics</a></li>
                         <li><a href="#">Export</a></li>-->
@@ -119,149 +120,139 @@ and open the template in the editor.
                         <li><a href="">Another nav item</a></li>-->
                     </ul>
                 </div>
-                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="google_translate_element">
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <h1 class="page-header text-center"><b>Reportes</b></h1>
-                    <div class="container">
-                        <select>
-                            <option>Boletin</option>
-                            <option>Control de multas</option>
-                            <option>Estadísticas de catalogación por mes</option>
-                            <option>Estadísticas de catalogación por mes_old_10-19-2016</option>
-                            <option>Estadísticas por mes</option>
-                            <option>Etiquetas</option>
-                            <option>Etiquetas de tarjetas</option>
-                            <option>Historial de modificación</option>
-                            <option>Historial de un material</option>
-                            <option>Historial de usuario</option>
-                            <option>Lomos</option>
-                            <option>Lomos SOLALTO</option>
-                            <option>Lomos discontinuos</option>
-                            <option>Lomos sencillos</option>
-                            <option>Materiales consultados</option>
-                            <option>Top 10 libros</option>
-                        </select>
-                    </div>
-                    <hr>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading"></div>
-                        <div class="panel-body">
-                            <div class="form-horizontal">
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Fecha inicial:</label>
-                                    <div class="col-sm-2">
-                                        <input id="fechai" type="date" class="form-control" placeholder="" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Fecha final:</label>
-                                    <div class="col-sm-2">
-                                        <input id="fechaf" type="date" class="form-control" placeholder="" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Fecha de reporte:</label>
-                                    <div class="col-sm-2">
-                                        <input disabled="" name="fecha" value="<?php echo date("Y-m-d"); ?>" type="date" class="form-control" placeholder="Fecha">
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Tipo de reporte:</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" name="t_reporte" id="t_reporte">
+                                <option>Elija una opción</option>
+                                <option value="boletin">Boletin</option>
+                                <option value="comu">Control de multas</option>
+                                <option value="ecapormes">Estadísticas de catalogación por mes</option>
+                                <option value="epormes">Estadísticas por mes</option>
+                                <option value="e">Etiquetas</option>
+                                <option value="et">Etiquetas de tarjetas</option>
+                                <option value="hmo">Historial de modificación</option>
+                                <option value="hma">Historial de un material</option>
+                                <option value="hu">Historial de usuario</option>
+                                <option value="lo">Lomos</option>
+                                <option value="loso">Lomos SOLALTO</option>
+                                <option value="lodis">Lomos discontinuos</option>
+                                <option value="lose">Lomos sencillos</option>
+                                <option value="mco">Materiales consultados</option>
+                                <option value="t10">Top 10 libros</option>
+                            </select>
+                        </div>
+                        <div class="btn-group">
+                            <button id="btn-preview" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-picture"></span> Preview</button>
+                            <button id="b_print" name="b_print" type="button" class="btn btn-info ipt" onClick="printdiv('div_print')"><scan class="glyphicon glyphicon-print"></scan> Print</button>
+                            <button id="btn-save" type="button" class="btn btn-success"><scan class="glyphicon glyphicon-save"></scan> Save</button>
                         </div>
                     </div>
-                    <hr>
-                    <div class="btn-group">
-                        <button id="btn-preview" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-picture"></span> Preview</button>
-                        <button name="b_print" type="button" class="btn btn-info ipt" onClick="printdiv('div_print')"><scan class="glyphicon glyphicon-print"></scan> Print</button>
-                        <button id="btn-save" type="button" class="btn btn-success"><scan class="glyphicon glyphicon-save"></scan> Save</button>
-                    </div>
-                    <div id="contenedor">
-                    </div>
+                    <div id="reportes"></div>
+                    <div id="contenedor"></div>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-    <script src="../js/jquery.min.js"></script>
-    <script src="http://malsup.github.com/jquery.form.js"></script>
-    <script language="javascript">
-        function ignorar(form) {
-            window.location.replace("../index.php");
-        }
-    </script>
-    <script>
-        // wait for the DOM to be loaded 
-        //$(document).ready(function () {
-        // bind 'myForm' and provide a simple callback function 
-        //  $('#myForm').ajaxForm(function () {
-        //    alert("Biblioteca agregada con exito!");
-        //});
-        //});
-    </script>
-    <script type="text/javascript">
-                function printdiv(printpage)
-                {
-                    alert("¿Desea imprimir este reporte?");
-                    var headstr = "<html><head><title></title><img/></head><body>";
-                    var footstr = "</body>";
-                    var newstr = document.all.item(printpage).innerHTML;
-                    var oldstr = document.body.innerHTML;
-                    document.body.innerHTML = headstr + newstr + footstr;
-                    window.print();
-                    document.body.innerHTML = oldstr;
-                    return false;
-                }
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="../../assets/js/vendor/holder.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+        <script src="../js/jquery.min.js"></script>
+        <script src="http://malsup.github.com/jquery.form.js"></script>
+        <script language="javascript">
+                                function ignorar(form) {
+                                    window.location.replace("../index.php");
+                                }
+        </script>
+        <script>
+            // wait for the DOM to be loaded 
+            //$(document).ready(function () {
+            // bind 'myForm' and provide a simple callback function 
+            //  $('#myForm').ajaxForm(function () {
+            //    alert("Biblioteca agregada con exito!");
+            //});
+            //});
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#b_print').click(function () {
+                    if ($('#contenedor').val().trim() !== '') {
+                        function printdiv(printpage)
+                        {
+                            alert("¿Desea imprimir este reporte?");
+                            var headstr = "<html><head><title></title></head><body>";
+                            var footstr = "</body>";
+                            var newstr = document.all.item(printpage).innerHTML;
+                            var oldstr = document.body.innerHTML;
+                            document.body.innerHTML = headstr + newstr + footstr;
+                            window.print();
+                            document.body.innerHTML = oldstr;
+                            return false;
+                        }
 
-            $.ajax({
-                url: '../controller/reportCatMes.php',
-                data: {fechai: '', fechaf: ''},
-                type: "GET",
-                dataType: "text",
-                error: function () {
-                    console.log("Error en llamada ajax.");
-                },
-                success: function (sucess) {
-                    $('#contenedor').html(sucess);
-                }
+                    } else {
+                        alert("El campo está vacío");
+                    }
+                });
             });
-            $('#btn-preview').on('click', function () {
-                if (($('#fechai').val().trim() === '') && ($('#fechaf').val().trim() === '')) {
-                    $.ajax({
-                        url: '../controller/reportCatMes.php',
-                        data: {fechai: '', fechaf: ''},
-                        type: "GET",
-                        dataType: "text",
-                        error: function () {
-                            console.log("Error en llamada ajax.");
-                        },
-                        success: function (sucess) {
-                            $('#contenedor').html(sucess);
-                        }
-                    });
-                } else {
-                    $.ajax({
-                        url: '../controller/reportCatMes.php',
-                        data: {fechai: $('#fechai').val().trim(), fechaf: $('#fechaf').val().trim()},
-                        type: "GET",
-                        dataType: "text",
-                        error: function () {
-                            console.log("Error en llamada ajax.");
-                        },
-                        success: function (sucess) {
-                            $('#contenedor').html(sucess);
-                        }
-                    });
-                }
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+
+                $.ajax({
+                    url: '../controller/reportCatMes.php',
+                    data: {fechai: '', fechaf: ''},
+                    type: "GET",
+                    dataType: "text",
+                    error: function () {
+                        console.log("Error en llamada ajax.");
+                    },
+                    success: function (sucess) {
+                        $('#contenedor').html(sucess);
+                    }
+                });
+                $('#btn-preview').on('click', function () {
+                    if (($('#fechai').val().trim() === '') && ($('#fechaf').val().trim() === '')) {
+                        alert("No hay fechas a evaluar.");
+                    } else {
+                        $.ajax({
+                            url: '../controller/reportCatMes.php',
+                            data: {fechai: $('#fechai').val().trim(), fechaf: $('#fechaf').val().trim()},
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#contenedor').html(sucess);
+                            }
+                        });
+                    }
+                });
             });
-        });
-    </script>
-</body>
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#t_reporte').on('change', function (e) {
+                    switch ($('#t_reporte option:selected').val()) {
+                        case 'boletin':
+                            $('#reportes').append("<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechai' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechaf' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>");
+                            break;
+                        case 'comu':
+                            $('#reportes').append("<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechai' type='date' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechaf' type='date' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>");
+                            break;
+                        case 'ecapormes':
+                            $('#reportes').append("<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechai' type='date' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechaf' type='date' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>");
+                            break;
+                    }
+                });
+            });
+        </script>
+    </body>
 </html>

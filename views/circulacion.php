@@ -27,8 +27,17 @@ and open the template in the editor.
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
         <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <style>
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                transition: 0.3s;
+                width: 100%;
+            }
+
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
             /* The Modal (background) */
             .modal {
                 display: none; /* Hidden by default */
@@ -88,6 +97,7 @@ and open the template in the editor.
                     <ul class="nav nav-sidebar">
                         <li><a href="../index.php" style="color:white"><span class="glyphicon glyphicon-search"></span> Catalogación</a></li>
                         <li class="active"><a href="" style="color:white"><span class="glyphicon glyphicon-globe"></span> Circulación</a></li>
+                        <li><a href="reportes.php" style="color:white"><span class="glyphicon glyphicon-list-alt"></span> Reportes</a></li>
                         <!--<li><a href="#">Analytics</a></li>
                         <li><a href="#">Export</a></li>-->
                     </ul>
@@ -104,84 +114,26 @@ and open the template in the editor.
                         <li><a href="">Another nav item</a></li>-->
                     </ul>
                 </div>
-                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="google_translate_element">
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <h1 class="page-header text-center"><b>Estación de circulación</b></h1>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Estación de circulación</div>
-                        <div class="panel-body">
-                            <div class="form-horizontal">
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Fecha: <?php echo date("Y-m-d"); ?></label>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">ID:</label>
-                                    <div class="col-sm-2">
-                                        <input id="id" type="text" class="form-control" placeholder="" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Nombre:</label>
-                                    <div class="col-sm-2">
-                                        <input id="name" type="text" class="form-control" placeholder="" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Colegio:</label>
-                                    <div class="col-sm-2">
-                                        <select class="form-control" name="inst" id="inst">
-                                            <option value="solalto">Solalto</option>
-                                            <option value="roble">El Roble</option>
-                                            <option value="entrevalles">Entrevalles</option>
-                                            <option value="campoalgre">Campoalegre</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Tipo Usuario:</label>
-                                    <div class="col-sm-2">
-                                        <select class="form-control" name="typeuser" id="typeuser">
-                                            <option value="alumno">Alumnos</option>
-                                            <option value="administrativo">Administrativos</option>
-                                            <option value="colaborador">Colaboradores</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">E-mail:</label>
-                                    <div class="col-sm-2">
-                                        <input id="email" type="email" class="form-control" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Dirección:</label>
-                                    <div class="col-sm-2">
-                                        <input id="dir" type="text" class="form-control" placeholder="" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Teléfono:</label>
-                                    <div class="col-sm-2">
-                                        <input id="tel" type="tel" class="form-control" placeholder="" value="">
-                                    </div>
-                                </div>
+                    <div class="container">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Tipo de usuario:</label>
+                            <div class="col-sm-2">
+                                <select class="form-control" name="t_user" id="t_user">
+                                    <option>Elija una opción</option>
+                                    <option value="alumn">Alumno</option>
+                                    <option value="admin">Administrativo</option>
+                                    <option value="colab">Colaborador</option>
+                                </select>
+                            </div>
+                            <div class="btn-group">
+                                <button id="btn-buscar" type="button" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Buscar</button>
                             </div>
                         </div>
                     </div>
-                    <div class="btn-group">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Opciones <span class="caret"></span></button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="">Borrar Formulario</a></li>
-                                <li><a href="">Cargar Usuario</a></li>
-                            </ul>
-                        </div>
-                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-hourglass"></span> Reservar</button>
-                        <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-download-alt"></span> Prestar Sala</button>
-                        <button type="button" class="btn btn-success"><scan class="glyphicon glyphicon-save"></scan> Prestar</button>
-                        <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-circle-arrow-left"></span> Devolver</button>
-                        <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span> Renovar</button>
-                        <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Pagar Multa</button>
-                    </div>
+                    <div id="tipo_u"></div>
+                    <div id="datos_u"></div>
                 </div>
                 <div id="contenedor">
                 </div>
@@ -197,25 +149,54 @@ and open the template in the editor.
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
     <script src="../js/jquery.min.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script>
-    <script language="javascript">
-        function ignorar(form) {
-            window.location.replace("../index.php");
-        }
-    </script>
-    <script>
-        // wait for the DOM to be loaded 
-        //$(document).ready(function () {
-        // bind 'myForm' and provide a simple callback function 
-        //  $('#myForm').ajaxForm(function () {
-        //    alert("Biblioteca agregada con exito!");
-        //});
-        //});
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#t_user').on('change', function (e) {
+               switch($('#t_user option:selected').val()){
+                   case 'alumn':
+                       $('#tipo_u').append("<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del alumno</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id' type='text' class='form-control' value=''></div></div></div></div></div>");
+                       break;
+                   case 'admin':
+                       $('#tipo_u').append("<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del administrador</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id_a' type='text' class='form-control' value=''></div></div></div></div></div>");
+                       break;
+                   case 'colab':
+                       $('#tipo_u').append("<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del colaborador</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id_c' type='text' class='form-control' value=''></div></div></div></div></div>");
+                       break;
+               }
+            });
+        });
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#btn-eti").on('click', function () {
-                if ($('#eti').val().trim() !== '') {
-                    $("#caja").append(id);
+            $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+            $.ajax({
+                url: '../controller/datosUser.php',
+                data: 'id=' + '',
+                type: "GET",
+                dataType: "text",
+                error: function () {
+                    console.log("Error en llamada ajax.");
+                },
+                success: function (sucess) {
+                    $('#datos_u').html(sucess);
+                }
+            });
+            $('#btn-buscar').on('click', function () {
+                if ($('#id').val().trim() === '') {
+                    alert("No hay datos a buscar");
+                } else {
+                    $.ajax({
+                        url: '../controller/datosUser.php',
+                        data: 'id=' + $('#id').val().trim(),
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#datos_u').html(sucess);
+                        }
+                    });
                 }
             });
         });
