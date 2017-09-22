@@ -126,8 +126,7 @@ and open the template in the editor.
                             </div>
                         </div>
                     </div>
-                    <hr>
-                    <hr>
+                    <hr><hr>
                     <div class="form-horizontal">
                         <h2><b>Registro MARC</b></h2>
                         <div class="form-group">
@@ -143,8 +142,7 @@ and open the template in the editor.
                             </div>
                         </div>
                     </div>
-                    <hr>
-                    <hr>
+                    <hr><hr>
                     <div class="form-horizontal">
                         <h2><b>Añadir etiqueta</b></h2>
                         <div class="form-group">
@@ -157,8 +155,7 @@ and open the template in the editor.
                             </div>                                
                         </div>
                     </div>
-                    <hr>
-                    <hr>
+                    <hr><hr>
                     <div class="row placeholders text-center"> 
                         <div class="card">
                             <div id="caja" class="container input-group indput-group-sm col-lg-10">
@@ -174,7 +171,7 @@ and open the template in the editor.
                                         </span>
                                     </div>                                        
                                 </div>
-                                <div id="041" class=" input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="041" class=" input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color:#80d4ff"><strong>Idioma 041</strong></span>
                                         <span class="input-group-btn">
@@ -210,7 +207,7 @@ and open the template in the editor.
                                         </span>
                                     </div>
                                 </div>
-                                <div id="082" class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="082" class="input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color: #80d4ff"><strong>Dewey 082</strong></span>
                                         <span class="input-group-btn">
@@ -230,7 +227,7 @@ and open the template in the editor.
                                         </span>
                                     </div>
                                 </div>
-                                <div id="094" class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="094" class="input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color: #80d4ff"><strong>Tesis 094</strong></span>
                                         <span class="input-group-btn">
@@ -250,7 +247,7 @@ and open the template in the editor.
                                         </span>
                                     </div>
                                 </div>
-                                <div id="099" class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="099" class="input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color: #80d4ff"><strong>Clasificación 099</strong></span>
                                         <span class="input-group-btn">
@@ -270,7 +267,7 @@ and open the template in the editor.
                                         </span>
                                     </div>
                                 </div>
-                                <div id="100" class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="100" class="input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color:#80d4ff"><strong>Autor 100</strong></span>
                                         <span class="input-group-btn">
@@ -290,7 +287,7 @@ and open the template in the editor.
                                         </span>
                                     </div>
                                 </div>
-                                <div id="245" class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="245" class="input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color:#80d4ff"><strong>Título 245</strong></span>
                                         <span class="input-group-btn">
@@ -322,7 +319,7 @@ and open the template in the editor.
                                         </span>
                                     </div>
                                 </div>
-                                <div id="250" class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="250" class="input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color:#80d4ff"><strong>Edición 250</strong></span>
                                         <span class="input-group-btn">
@@ -338,7 +335,7 @@ and open the template in the editor.
                                         </span>
                                     </div>
                                 </div>
-                                <div id="260" class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="260" class="input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color:#80d4ff"><strong>Editorial 260</strong></span>
                                         <span class="input-group-btn">
@@ -370,7 +367,7 @@ and open the template in the editor.
                                         </span>
                                     </div>
                                 </div>
-                                <div id="300" class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="300" class="input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color:#80d4ff"><strong>Descripción 300</strong></span>
                                         <span class="input-group-btn">
@@ -394,7 +391,7 @@ and open the template in the editor.
                                         </span>
                                     </div>
                                 </div>
-                                <div id="440" class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="440" class="input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color:#80d4ff"><strong>Serie 440</strong></span>
                                         <span class="input-group-btn">
@@ -422,7 +419,7 @@ and open the template in the editor.
                                         </span>
                                     </div>
                                 </div>
-                                <div id="500" class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="500" class="input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color:#80d4ff"><strong>Nota general 500</strong></span>
                                         <span class="input-group-btn">
@@ -434,7 +431,7 @@ and open the template in the editor.
                                         </span>
                                     </div>
                                 </div>
-                                <div id="502" class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="502" class="input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color:#80d4ff"><strong>Nota de tesis 502</strong></span>
                                         <span class="input-group-btn">
@@ -446,7 +443,7 @@ and open the template in the editor.
                                         </span>
                                     </div>
                                 </div>
-                                <div id="504" class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="504" class="input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color:#80d4ff"><strong>Nota de bibliografía 504</strong></span>
                                         <span class="input-group-btn">
@@ -458,7 +455,7 @@ and open the template in the editor.
                                         </span>
                                     </div>
                                 </div>
-                                <div id="505" class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="505" class="input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color:#80d4ff"><strong>Nota de contenido 505</strong></span>
                                         <span class="input-group-btn">
@@ -482,7 +479,7 @@ and open the template in the editor.
                                         </span>
                                     </div>
                                 </div>
-                                <div id="520" class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="520" class="input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color:#80d4ff"><strong>Resumen 520</strong></span>
                                         <span class="input-group-btn">
@@ -506,7 +503,7 @@ and open the template in the editor.
                                         </span>
                                     </div>
                                 </div>
-                                <div id="650" class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="650" class="input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color:#80d4ff"><strong>Temas 650</strong></span>
                                         <span class="input-group-btn">
@@ -522,7 +519,7 @@ and open the template in the editor.
                                         </span>
                                     </div>
                                 </div>
-                                <div id="700" class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div id="700" class="input-group input-group-sm col-lg-10">
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color:#80d4ff"><strong>Personal 700</strong></span>
                                         <span class="input-group-btn">
@@ -580,7 +577,7 @@ and open the template in the editor.
                                     <span class="input-group-addon"><strong>Copia:</strong></span>
                                     <input name="copia" type="text" class="form-control" value="">
                                 </div>
-                                <div class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div class="input-group input-group-sm col-lg-10">
                                     <span class="input-group-addon"><strong>Ubicación:</strong></span>
                                     <input name="ubicacion" type="text" class="form-control" value="">
                                     <span class="input-group-addon"><strong>Prefijo:</strong></span>
@@ -588,13 +585,13 @@ and open the template in the editor.
                                     <span class="input-group-addon"><strong>Clasificación:</strong></span>
                                     <input name="clasificacion" type="text" class="form-control" value="">
                                 </div>
-                                <div class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div class="input-group input-group-sm col-lg-10">
                                     <span class="input-group-addon"><strong>Biblioteca:</strong></span>
                                     <input name="biblioteca" type="text" class="form-control" value="">
                                     <span class="input-group-addon"><strong>Vol. / No.:</strong></span>
                                     <input name="volno" type="text" class="form-control" value="">
                                 </div>
-                                <div class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div class="input-group input-group-sm col-lg-10">
                                     <span class="input-group-addon"><strong>Circulación:</strong></span>
                                     <input name="tipo_circ" type="text" class="form-control" value="">
                                     <span class="input-group-addon"><strong>Status:</strong></span>
@@ -602,23 +599,23 @@ and open the template in the editor.
                                     <span class="input-group-addon"><strong>Fecha entrada:</strong></span>
                                     <input name="fecha_entrada" type="text" class="form-control" value="">
                                 </div>
-                                <div class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div class="input-group input-group-sm col-lg-10">
                                     <span class="input-group-addon"><strong>Procedencia:</strong></span>
                                     <input name="proce" type="text" class="form-control" value="">
                                     <span class="input-group-addon"><strong>Tipo:</strong></span>
                                     <input name="type" type="text" class="form-control" value="">
                                 </div>
-                                <div class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div class="input-group input-group-sm col-lg-10">
                                     <span class="input-group-addon"><strong>Factura:</strong></span>
                                     <input name="fact" type="text" class="form-control" value="">
                                     <span class="input-group-addon"><strong>Precio:</strong></span>
                                     <input name="precio" type="text" class="form-control" value="">
                                 </div>
-                                <div class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div class="input-group input-group-sm col-lg-10">
                                     <span class="input-group-addon"><strong>Hiperlink:</strong></span>
                                     <input name="hyperlink" type="text" class="form-control" value="">
                                 </div>
-                                <div class="input-group input-group-sm col-lg-10" style="margin-top: 5px">
+                                <div class="input-group input-group-sm col-lg-10">
                                     <span class="input-group-addon"><strong>Notas:</strong></span>
                                     <input name="notas" type="text" class="form-control" value="">
                                 </div>
@@ -688,10 +685,6 @@ and open the template in the editor.
             $("#btn-isbn").on('click', function () {
                 alert("¿Seguro que desea eliminar esta etiqueta?");
                 $("#020").remove();
-            });
-            $("#btn-isbn2").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#021").remove();
             });
             $("#btn-idioma").on('click', function () {
                 alert("¿Seguro que desea eliminar esta etiqueta?");
@@ -766,47 +759,68 @@ and open the template in the editor.
     <script>
         $(document).ready(function () {
             $("#btn-eti").click(function () {
-                if ($('#eti').val().trim() === '020') {
-                    $("#020").append("<div id='021' class='input-group input-group-sm col-lg-10'><div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>ISBN 020</strong></span><span class='input-group-btn'><button data-toggle='tooltip' title='Número Internacional Normalizado para Libros' class='btn btn-basic' type='button'>$a</button></span><input name='isbn' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-isbn2' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button> </span></div></div>");
-                } else if ($('#eti').val().trim() === '041') {
-                    $("#041").append("<div id='041' class=' input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Idioma 041</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Código de idioma del texto-pista de sonido o título separado' class='btn btn-warning' type='button'>$a</button></span><input name='titulo_disp' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Código de idiomay/o traducciones intermedias del texto original' class='btn btn-basic' type='button'>$h</button></span><input name='b' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Código del idioma del sumario o resumen/título o subtítulo sobreimpreso' class='btn btn-basic' type='button'>$b</button></span><input name='c' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Código de idioma cantado o hablado' class='btn btn-basic' type='button'>$d</button></span><input name='h' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Código del idioma de la tabla de contenido' class='btn btn-basic' type='button'>$f</button></span><input name='n' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Código del idioma acompañado de otro tipo de material que no sea libreto' class='btn btn-basic' type='button'>$g</button></span><input name='p' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Código del idioma de subtítulos' class='btn btn-basic' type='button'>$j</button></span><input name='p' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-idioma' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div></div>");
-                } else if ($('#eti').val().trim() === '082') {
-                    $("#082").append("<div id='082' class='input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color: #80d4ff'><strong>Dewey 082</strong></span><span class='input-group-btn'><button data-toggle='tooltip' title='Número de clasificación decimal de Dewey' class='btn btn-basic' type='button'>$a</button></span><input name='clasificacion' type='text' class='form-control' value=''><span class='input-group-btn'><button class='btn btn-basic' type='button'>$b</button></span><input name='cutter' type='text' class='form-control' value=''><span class='input-group-btn'><button class='btn btn-basic' type='button'>$2</button></span><input name='cutter' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-dewey' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div></div>");
-                } else if ($('#eti').val().trim() === '094') {
-                    $("#094").append("<div id='094' class='input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color: #80d4ff'><strong>Tesis 094</strong></span><span class='input-group-btn'><button data-toggle='tooltip' title='Número de clasificación de Tesis' class='btn btn-basic' type='button'>$a</button></span><input name='tesis' type='text' class='form-control' value=''><span class='input-group-btn'><button class='btn btn-basic' type='button'>$b</button></span><input name='b_tesis' type='text' class='form-control' value=''><span class='input-group-btn'><button class='btn btn-basic' type='button'>$2</button></span><input name='2_tesis' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-tesis' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div></div>");
-                } else if ($('#eti').val().trim() === '099') {
-                    $("#099").append("<div id='099' class='input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color: #80d4ff'><strong>Clasificación 099</strong></span><span class='input-group-btn'><button data-toggle='tooltip' title='Número de clasificación de la Biblioteca' class='btn btn-basic' type='button'>$a</button></span><input name='clasific' type='text' class='form-control' value=''><span class='input-group-btn'><button class='btn btn-basic' type='button'>$b</button></span><input name='b' type='text' class='form-control' value=''><span class='input-group-btn'><button class='btn btn-basic' type='button'>$2</button></span><input name='2' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-clasific' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div></div>");
-                } else if ($('#eti').val().trim() === '100') {
-                    $("#100").append("<div id='100' class='input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Autor 100</strong></span><span class='input-group-btn'><button data-toggle='tooltip' title='Nombre' class='btn btn-default btn-warning' type='button'>$a</button></span><input name='nombre_autor_disp' type='text' class='form-control' value=''> <span class='input-group-btn'><button data-toggle='tooltip' title='Fechas' class='btn btn-default btn-success' type='button'>$d</button></span><input name='nombre_autor_disp' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toggle='tooltip' title='Relación' class='btn btn-default btn-warning' type='button'>$e</button></span><input name='nombre_autor_disp' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-autor' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button> </span></div></div>");
-                } else if ($('#eti').val().trim() === '245') {
-                    $("#245").append("<div id='245' class='input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Título 245</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Tí-tulo' class='btn btn-basic' type='button'>$a</button></span><input name='titulo_disp' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Resto del tí-tulo' class='btn btn-basic' type='button'>$b</button></span><input name='b' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Mención de responsabiblidad, etc.' class='btn btn-basic' type='button'>$c</button></span><input name='c' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Medio' class='btn btn-basic' type='button'>$h</button></span><input name='h' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Número de parte/sección de la obra' class='btn btn-basic' type='button'>$n</button></span><input name='n' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Número de parte/sección de la obra' class='btn btn-basic' type='button'>$p</button></span><input name='p' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-titulo' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div></div>");
-                } else if ($('#eti').val().trim() === '250') {
-                    $("#250").append("<div id='250' class='input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Edición 250</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Mención de edición' class='btn btn-default btn-warning' type='button'>$a</button></span><input name='edicion' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Resto de la mención de edición' class='btn btn-default btn-warning' type='button'>$b</button></span><input name='b' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-edicion' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div></div>");
-                } else if ($('#eti').val().trim() === '260') {
-                    $("#260").append("<div id='260' class='input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Editorial 260</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Lugar de publicación' class='btn btn-default btn-warning' type='button'>$a</button></span><input name='ciudad' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Editorial' class='btn btn-default btn-warning' type='button'>$b</button></span><input name='editorial' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Fecha' class='btn btn-basic' type='button'>$c</button></span><input name='c' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Lugar de manufactura' class='btn btn-basic' type='button'>$e</button></span><input name='e' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Manufacturador' class='btn btn-basic' type='button'>$f</button></span><input name='f' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Fecha de manufactura' class='btn btn-basic' type='button'>$g</button></span><input name='g' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-editorial' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button> </span></div></div>");
-                } else if ($('#eti').val().trim() === '300') {
-                    $("#300").append("<div id='300' class='input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Descripción 300</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Descripción' class='btn btn-basic' type='button'>$a</button></span><input name='extensión' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Dimensiones' class='btn btn-basic' type='button'>$c</button></span><input type='text' class='form-control'><span class='input-group-btn'><button data-toogle='tooltip' title='Tipo de la unidad' class='btn btn-basic' type='button'>$f</button></span><input type='text' class='form-control'><span class='input-group-btn'><button data-toogle='tooltip' title='Tamaño de la unidad' class='btn btn-basic' type='button'>$g</button></span><input type='text' class='form-control'><span class='input-group-btn'><button id='btn-desc' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div></div>");
-                } else if ($('#eti').val().trim() === '440') {
-                    $("#440").append("<div id='440' class='input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Serie 440</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Tí-tulo' class='btn btn-default btn-warning' type='button'>$a</button></span><input name='nombre_serie' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Volume nomber/sequential designation' class='btn btn-basic' type='button'>$v</button></span><input name='v' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Nombre de parte/sección de la obra' class='btn btn-basic' type='button'>$p</button></span><input name='p' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Nombre de parte/sección de la obra' class='btn btn-basic' type='button'>$n</button></span><input name='n' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='ISSN' class='btn btn-basic' type='button'>$x</button></span><input name='x' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-serie' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div></div>");
-                } else if ($('#eti').val().trim() === '500') {
-                    $("#500").append("<div id='500' class='input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Nota general 500</strong></span><span class='input-group-btn'><button class='btn btn-basic' type='button'>$a</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-ng' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div></div>");
-                } else if ($('#eti').val().trim() === '502') {
-                    $("#502").append("<div id='502' class='input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Nota de tesis 502</strong></span><span class='input-group-btn'><button class='btn btn-basic' type='button'>$a</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-nt' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div></div>");
-                } else if ($('#eti').val().trim() === '504') {
-                    $("#504").append("<div id='504' class='input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Nota de bibliografía 504</strong></span><span class='input-group-btn'><button class='btn btn-basic' type='button'>$a</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-nb' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button> </span></div></div>");
-                } else if ($('#eti').val().trim() === '505') {
-                    $("#505").append("<div id='505' class='input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Nota de contenido 505</strong></span><span class='input-group-btn'><button class='btn btn-basic' type='button'>$a</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Información variada' class='btn btn-basic' type='button'>$g</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Mensión de responsabilidad' class='btn btn-basic' type='button'>$r</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Tí-tulo' class='btn btn-basic' type='button'>$t</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-nc' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div></div>");
-                } else if ($('#eti').val().trim() === '520') {
-                    $("#520").append("<div id='520' class='input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Resumen 520</strong></span><span class='input-group-btn'><button class='btn btn-basic' type='button'>$a</button></span><input name='extensión' type='text' class='form-control' value=''><span class='input-group-btn'><button class='btn btn-basic' type='button'>$b</button></span><input type='text' class='form-control'><span class='input-group-btn'><button class='btn btn-basic' type='button'>$c</button></span><input type='text' class='form-control'><span class='input-group-btn'><button class='btn btn-basic' type='button'>$u</button></span><input type='text' class='form-control'><span class='input-group-btn'><button id='btn-resumen' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div></div>");
-                } else if ($('#eti').val().trim() === '650') {
-                    $("#650").append("<div id='650' class='input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Temas 650</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Epígrafe general' class='btn btn-default btn-warning' type='button'>$a</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button class='btn btn-default btn-success' type='button'>$2</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-temas' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div></div>");
-                } else if ($('#eti').val().trim() === '700') {
-                    $("#700").append("<div id='700' class='input-group input-group-sm col-lg-10' style='margin-top: 5px'><div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Personal 700</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Nombre del autor' class='btn btn-warning' type='button'>$a</button></span><input name='extensión' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Fechas' class='btn btn-basic' type='button'>$d</button></span><input type='text' class='form-control'><span class='input-group-btn'><button data-toogle='tooltip' title='Relación' class='btn btn-warning' type='button'>$e</button></span><input type='text' class='form-control'><span class='input-group-btn'><button data-toogle='tooltip' title='Pseudonimo' class='btn btn-success' type='button'>$j</button></span><input type='text' class='form-control'><span class='input-group-btn'><button id='btn-pers' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div></div>");
-                } else if ($('#eti').val().trim() === '') {
-                    alert("ERROR: El campo está vacío, introduzca un número de etiqueta.")
-                } else {
-                    alert("ERROR: Etiqueta inválida");
-                }
+                switch($('#eti').val()){
+                    case '020':
+                        $("#020").append("<div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>ISBN 020</strong></span><span class='input-group-btn'><button data-toggle='tooltip' title='Número Internacional Normalizado para Libros' class='btn btn-basic' type='button'>$a</button></span><input name='isbn' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-isbn' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div>");
+                        break;
+                    case '041':
+                        $("#041").append("<div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Idioma 041</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Código de idioma del texto-pista de sonido o título separado' class='btn btn-warning' type='button'>$a</button></span><input name='titulo_disp' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Código de idiomay/o traducciones intermedias del texto original' class='btn btn-basic' type='button'>$h</button></span><input name='b' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Código del idioma del sumario o resumen/título o subtítulo sobreimpreso' class='btn btn-basic' type='button'>$b</button></span><input name='c' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Código de idioma cantado o hablado' class='btn btn-basic' type='button'>$d</button></span><input name='h' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Código del idioma de la tabla de contenido' class='btn btn-basic' type='button'>$f</button></span><input name='n' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Código del idioma acompañado de otro tipo de material que no sea libreto' class='btn btn-basic' type='button'>$g</button></span><input name='p' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Código del idioma de subtítulos' class='btn btn-basic' type='button'>$j</button></span><input name='p' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-idioma' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div>");
+                        break;
+                    case '082':
+                        $("#082").append("<div class='input-group'><span class='input-group-addon' style='background-color: #80d4ff'><strong>Dewey 082</strong></span><span class='input-group-btn'><button data-toggle='tooltip' title='Número de clasificación decimal de Dewey' class='btn btn-basic' type='button'>$a</button></span><input name='clasificacion' type='text' class='form-control' value=''><span class='input-group-btn'><button class='btn btn-basic' type='button'>$b</button></span><input name='cutter' type='text' class='form-control' value=''><span class='input-group-btn'><button class='btn btn-basic' type='button'>$2</button></span><input name='cutter' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-dewey' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div>");
+                        break;
+                    case '094':
+                        $("#094").append("<div class='input-group'><span class='input-group-addon' style='background-color: #80d4ff'><strong>Tesis 094</strong></span><span class='input-group-btn'><button data-toggle='tooltip' title='Número de clasificación de Tesis' class='btn btn-basic' type='button'>$a</button></span><input name='tesis' type='text' class='form-control' value=''><span class='input-group-btn'><button class='btn btn-basic' type='button'>$b</button></span><input name='b_tesis' type='text' class='form-control' value=''><span class='input-group-btn'><button class='btn btn-basic' type='button'>$2</button></span><input name='2_tesis' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-tesis' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div>");
+                        break;
+                    case '099':
+                        $("#099").append("<div class='input-group'><span class='input-group-addon' style='background-color: #80d4ff'><strong>Clasificación 099</strong></span><span class='input-group-btn'><button data-toggle='tooltip' title='Número de clasificación de la Biblioteca' class='btn btn-basic' type='button'>$a</button></span><input name='clasific' type='text' class='form-control' value=''><span class='input-group-btn'><button class='btn btn-basic' type='button'>$b</button></span><input name='b' type='text' class='form-control' value=''><span class='input-group-btn'><button class='btn btn-basic' type='button'>$2</button></span><input name='2' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-clasific' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div>");
+                        break;
+                    case '100':
+                        $("#100").append("<div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Autor 100</strong></span><span class='input-group-btn'><button data-toggle='tooltip' title='Nombre' class='btn btn-default btn-warning' type='button'>$a</button></span><input name='nombre_autor_disp' type='text' class='form-control' value=''> <span class='input-group-btn'><button data-toggle='tooltip' title='Fechas' class='btn btn-default btn-success' type='button'>$d</button></span><input name='nombre_autor_disp' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toggle='tooltip' title='Relación' class='btn btn-default btn-warning' type='button'>$e</button></span><input name='nombre_autor_disp' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-autor' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button> </span></div>");
+                        break;
+                    case '245':
+                        $("#245").append("<div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Título 245</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Tí-tulo' class='btn btn-basic' type='button'>$a</button></span><input name='titulo_disp' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Resto del tí-tulo' class='btn btn-basic' type='button'>$b</button></span><input name='b' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Mención de responsabiblidad, etc.' class='btn btn-basic' type='button'>$c</button></span><input name='c' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Medio' class='btn btn-basic' type='button'>$h</button></span><input name='h' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Número de parte/sección de la obra' class='btn btn-basic' type='button'>$n</button></span><input name='n' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Número de parte/sección de la obra' class='btn btn-basic' type='button'>$p</button></span><input name='p' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-titulo' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div>");
+                        break;
+                    case '250':
+                        $("#250").append("<div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Edición 250</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Mención de edición' class='btn btn-default btn-warning' type='button'>$a</button></span><input name='edicion' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Resto de la mención de edición' class='btn btn-default btn-warning' type='button'>$b</button></span><input name='b' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-edicion' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div>");
+                        break;
+                    case '260':
+                        $("#260").append("<div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Editorial 260</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Lugar de publicación' class='btn btn-default btn-warning' type='button'>$a</button></span><input name='ciudad' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Editorial' class='btn btn-default btn-warning' type='button'>$b</button></span><input name='editorial' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Fecha' class='btn btn-basic' type='button'>$c</button></span><input name='c' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Lugar de manufactura' class='btn btn-basic' type='button'>$e</button></span><input name='e' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Manufacturador' class='btn btn-basic' type='button'>$f</button></span><input name='f' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Fecha de manufactura' class='btn btn-basic' type='button'>$g</button></span><input name='g' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-editorial' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button> </span></div>");
+                        break;
+                    case '300':
+                        $("#300").append("<div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Descripción 300</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Descripción' class='btn btn-basic' type='button'>$a</button></span><input name='extensión' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Dimensiones' class='btn btn-basic' type='button'>$c</button></span><input type='text' class='form-control'><span class='input-group-btn'><button data-toogle='tooltip' title='Tipo de la unidad' class='btn btn-basic' type='button'>$f</button></span><input type='text' class='form-control'><span class='input-group-btn'><button data-toogle='tooltip' title='Tamaño de la unidad' class='btn btn-basic' type='button'>$g</button></span><input type='text' class='form-control'><span class='input-group-btn'><button id='btn-desc' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div>");
+                        break;
+                    case '440':
+                        $("#440").append("<div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Serie 440</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Tí-tulo' class='btn btn-default btn-warning' type='button'>$a</button></span><input name='nombre_serie' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Volume nomber/sequential designation' class='btn btn-basic' type='button'>$v</button></span><input name='v' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Nombre de parte/sección de la obra' class='btn btn-basic' type='button'>$p</button></span><input name='p' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Nombre de parte/sección de la obra' class='btn btn-basic' type='button'>$n</button></span><input name='n' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='ISSN' class='btn btn-basic' type='button'>$x</button></span><input name='x' type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-serie' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div>");
+                        break;
+                    case '500':
+                        $("#500").append("<div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Nota general 500</strong></span><span class='input-group-btn'><button class='btn btn-basic' type='button'>$a</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-ng' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div>");
+                        break;
+                    case '502':
+                        $("#502").append("<div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Nota de tesis 502</strong></span><span class='input-group-btn'><button class='btn btn-basic' type='button'>$a</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-nt' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div>");
+                        break;
+                    case '504':
+                        $("#504").append("<div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Nota de bibliografía 504</strong></span><span class='input-group-btn'><button class='btn btn-basic' type='button'>$a</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-nb' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button> </span></div>");
+                        break;
+                    case '505':
+                        $("#505").append("<div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Nota de contenido 505</strong></span><span class='input-group-btn'><button class='btn btn-basic' type='button'>$a</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Información variada' class='btn btn-basic' type='button'>$g</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Mensión de responsabilidad' class='btn btn-basic' type='button'>$r</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Tí-tulo' class='btn btn-basic' type='button'>$t</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-nc' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div>");
+                        break;
+                    case '520':
+                        $("#520").append("<div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Resumen 520</strong></span><span class='input-group-btn'><button class='btn btn-basic' type='button'>$a</button></span><input name='extensión' type='text' class='form-control' value=''><span class='input-group-btn'><button class='btn btn-basic' type='button'>$b</button></span><input type='text' class='form-control'><span class='input-group-btn'><button class='btn btn-basic' type='button'>$c</button></span><input type='text' class='form-control'><span class='input-group-btn'><button class='btn btn-basic' type='button'>$u</button></span><input type='text' class='form-control'><span class='input-group-btn'><button id='btn-resumen' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div>");
+                        break;
+                    case '650':
+                        $("#650").append("<div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Temas 650</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Epígrafe general' class='btn btn-default btn-warning' type='button'>$a</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button class='btn btn-default btn-success' type='button'>$2</button></span><input type='text' class='form-control' value=''><span class='input-group-btn'><button id='btn-temas' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div>");
+                        break;
+                    case '700':
+                        $("#700").append("<div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Personal 700</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Nombre del autor' class='btn btn-warning' type='button'>$a</button></span><input name='extensión' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Fechas' class='btn btn-basic' type='button'>$d</button></span><input type='text' class='form-control'><span class='input-group-btn'><button data-toogle='tooltip' title='Relación' class='btn btn-warning' type='button'>$e</button></span><input type='text' class='form-control'><span class='input-group-btn'><button data-toogle='tooltip' title='Pseudonimo' class='btn btn-success' type='button'>$j</button></span><input type='text' class='form-control'><span class='input-group-btn'><button id='btn-pers' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div>");
+                        break;
+                    default:
+                        if($('#eti').val().trim() === '') {
+                            alert("ERROR: El campo está vacío, introduzca una etiqueta.")   
+                        } else {
+                            alert("ERROR: Etiqueta inválida, ingrese una correcta.")
+                        }
+                    }
             });
         });
     </script>
