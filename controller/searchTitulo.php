@@ -20,7 +20,7 @@ if ($buscarTitulo === '' && $buscarAutor === '' && $biblioteca === '' && $select
                     ON inventario.num_biblioteca = bibliotecas.num_biblioteca
                     INNER JOIN materiales
                     ON inventario.num_material = materiales.num_material
-                    WHERE titulo_disp LIKE '" . $buscarTitulo . "%' AND nombre_autor_disp LIKE '%" . $buscarAutor . "%' AND bibliotecas.nombre_biblioteca LIKE '%" . $biblioteca . "%' AND materiales.nombre_material LIKE '%" . $select . "%'"
+                    WHERE titulos.titulo_disp LIKE '" . $buscarTitulo . "%' AND autores.nombre_autor_disp LIKE '%" . $buscarAutor . "%' AND bibliotecas.nombre_biblioteca LIKE '%" . $biblioteca . "%' AND materiales.nombre_material LIKE '%" . $select . "%'"
             . "     ORDER BY " . $orden . ";");
     echo '<hr><h2 class="text-center">Resultado de la Búsqueda</h2>';
     echo '<hr>';

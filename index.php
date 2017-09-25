@@ -135,7 +135,7 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a onclick="document.getElementById('id01').style.display = 'block'" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -235,7 +235,7 @@
                                     <label class="col-sm-2 control-label">Tipo de Material:</label>
                                     <div class="col-sm-2">
                                         <select class="form-control" name="select" id="select">
-                                            <option value="">Elegir Material</option>
+                                            <option value="">Todos</option>
                                             <option value="libr">Libro</option>
                                             <option value="folle">Folleto</option>
                                             <option value="6">Cuadernillo</option>
@@ -391,6 +391,11 @@
         <script language="javascript">
             function addNew(form) {
                 window.location.replace("views/addbiblioteca.php");
+            }
+        </script>
+        <script language="javascript">
+            function login(form) {
+                window.location.replace("views/login.php");
             }
         </script>
         <script>

@@ -152,15 +152,18 @@ and open the template in the editor.
     <script type="text/javascript">
         $(document).ready(function () {
             $('#t_user').on('change', function (e) {
+                var alumn = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del alumno</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id' type='text' class='form-control' value=''></div></div></div></div></div>";
+                var admin = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del administrador</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id_a' type='text' class='form-control' value=''></div></div></div></div></div>";
+                var colab = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del colaborador</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id_c' type='text' class='form-control' value=''></div></div></div></div></div>";
                switch($('#t_user option:selected').val()){
                    case 'alumn':
-                       $('#tipo_u').append("<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del alumno</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id' type='text' class='form-control' value=''></div></div></div></div></div>");
+                       document.getElementById("tipo_u").innerHTML = alumn;
                        break;
                    case 'admin':
-                       $('#tipo_u').append("<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del administrador</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id_a' type='text' class='form-control' value=''></div></div></div></div></div>");
+                       document.getElementById('tipo_u').innerHTML = admin;
                        break;
                    case 'colab':
-                       $('#tipo_u').append("<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del colaborador</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id_c' type='text' class='form-control' value=''></div></div></div></div></div>");
+                       document.getElementById('tipo_u').innerHTML = colab;
                        break;
                }
             });
