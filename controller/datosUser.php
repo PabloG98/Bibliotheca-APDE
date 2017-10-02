@@ -21,13 +21,6 @@ $id = filter_input(INPUT_GET, 'id');
             echo ' ' . $row["telefono"] . '<br>';
             echo '<b><label>Dirección: </label></b>';
             echo ' ' . $row["direccion1"] . '<br>';
-            echo '<div class="btn-group text-center">';
-            echo '<button type="button" class="btn btn-success"><scan class="glyphicon glyphicon-save"></scan> Prestar</button>';
-            echo '<button type="button" class="btn btn-info"><span class="glyphicon glyphicon-circle-arrow-left"></span> Devolver</button>';
-            echo '<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span> Renovar</button>';
-            echo '<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Pagar Multa</button>';
-            echo '<hr>';
-            echo '</div>';
             echo '</div>';
             echo '</div>';
         }

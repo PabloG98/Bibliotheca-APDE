@@ -118,22 +118,36 @@ and open the template in the editor.
                     <h1 class="page-header text-center"><b>Estación de circulación</b></h1>
                     <div class="container">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Tipo de usuario:</label>
-                            <div class="col-sm-2">
-                                <select class="form-control" name="t_user" id="t_user">
-                                    <option>Elija una opción</option>
-                                    <option value="alumn">Alumno</option>
-                                    <option value="admin">Administrativo</option>
-                                    <option value="colab">Colaborador</option>
-                                </select>
+                            <div class='panel panel-primary'>
+                                <div class='panel-heading'></div>
+                                <div class='panel-body'>
+                                    <div class='form-group'>
+                                        <label> Solicitud de datos del alumno</label>
+                                    </div>
+                                    <div class='form-horizontal'>
+                                        <div class='form-group'>
+                                            <label class='col-sm-2 control-label'>Carné:</label>
+                                            <div class='col-sm-2'>
+                                                <input id='id' type='text' class='form-control' value=''>
+                                            </div>
+                                            <div class='btn-group'>
+                                                <button id='btn-buscar' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="btn-group">
-                                <button id="btn-buscar" type="button" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                            <div id="funpres" class="btn-group">
+                                <button id="btn-prestar" type="button" class="btn btn-primary"><scan class="glyphicon glyphicon-save"></scan> Prestar</button>
+                                <button id="btn-devolver" type="button" class="btn btn-info"><span class="glyphicon glyphicon-circle-arrow-left"></span> Devolver</button>
+                                <button id="btn-renovar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span> Renovar</button>
+                                <button id="btn-pagar" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Pagar Multa</button>
                             </div>
                         </div>
                     </div>
-                    <div id="tipo_u"></div>
-                    <div id="datos_u"></div>
+                    <div class="container" id="tipo_u"></div>
+                    <div class="container" id="datos_u"></div>
+                    <div class="container" id="prestamo"></div>
                 </div>
                 <div id="contenedor">
                 </div>
@@ -152,20 +166,67 @@ and open the template in the editor.
     <script type="text/javascript">
         $(document).ready(function () {
             $('#t_user').on('change', function (e) {
-                var alumn = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del alumno</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id' type='text' class='form-control' value=''></div></div></div></div></div>";
-                var admin = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del administrador</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id_a' type='text' class='form-control' value=''></div></div></div></div></div>";
-                var colab = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del colaborador</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id_c' type='text' class='form-control' value=''></div></div></div></div></div>";
-               switch($('#t_user option:selected').val()){
-                   case 'alumn':
-                       document.getElementById("tipo_u").innerHTML = alumn;
-                       break;
-                   case 'admin':
-                       document.getElementById('tipo_u').innerHTML = admin;
-                       break;
-                   case 'colab':
-                       document.getElementById('tipo_u').innerHTML = colab;
-                       break;
-               }
+                var alumn = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del alumno</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id' type='text' class='form-control' value=''></div><div class='btn-group'><button id='btn-buscar' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div>";
+                var admin = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del administrador</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id_a' type='text' class='form-control' value=''></div><div class='btn-group'><button id='btn-buscar' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div>";
+                var colab = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del colaborador</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id_c' type='text' class='form-control' value=''></div><div class='btn-group'><button id='btn-buscar' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div>";
+                switch ($('#t_user option:selected').val()) {
+                    case 'alumn':
+                        document.getElementById("tipo_u").innerHTML = alumn;
+                        break;
+                    case 'admin':
+                        document.getElementById('tipo_u').innerHTML = admin;
+                        break;
+                    case 'colab':
+                        document.getElementById('tipo_u').innerHTML = colab;
+                        break;
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function show(bloq) {
+            obj = document.getElementById(bloq);
+            obj.style.display = (obj.style.display == 'none') ? 'block' : 'none';
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#btn-prestar').on('click', function () {
+                var empty_dos = $('#datos_u').is(':empty');
+                var prestamo = "<h2>Prestamo</h2>";
+                if (empty_dos) {
+                    alert("No hay datos, por favor rellenar los campos");
+                } else {
+                    alert("Prestamo en proceso...");
+                    document.getElementById('prestamo').innerHTML = prestamo;
+                }
+            });
+            $('#btn-devolver').on('click', function () {
+                var empty_dos = $('#datos_u').is(':empty');
+                if (empty_dos) {
+                    alert("No hay datos, por favor rellenar los campos");
+                } else {
+                    alert("Prestamo en proceso...");
+                    document.getElementById('').innerHTML = prestamo;
+                }
+            });
+            $('#btn-renovar').on('click', function () {
+                if (empty_dos) {
+                    alert("No hay datos, por favor rellenar los campos");
+                } else {
+                    alert("Prestamo en proceso...");
+                    document.getElementById('').innerHTML = prestamo;
+                }
+            });
+            $('#btn-pagar').on('click', function () {
+                var empty_uno = $('#prestamo').is(':empty');
+                var empty_dos = $('#datos_u').is(':empty');
+                if (empty_dos) {
+                    alert("No hay datos, por favor rellenar los campos");
+                } else {
+                    alert("Prestamo en proceso...");
+                    document.getElementById('').innerHTML = prestamo;
+                }
             });
         });
     </script>

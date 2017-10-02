@@ -146,16 +146,17 @@ and open the template in the editor.
                         </div>
                         <div class="btn-group">
                             <button id="btn-preview" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-picture"></span> Preview</button>
-                            <button id="b_print" name="b_print" type="button" class="btn btn-info ipt" onClick="printdiv('div_print')"><scan class="glyphicon glyphicon-print"></scan> Print</button>
-                            <button id="btn-save" type="button" class="btn btn-success"><scan class="glyphicon glyphicon-save"></scan> Save</button>
+                            <button id="b_print" name="b_print" type="button" class="btn btn-info ipt"><scan class="glyphicon glyphicon-print"></scan> Print</button>
+                            <button id="btn-exportar" type="button" class="btn btn-success"><scan class="glyphicon glyphicon-save"></scan> Save as PDF</button>
                         </div>
                     </div>
                     <div id="reportes">
                     </div>
-                    <div id="contenedor"></div>
+                    <div id="div_print"></div>
                 </div>
             </div>
         </div>
+        <script src="../js/jsPDF-1.3.2/jsPDF-1.3.2/dist/jspdf.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
         <script src="../../dist/js/bootstrap.min.js"></script>
@@ -165,10 +166,37 @@ and open the template in the editor.
         <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
         <script src="../js/jquery.min.js"></script>
         <script src="http://malsup.github.com/jquery.form.js"></script>
+        <link rel="stylesheet" href="http://tympanus.net/Tutorials/CSS3Tables/css/style.css" type="text/css" media="screen"/>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="http://mrrio.github.io/jsPDF/dist/jspdf.min.js" type="text/javascript"></script>
+        <script src="http://html2canvas.hertzen.com/build/html2canvas.js" type="text/javascript"></script> 
+        <script>
+            $(document).ready(function () {
+                $("#btn-exportar").on("click", function () {
+
+                    var doc = new jsPDF();
+                    var imgWidth = 140;
+                    var positionY = 20;
+                    var positionX = 20;
+
+                    doc.setFontSize(15);
+                    doc.text(15, 15, "Bibliotheca - APDE");
+
+                    html2canvas($('#contenedor'), {
+                        onrendered: function (canvas) {
+                            doc.addImage(positionX, positionY, 140, imgWidth);
+                            doc.save('reporte.pdf');
+                        }
+                    });
+
+                });
+            });
+        </script>
         <script language="javascript">
-                                function ignorar(form) {
-                                    window.location.replace("../index.php");
-                                }
+            function ignorar(form) {
+                window.location.replace("../index.php");
+            }
         </script>
         <script>
             // wait for the DOM to be loaded 
@@ -181,23 +209,83 @@ and open the template in the editor.
         </script>
         <script type="text/javascript">
             $(document).ready(function () {
-                $('#b_print').click(function () {
-                    if ($('#contenedor').val().trim() !== '') {
-                        function printdiv(printpage)
-                        {
-                            alert("¿Desea imprimir este reporte?");
-                            var headstr = "<html><head><title></title></head><body>";
-                            var footstr = "</body>";
-                            var newstr = document.all.item(printpage).innerHTML;
-                            var oldstr = document.body.innerHTML;
-                            document.body.innerHTML = headstr + newstr + footstr;
-                            window.print();
-                            document.body.innerHTML = oldstr;
-                            return false;
-                        }
-
+                $('#b_print').on('click', function () {
+                    if (($('#div_print').val().trim() === '')) {
+                        window.print();
                     } else {
-                        alert("El campo está vacío");
+                        alert("No hay datos para imprimir");
+                    }
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+
+                $.ajax({
+                    url: '../controller/reportBoletin.php',
+                    data: {fechaibo: '', fechafbo: ''},
+                    type: "GET",
+                    dataType: "text",
+                    error: function () {
+                        console.log("Error en llamada ajax.");
+                    },
+                    success: function (sucess) {
+                        $('#contenedor').html(sucess);
+                    }
+                });
+                $('#btn-previeww').on('click', function () {
+                    if (($('#fechaibo').val().trim() === '') && ($('#fechafbo').val().trim() === '')) {
+                        alert("No hay fechas a evaluar.");
+                    } else {
+                        $.ajax({
+                            url: '../controller/reportBoletin.php',
+                            data: {fechaibo: $('#fechaibo').val().trim(), fechafbo: $('#fechafbo').val().trim()},
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#contenedor').html(sucess);
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+
+                $.ajax({
+                    url: '../controller/reportMultas.php',
+                    data: 'fechaicomu=' + '',
+                    type: "GET",
+                    dataType: "text",
+                    error: function () {
+                        console.log("Error en llamada ajax.");
+                    },
+                    success: function (sucess) {
+                        $('#div_print').html(sucess);
+                    }
+                });
+                $('#btn-preview').on('click', function () {
+                    if (($('#fechaicomu').val().trim() === '')) {
+                        alert("No hay fechas a evaluar.");
+                    } else {
+                        $.ajax({
+                            url: '../controller/reportMultas.php',
+                            data: 'fechaicomu=' + $('#fechaicomu').val().trim(),
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#div_print').html(sucess);
+                            }
+                        });
                     }
                 });
             });
@@ -208,7 +296,7 @@ and open the template in the editor.
 
                 $.ajax({
                     url: '../controller/reportCatMes.php',
-                    data: {fechai: '', fechaf: ''},
+                    data: {fechaiecpm: '', fechafecpm: ''},
                     type: "GET",
                     dataType: "text",
                     error: function () {
@@ -219,12 +307,12 @@ and open the template in the editor.
                     }
                 });
                 $('#btn-preview').on('click', function () {
-                    if (($('#fechai').val().trim() === '') && ($('#fechaf').val().trim() === '')) {
+                    if (($('#fechaiecpm').val().trim() === '') && ($('#fechafecpm').val().trim() === '')) {
                         alert("No hay fechas a evaluar.");
                     } else {
                         $.ajax({
                             url: '../controller/reportCatMes.php',
-                            data: {fechai: $('#fechai').val().trim(), fechaf: $('#fechaf').val().trim()},
+                            data: {fechai: $('#fechaiecpm').val().trim(), fechaf: $('#fechafecpm').val().trim()},
                             type: "GET",
                             dataType: "text",
                             error: function () {
@@ -241,10 +329,10 @@ and open the template in the editor.
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#t_reporte').on('change', function (e) {
-                    
-                    var boletin = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechai' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechaf' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
-                    var comu = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechai' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechaf' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
-                    var ecapormes = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechai' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechaf' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
+
+                    var boletin = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechaibo' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechafbo' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
+                    var comu = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique la fecha de prestamo</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha de prestamo:</label><div class='col-sm-2'><input id='fechaicomu' type='date' class='form-control'></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
+                    var ecapormes = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechaiecpm' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechafecpm' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
                     var epormes = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el tipo de reporte que desea</label></div><div class='container'><div class='form-group'><label class='col-sm-2 control-label'>Tipo de reporte:</label><div class='col-sm-2'><select class='form-control' name='t_repor' id='t_repor'><option>Elija una opción</option><option value='pres'>Préstamos</option><option value='ps'>Préstamos en sala</option><option value='pad'>Préstamos a domicilio</option></select></div></div></div><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechai' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechaf' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
                     var e = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el tipo de reporte que desea</label></div><div class='container'><div class='form-group'><label class='col-sm-2 control-label'>Tipo de reporte:</label><div class='col-sm-2'><select class='form-control' name='t_report' id='t_repor'><option>Elija una opción</option><option value='cont'>Continuas</option><option value='discont'>Discontinuas</option></select></div></div></div><div class='form-group'><label> Ingrese los códigos de barra</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Items:</label><div class='col-sm-2'><input id='coi' type='text' class='form-control'></div><label class='col-sm-2 control-label'>al</label><div class='col-sm-2'><input id='cof' type='text' class='form-control'></div></div></div><div class='form-group'><label> Ingrese la posición donde empezará a imprimir</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fila:</label><div class='col-sm-2'><input id='fila' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Columna:</label><div class='col-sm-2'><input id='columna' ";
                     var et = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique rango de no. de inventario</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>No. Inicial:</label><div class='col-sm-2'><input id='ri' type='text' class='form-control'></div></div><div class='form-group'><label class='col-sm-2 control-label'>No. Final:</label><div class='col-sm-2'><input id='rf' type='text' class='form-control'></div></div></div><div class='form-group'><label> Ingrese la posición donde empezará a imprimir</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fila:</label><div class='col-sm-2'><input id='fila' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Columna:</label><div class='col-sm-2'><input id='columna' type='text' class='form-control' placeholder='' value=''></div></div></div></div></div>";
@@ -256,7 +344,7 @@ and open the template in the editor.
                     var lose = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique rango de no. de inventario</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>No. Inicial:</label><div class='col-sm-2'><input id='ri' type='text' class='form-control'></div></div><div class='form-group'><label class='col-sm-2 control-label'>No. Final:</label><div class='col-sm-2'><input id='rf' type='text' class='form-control'></div></div></div><div class='form-group'><label> Ingrese la posición donde empezará a imprimir</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fila:</label><div class='col-sm-2'><input id='fila' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Columna:</label><div class='col-sm-2'><input id='columna' type='text' class='form-control'></div></div></div></div></div>";
                     var mco = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Tipo de consulta:</label><div class='col-sm-2'><select class='form-control' name='t_repor' id='t_repor'><option>Elija una opción</option><option value='gen'>General</option><option value='sala'>En sala</option><option value='domi'>A domicilio</option></select></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechai' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechaf' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control'></div></div></div></div></div>";
                     var t10 = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechai' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechaf' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
-                    
+
                     switch ($('#t_reporte option:selected').val()) {
                         case 'boletin':
                             document.getElementById('reportes').innerHTML = boletin;

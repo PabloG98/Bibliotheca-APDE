@@ -135,7 +135,7 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a onclick="document.getElementById('id01').style.display = 'block'"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -167,34 +167,6 @@
                 </div>
                 <div class="container">
                     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-                        <!--modal-->
-                        <div id="id01" class="modal">
-                            <form class="modal-content animate" action="/action_page.php">
-                                <div class="imgcontainer">
-                                    <span onclick="document.getElementById('id01').style.display = 'none'" class="close" title="Close Modal">&times;</span>
-                                    <img src="https://pbs.twimg.com/profile_images/769193451036352512/68WIEQyg.jpg" alt="Avatar" class="avatar">
-                                </div>
-                                <div class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label"><b>Usuario:</b></label>
-                                        <div class="col-sm-2">
-                                            <input class="form-control" type="text" name="user" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label"><b>Contraseña:</b></label>
-                                        <div class="col-sm-2">
-                                            <input class="form-control" type="password" name="pass" required>
-                                        </div>
-                                    </div>
-                                    <div class="text-center form-group bottom-right">
-                                        <button class="btn btn-success" type="button">Login</button>
-                                        <!--<input type="checkbox" checked="checked"> Remember me-->
-                                        <button type="button" onclick="document.getElementById('id01').style.display = 'none'" class="btn btn-danger">Cancel</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
                         <h1 class="page-header text-center">Consulta al catálogo</h1>
                         <div class="form-horizontal text-center">
                             <div>
@@ -210,7 +182,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Título:</label>
                                     <div class="col-sm-8">
-                                        <input id="buscarTitulo" type="text" class="form-control" placeholder="Título" value="" autofocus="">
+                                        <input id="buscarTitulo" type="search" class="form-control" placeholder="Título" value="" autofocus="">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -264,17 +236,44 @@
                                     </div>
                                 </div>
                                 <div class="text-center form-group bottom-right">
-                                    <button id="btn-buscar" class="btn btn-default btn-success" type="button"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                                    <button id="btn-buscar" class="btn btn-default btn-success" type="submit"><span class="glyphicon glyphicon-search"></span> Buscar</button>
                                     <button onclick="window.location.reload()" class="btn btn-default btn-warning" type="button"><span class="glyphicon glyphicon-search"></span> Nueva busqueda</button>
                                 </div>
+                                <div id="mbt"></div>
                             </div>
                         </div>
-                        <div id="contenedor">
-
-                        </div>
+                        <div id="contenedor"></div>
                     </div>
                 </div>
             </div>
+        </div>
+        <!--modal-->
+        <div id="id01" class="modal">
+            <form class="modal-content animate" action="/action_page.php">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display = 'none'" class="close" title="Close Modal">&times;</span>
+                    <img src="https://pbs.twimg.com/profile_images/769193451036352512/68WIEQyg.jpg" alt="Avatar" class="avatar">
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"><b>Usuario:</b></label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="user" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"><b>Contraseña:</b></label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="password" name="pass" required>
+                        </div>
+                    </div>
+                    <div class="text-center form-group bottom-right">
+                        <button class="btn btn-success" type="button">Login</button>
+                        <!--<input type="checkbox" checked="checked"> Remember me-->
+                        <button type="button" onclick="document.getElementById('id01').style.display = 'none'" class="btn btn-danger">Cancel</button>
+                    </div>
+                </div>
+            </form>
         </div>
         <!-- Bootstrap core JavaScript
         ================================================== -->
@@ -289,57 +288,65 @@
         <script src="js/jquery.min.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize-css/dist/js/materialize.min.js"></script> 
+        <script>
+                            $(document).ready(function () {
+                                var mb = "<div class='text-center form-group bottom-right'><hr><i onclick='myFunction(this)' class='fa fa-thumbs-up'></i><button onclick='verMas(this)' id='btn-mas' type='button' class='btn btn-info'><span class='glyphicon glyphicon-plus'></span> Ver más</button><button type='button' class='btn btn-warning'><span class='glyphicon glyphicon-refresh'></span> Modificar</button><button type='button' class='btn btn-danger'><span class='glyphicon glyphicon-trash'></span> Eliminar</button><button id='favorite' type='button' class='btn btn-primary'><span class='glyphicon glyphicon-star'></span> Agregar a favoritos</butotn></div>";
+                                if ($('#contenedor') === '') {
+                                    document.getElementById('mbt').innerHTML = mb;
+                                }
+                            });
+        </script>
         <script type="text/javascript">
-                                        $(document).ready(function () {
-                                            $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+            $(document).ready(function () {
+                $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
 
-                                            $.ajax({
-                                                url: 'controller/searchCoba.php',
-                                                data: 'criterio=' + '',
-                                                type: "GET",
-                                                dataType: "text",
-                                                error: function () {
-                                                    console.log("Error en llamada ajax.");
-                                                },
-                                                success: function (sucess) {
-                                                    $('#contenedor').html(sucess);
-                                                }
-                                            });
-                                            $('#btn-recargar').on('click', function () {
-                                                $('#buscarCoba').val('');
-                                                $('#buscarCoba').focus();
-                                            });
+                $.ajax({
+                    url: 'controller/searchCoba.php',
+                    data: 'criterio=' + '',
+                    type: "GET",
+                    dataType: "text",
+                    error: function () {
+                        console.log("Error en llamada ajax.");
+                    },
+                    success: function (sucess) {
+                        $('#contenedor').html(sucess);
+                    }
+                });
+                $('#btn-recargar').on('click', function () {
+                    $('#buscarCoba').val('');
+                    $('#buscarCoba').focus();
+                });
 
-                                            $('#btn-buscar').on('click', function () {
-                                                if ($('#buscarCoba').val().trim() === '') {
-                                                    $.ajax({
-                                                        url: 'controller/searchCoba.php',
-                                                        data: 'criterio=' + '',
-                                                        type: "GET",
-                                                        dataType: "text",
-                                                        error: function () {
-                                                            console.log("Error en llamada ajax.");
-                                                        },
-                                                        success: function (sucess) {
-                                                            $('#contenedor').html(sucess);
-                                                        }
-                                                    });
-                                                } else {
-                                                    $.ajax({
-                                                        url: 'controller/searchCoba.php',
-                                                        data: 'criterio=' + $('#buscarCoba').val().trim(),
-                                                        type: "GET",
-                                                        dataType: "text",
-                                                        error: function () {
-                                                            console.log("Error en llamada ajax.");
-                                                        },
-                                                        success: function (sucess) {
-                                                            $('#contenedor').html(sucess);
-                                                        }
-                                                    });
-                                                }
-                                            });
-                                        });
+                $('#btn-buscar').on('click', function () {
+                    if ($('#buscarCoba').val().trim() === '') {
+                        $.ajax({
+                            url: 'controller/searchCoba.php',
+                            data: 'criterio=' + '',
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#contenedor').html(sucess);
+                            }
+                        });
+                    } else {
+                        $.ajax({
+                            url: 'controller/searchCoba.php',
+                            data: 'criterio=' + $('#buscarCoba').val().trim(),
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#contenedor').html(sucess);
+                            }
+                        });
+                    }
+                });
+            });
         </script>
         <script type="text/javascript">
             $(document).ready(function () {
@@ -388,6 +395,52 @@
                 });
             });
         </script>
+        <script type="text/javascript">
+            function verMas(x) {
+                $(document).ready(function () {
+                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                    $.ajax({
+                        url: 'controller/searchMore.php',
+                        data: 'codba=' + '',
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#contenedor').html(sucess);
+                        }
+                    });
+                    if ($('#codba').val().trim() === '') {
+                        $.ajax({
+                            url: 'controller/searchMore.php',
+                            data: 'codba=' + '',
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#contenedor').html(sucess);
+                            }
+                        });
+                    } else {
+                        $.ajax({
+                            url: 'controller/searchMore.php',
+                            data: 'codba=' + $('#codba').val().trim(),
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#contenedor').html(sucess);
+                            }
+                        });
+                    }
+                });
+            }
+        </script>
         <script language="javascript">
             function addNew(form) {
                 window.location.replace("views/addbiblioteca.php");
@@ -396,17 +449,6 @@
         <script language="javascript">
             function login(form) {
                 window.location.replace("views/login.php");
-            }
-        </script>
-        <script>
-// Get the modal
-            var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
             }
         </script>
         <script>

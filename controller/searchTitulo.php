@@ -37,8 +37,9 @@ if ($buscarTitulo === '' && $buscarAutor === '' && $biblioteca === '' && $select
             echo '<div class="card-block container"';
             $query1 = mysqli_query(Connection::getInstance()->conectar(), "SELECT nombre_autor_disp FROM autores WHERE
                         num_autor IN (SELECT num_autor FROM librarydb.autor_titulo WHERE num_titulo = " . $row["num_titulo"] . ");");
+            echo '<input type="hidden" class="form-control" id="codba" value="1111' . $row["num_inventario"] . '">';
             echo '<b><label>Titulo: </label></b>';
-            echo ' ' . '<a id="inventario">' . $row["titulo_disp"] . '</a>' . '<br>';
+            echo ' ' . $row["titulo_disp"] . '<br>';
             while ($row1 = mysqli_fetch_array($query1)) {
                 echo '<b><label>Autor: </label></b>';
                 echo ' ' . $row1["nombre_autor_disp"] . '<br>';
@@ -98,7 +99,7 @@ if ($buscarTitulo === '' && $buscarAutor === '' && $biblioteca === '' && $select
                 echo ' ' . $row["status"];
             }
             echo '</div>';
-            echo '<div class="text-center form-group bottom-right">';
+             echo '<div class="text-center form-group bottom-right">';
             echo '<hr>';
             echo '<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>';
             echo '<button type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Ver más</button>';
