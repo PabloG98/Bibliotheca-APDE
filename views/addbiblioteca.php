@@ -105,8 +105,8 @@ and open the template in the editor.
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="google_translate_element">
                     <h1 class="page-header text-center"><b>Agregar Libro</b></h1>
                     <div class="form-horizontal text-center">
-                        <button class="btn btn-default btn-success" type="submit" value="" onclick="addNew(this.form)"><span class="glyphicon glyphicon-ok-sign"></span> Grabar</button>
-                        <button id="btn-add" class="btn btn-default btn-danger" type="button" onclick="ignorar(this.form)"><span class="glyphicon glyphicon-minus-sign"></span> Ignorar</button>
+                        <button id="btn-agregar" class="btn btn-default btn-success" type="button" value="" onclick="addNew(this.form)"><span class="glyphicon glyphicon-ok-sign"></span> Grabar</button>
+                        <button class="btn btn-default btn-danger" type="button" onclick="ignorar(this.form)"><span class="glyphicon glyphicon-minus-sign"></span> Ignorar</button>
                         <hr>
                     </div>
                     <div class="form-horizontal">
@@ -114,7 +114,7 @@ and open the template in the editor.
                         <div class="form-group text-center">
                             <label class="col-sm-2 control-label">Fecha de catalogación:</label>
                             <div class="col-sm-2">
-                                <input disabled="" id="fecha" name="fecha" value="<?php echo date("Y-m-d"); ?>" type="date" class="form-control" placeholder="Fecha">
+                                <input disabled="" id="fecha_entrada" name="fecha" value="<?php echo date("Y-m-d"); ?>" type="date" class="form-control" placeholder="Fecha">
                             </div>
                             <label class="col-sm-2 control-label">Buscable:</label>
                             <div class="col-sm-1">
@@ -163,7 +163,7 @@ and open the template in the editor.
                                     <div class="input-group">
                                         <span class="input-group-addon" style="background-color:#80d4ff"><strong>ISBN 020</strong></span>
                                         <span class="input-group-btn">
-                                            <button data-toggle="tooltip" title="Número Internacional Normalizado para Libros" class="btn btn-basic" type="button">$a</button>
+                                            <button disabled="" data-toggle="tooltip" title="Número Internacional Normalizado para Libros" class="btn btn-basic" type="button">$a</button>
                                         </span>
                                         <input id="isbn" name="isbn" type="text" class="form-control" value="">
                                         <span class="input-group-btn">
@@ -213,15 +213,15 @@ and open the template in the editor.
                                         <span class="input-group-btn">
                                             <button data-toggle="tooltip" title="Número de clasificación decimal de Dewey" class="btn btn-basic" type="button">$a</button>
                                         </span>
-                                        <input name="dewey" type="text" class="form-control" value="">
+                                        <input name="clasificacion" type="text" class="form-control" value="">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-basic" type="button">$b</button>
+                                            <button data-toggle="tooltip" title="Cutter" class="btn btn-basic" type="button">$b</button>
                                         </span>
                                         <input name="cutter" type="text" class="form-control" value="">
                                         <span class="input-group-btn">
                                             <button class="btn btn-basic" type="button">$2</button>
                                         </span>
-                                        <input name="cutter" type="text" class="form-control" value="">
+                                        <input name="cutter2" type="text" class="form-control" value="">
                                         <span class="input-group-btn">
                                             <button id="btn-dewey" class="btn btn-danger" type="button"><i class="glyphicon glyphicon-trash"></i></button> 
                                         </span>
@@ -273,7 +273,7 @@ and open the template in the editor.
                                         <span class="input-group-btn">
                                             <button data-toggle="tooltip" title="Nombre" class="btn btn-default btn-warning" type="button">$a</button>
                                         </span>
-                                        <input id="autor" name="autor" type="text" class="form-control" value=""> 
+                                        <input id="nombre_autor" name="autor" type="text" class="form-control" value=""> 
                                         <span class="input-group-btn">
                                             <button data-toggle="tooltip" title="Fechas" class="btn btn-default btn-success" type="button">$d</button>
                                         </span>
@@ -826,9 +826,6 @@ and open the template in the editor.
     </script>
     <script type="text/javascript">
         function addBook() {
-            var fecha = $('#fecha').val();
-            var buscable = $('#buscable').val();
-            var catalogador = $('#catalogador').val();
             $.ajax({
                 url: '../controller/addBook.php',
                 type: 'POST',

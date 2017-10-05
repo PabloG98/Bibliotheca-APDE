@@ -122,11 +122,11 @@ and open the template in the editor.
                                 <div class='panel-heading'></div>
                                 <div class='panel-body'>
                                     <div class='form-group'>
-                                        <label> Solicitud de datos del alumno</label>
+                                        <label> Solicitud de datos</label>
                                     </div>
                                     <div class='form-horizontal'>
                                         <div class='form-group'>
-                                            <label class='col-sm-2 control-label'>Carné:</label>
+                                            <label class='col-sm-2 control-label'>Identificación:</label>
                                             <div class='col-sm-2'>
                                                 <input id='id' type='text' class='form-control' value=''>
                                             </div>
@@ -145,11 +145,8 @@ and open the template in the editor.
                             </div>
                         </div>
                     </div>
-                    <div class="container" id="tipo_u"></div>
                     <div class="container" id="datos_u"></div>
                     <div class="container" id="prestamo"></div>
-                </div>
-                <div id="contenedor">
                 </div>
             </div>
         </div>
@@ -164,26 +161,6 @@ and open the template in the editor.
     <script src="../js/jquery.min.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('#t_user').on('change', function (e) {
-                var alumn = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del alumno</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id' type='text' class='form-control' value=''></div><div class='btn-group'><button id='btn-buscar' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div>";
-                var admin = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del administrador</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id_a' type='text' class='form-control' value=''></div><div class='btn-group'><button id='btn-buscar' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div>";
-                var colab = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Solicitud de datos del colaborador</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Carné:</label><div class='col-sm-2'><input id='id_c' type='text' class='form-control' value=''></div><div class='btn-group'><button id='btn-buscar' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div>";
-                switch ($('#t_user option:selected').val()) {
-                    case 'alumn':
-                        document.getElementById("tipo_u").innerHTML = alumn;
-                        break;
-                    case 'admin':
-                        document.getElementById('tipo_u').innerHTML = admin;
-                        break;
-                    case 'colab':
-                        document.getElementById('tipo_u').innerHTML = colab;
-                        break;
-                }
-            });
-        });
-    </script>
-    <script type="text/javascript">
         function show(bloq) {
             obj = document.getElementById(bloq);
             obj.style.display = (obj.style.display == 'none') ? 'block' : 'none';
@@ -193,9 +170,12 @@ and open the template in the editor.
         $(document).ready(function () {
             $('#btn-prestar').on('click', function () {
                 var empty_dos = $('#datos_u').is(':empty');
-                var prestamo = "<h2>Prestamo</h2>";
+                var vacio = $('#vacio').is(':empty');
+                var prestamo = "<h2 class='text-center'>Datos del libro</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label>Datos del libro</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Co. Barras:</label><div class='col-sm-2'><input id='id_co' type='text' class='form-control' value=''></div><div class='btn-group'><button id='btn-buscarco' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div><div id='d_libro' class='container'></div></div>";
                 if (empty_dos) {
                     alert("No hay datos, por favor rellenar los campos");
+                } else if(!vacio || vacio){
+                    alert("Los datos son incorrectos, ingrese un ID válido.");
                 } else {
                     alert("Prestamo en proceso...");
                     document.getElementById('prestamo').innerHTML = prestamo;
@@ -203,28 +183,31 @@ and open the template in the editor.
             });
             $('#btn-devolver').on('click', function () {
                 var empty_dos = $('#datos_u').is(':empty');
-                if (empty_dos) {
-                    alert("No hay datos, por favor rellenar los campos");
+                var empty_uno = $('#prestamo').is(':empty');
+                if (empty_dos || empty_uno) {
+                    alert("No hay prestamo creado para devolver");
                 } else {
-                    alert("Prestamo en proceso...");
+                    alert("Devolución en proceso...");
                     document.getElementById('').innerHTML = prestamo;
                 }
             });
             $('#btn-renovar').on('click', function () {
-                if (empty_dos) {
+                var empty_uno = $('#prestamo').is(':empty');
+                var empty_dos = $('#datos_u').is(':empty');
+                if (empty_dos || empty_uno) {
                     alert("No hay datos, por favor rellenar los campos");
                 } else {
-                    alert("Prestamo en proceso...");
+                    alert("Renovación en proceso...");
                     document.getElementById('').innerHTML = prestamo;
                 }
             });
             $('#btn-pagar').on('click', function () {
                 var empty_uno = $('#prestamo').is(':empty');
                 var empty_dos = $('#datos_u').is(':empty');
-                if (empty_dos) {
+                if (empty_dos || empty_uno) {
                     alert("No hay datos, por favor rellenar los campos");
                 } else {
-                    alert("Prestamo en proceso...");
+                    alert("Pago en proceso...");
                     document.getElementById('').innerHTML = prestamo;
                 }
             });
@@ -234,7 +217,7 @@ and open the template in the editor.
         $(document).ready(function () {
             $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
             $.ajax({
-                url: '../controller/datosUser.php',
+                url: '../controller/prestamo.php',
                 data: 'id=' + '',
                 type: "GET",
                 dataType: "text",
@@ -250,7 +233,7 @@ and open the template in the editor.
                     alert("No hay datos a buscar");
                 } else {
                     $.ajax({
-                        url: '../controller/datosUser.php',
+                        url: '../controller/prestamo.php',
                         data: 'id=' + $('#id').val().trim(),
                         type: "GET",
                         dataType: "text",
@@ -265,5 +248,51 @@ and open the template in the editor.
             });
         });
     </script>
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                $.ajax({
+                    url: 'controller/prestamo.php',
+                    data: 'id_co=' + '',
+                    type: "GET",
+                    dataType: "text",
+                    error: function () {
+                        console.log("Error en llamada ajax.");
+                    },
+                    success: function (sucess) {
+                        $('#d_libro').html(sucess);
+                    }
+                });
+                $('#btn-buscarco').on('click', function () {
+                    if ($('#id_co').val().trim() === '') {
+                        $.ajax({
+                            url: 'controller/prestamo.php',
+                            data: 'id_co=' + '',
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#d_libro').html(sucess);
+                            }
+                        });
+                    } else {
+                        $.ajax({
+                            url: 'controller/prestamo.php',
+                            data: 'id_co=' + $('#id_co').val().trim(),
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#d_libro').html(sucess);
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
 </body>
 </html>

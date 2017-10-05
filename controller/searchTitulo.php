@@ -99,7 +99,7 @@ if ($buscarTitulo === '' && $buscarAutor === '' && $biblioteca === '' && $select
                 echo ' ' . $row["status"];
             }
             echo '</div>';
-             echo '<div class="text-center form-group bottom-right">';
+            echo '<div class="text-center form-group bottom-right">';
             echo '<hr>';
             echo '<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>';
             echo '<button type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Ver más</button>';

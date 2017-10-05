@@ -1,12 +1,16 @@
 <?php
+
 require_once '../php/Connection.php';
 $id = filter_input(INPUT_GET, 'id');
- if($id === ''){
- } else {
-     $query = mysqli_query(Connection::getInstance()->conectar(), "SELECT * FROM librarydb.usuarios WHERE usuarios.carnet = '" . $id . "'");
-     echo '<hr><h2 class="text-center">Datos del alumno</h2>';
-     if (mysqli_num_rows($query) != o) {
+$id_co = filter_input(INPUT_GET, 'id_co');
+if ($id === '') {
+    
+} else {
+    $query = mysqli_query(Connection::getInstance()->conectar(), "SELECT * FROM librarydb.usuarios WHERE usuarios.carnet = '" . $id . "'");
+    if (mysqli_num_rows($query) != o) {
         while ($row = mysqli_fetch_array($query)) {
+            echo '<hr><h2 class="text-center">Préstamo</h2>';
+            echo '<h2 class="text-center">Datos del usuario</h2>';
             echo '<div class="card container">';
             echo '<div class="card-block container"';
             echo '<b><label>Carné: </label></b>';
@@ -24,8 +28,12 @@ $id = filter_input(INPUT_GET, 'id');
             echo '</div>';
             echo '</div>';
         }
-     } else {
-         
-     }
+    } else {
+        echo '<div id="vacio" class="text-center">';
+        echo '<img class="center-block" src="http://www.freeiconspng.com/uploads/warning-error-icon-png-33.png" width="350" height="350">';
+        echo '<br>';
+        echo '<h4>Usuario no encontrado</h4>';
+        echo '</div>';
+    }
 }
 

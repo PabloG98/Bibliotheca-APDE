@@ -156,6 +156,7 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
         <script src="../js/jsPDF-1.3.2/jsPDF-1.3.2/dist/jspdf.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
@@ -169,8 +170,6 @@ and open the template in the editor.
         <link rel="stylesheet" href="http://tympanus.net/Tutorials/CSS3Tables/css/style.css" type="text/css" media="screen"/>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script src="http://mrrio.github.io/jsPDF/dist/jspdf.min.js" type="text/javascript"></script>
-        <script src="http://html2canvas.hertzen.com/build/html2canvas.js" type="text/javascript"></script> 
         <script>
             $(document).ready(function () {
                 $("#btn-exportar").on("click", function () {
@@ -210,7 +209,8 @@ and open the template in the editor.
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#b_print').on('click', function () {
-                    if (($('#div_print').val().trim() === '')) {
+                    var empty = $('#div_print').is(':empty');
+                    if (!empty) {
                         window.print();
                     } else {
                         alert("No hay datos para imprimir");
@@ -231,7 +231,7 @@ and open the template in the editor.
                         console.log("Error en llamada ajax.");
                     },
                     success: function (sucess) {
-                        $('#contenedor').html(sucess);
+                        $('#div_print').html(sucess);
                     }
                 });
                 $('#btn-previeww').on('click', function () {
@@ -247,7 +247,7 @@ and open the template in the editor.
                                 console.log("Error en llamada ajax.");
                             },
                             success: function (sucess) {
-                                $('#contenedor').html(sucess);
+                                $('#div_print').html(sucess);
                             }
                         });
                     }
@@ -260,7 +260,7 @@ and open the template in the editor.
 
                 $.ajax({
                     url: '../controller/reportMultas.php',
-                    data: 'fechaicomu=' + '',
+                    data: {fechaicomu: '', fechafcomu: ''},
                     type: "GET",
                     dataType: "text",
                     error: function () {
@@ -271,12 +271,12 @@ and open the template in the editor.
                     }
                 });
                 $('#btn-preview').on('click', function () {
-                    if (($('#fechaicomu').val().trim() === '')) {
+                    if (($('#fechaicomu').val().trim() === '') && ($('#fechafcomu').val().trim() === '')) {
                         alert("No hay fechas a evaluar.");
                     } else {
                         $.ajax({
                             url: '../controller/reportMultas.php',
-                            data: 'fechaicomu=' + $('#fechaicomu').val().trim(),
+                            data: {fechaicomu: $('#fechaicomu').val().trim(), fechafcomu: $('#fechafcomu').val().trim()},
                             type: "GET",
                             dataType: "text",
                             error: function () {
@@ -331,7 +331,7 @@ and open the template in the editor.
                 $('#t_reporte').on('change', function (e) {
 
                     var boletin = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechaibo' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechafbo' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
-                    var comu = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique la fecha de prestamo</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha de prestamo:</label><div class='col-sm-2'><input id='fechaicomu' type='date' class='form-control'></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
+                    var comu = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique la fecha de prestamo</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha de Inicial a evaluar:</label><div class='col-sm-2'><input id='fechaicomu' type='date' class='form-control'></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de Final a evaluar:</label><div class='col-sm-2'><input id='fechafcomu' type='date' class='form-control'></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
                     var ecapormes = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechaiecpm' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechafecpm' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
                     var epormes = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el tipo de reporte que desea</label></div><div class='container'><div class='form-group'><label class='col-sm-2 control-label'>Tipo de reporte:</label><div class='col-sm-2'><select class='form-control' name='t_repor' id='t_repor'><option>Elija una opción</option><option value='pres'>Préstamos</option><option value='ps'>Préstamos en sala</option><option value='pad'>Préstamos a domicilio</option></select></div></div></div><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechai' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechaf' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
                     var e = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el tipo de reporte que desea</label></div><div class='container'><div class='form-group'><label class='col-sm-2 control-label'>Tipo de reporte:</label><div class='col-sm-2'><select class='form-control' name='t_report' id='t_repor'><option>Elija una opción</option><option value='cont'>Continuas</option><option value='discont'>Discontinuas</option></select></div></div></div><div class='form-group'><label> Ingrese los códigos de barra</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Items:</label><div class='col-sm-2'><input id='coi' type='text' class='form-control'></div><label class='col-sm-2 control-label'>al</label><div class='col-sm-2'><input id='cof' type='text' class='form-control'></div></div></div><div class='form-group'><label> Ingrese la posición donde empezará a imprimir</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fila:</label><div class='col-sm-2'><input id='fila' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Columna:</label><div class='col-sm-2'><input id='columna' ";
