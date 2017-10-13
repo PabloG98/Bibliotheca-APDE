@@ -166,7 +166,7 @@ and open the template in the editor.
             obj.style.display = (obj.style.display == 'none') ? 'block' : 'none';
         }
     </script>
-    <script>
+    <script type="text/javascript">
         $(document).ready(function () {
             $('#btn-prestar').on('click', function () {
                 var empty_dos = $('#datos_u').is(':empty');
@@ -174,7 +174,7 @@ and open the template in the editor.
                 var prestamo = "<h2 class='text-center'>Datos del libro</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label>Datos del libro</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Co. Barras:</label><div class='col-sm-2'><input id='id_co' type='text' class='form-control' value=''></div><div class='btn-group'><button id='btn-buscarco' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div><div id='d_libro' class='container'></div></div>";
                 if (empty_dos) {
                     alert("No hay datos, por favor rellenar los campos");
-                } else if(!vacio || vacio){
+                } else if (!vacio || vacio) {
                     alert("Los datos son incorrectos, ingrese un ID válido.");
                 } else {
                     alert("Prestamo en proceso...");
@@ -214,21 +214,21 @@ and open the template in the editor.
         });
     </script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-            $.ajax({
-                url: '../controller/prestamo.php',
-                data: 'id=' + '',
-                type: "GET",
-                dataType: "text",
-                error: function () {
-                    console.log("Error en llamada ajax.");
-                },
-                success: function (sucess) {
-                    $('#datos_u').html(sucess);
-                }
-            });
-            $('#btn-buscar').on('click', function () {
+        $('#btn-buscar').on('click', function () {
+            $(document).ready(function () {
+                $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                $.ajax({
+                    url: '../controller/prestamo.php',
+                    data: 'id=' + '',
+                    type: "GET",
+                    dataType: "text",
+                    error: function () {
+                        console.log("Error en llamada ajax.");
+                    },
+                    success: function (sucess) {
+                        $('#datos_u').html(sucess);
+                    }
+                });
                 if ($('#id').val().trim() === '') {
                     alert("No hay datos a buscar");
                 } else {
@@ -249,6 +249,7 @@ and open the template in the editor.
         });
     </script>
     <script type="text/javascript">
+        $('#btn-buscarco').on('click', function () {
             $(document).ready(function () {
                 $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
                 $.ajax({
@@ -263,36 +264,35 @@ and open the template in the editor.
                         $('#d_libro').html(sucess);
                     }
                 });
-                $('#btn-buscarco').on('click', function () {
-                    if ($('#id_co').val().trim() === '') {
-                        $.ajax({
-                            url: 'controller/prestamo.php',
-                            data: 'id_co=' + '',
-                            type: "GET",
-                            dataType: "text",
-                            error: function () {
-                                console.log("Error en llamada ajax.");
-                            },
-                            success: function (sucess) {
-                                $('#d_libro').html(sucess);
-                            }
-                        });
-                    } else {
-                        $.ajax({
-                            url: 'controller/prestamo.php',
-                            data: 'id_co=' + $('#id_co').val().trim(),
-                            type: "GET",
-                            dataType: "text",
-                            error: function () {
-                                console.log("Error en llamada ajax.");
-                            },
-                            success: function (sucess) {
-                                $('#d_libro').html(sucess);
-                            }
-                        });
-                    }
-                });
+                if ($('#id_co').val().trim() === '') {
+                    $.ajax({
+                        url: 'controller/prestamo.php',
+                        data: 'id_co=' + '',
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#d_libro').html(sucess);
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        url: 'controller/prestamo.php',
+                        data: 'id_co=' + $('#id_co').val().trim(),
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#d_libro').html(sucess);
+                        }
+                    });
+                }
             });
-        </script>
+        });
+    </script>
 </body>
 </html>

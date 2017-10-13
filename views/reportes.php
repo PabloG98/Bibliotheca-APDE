@@ -219,22 +219,21 @@ and open the template in the editor.
             });
         </script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-
-                $.ajax({
-                    url: '../controller/reportBoletin.php',
-                    data: {fechaibo: '', fechafbo: ''},
-                    type: "GET",
-                    dataType: "text",
-                    error: function () {
-                        console.log("Error en llamada ajax.");
-                    },
-                    success: function (sucess) {
-                        $('#div_print').html(sucess);
-                    }
-                });
-                $('#btn-previeww').on('click', function () {
+            $('#btn-previeww').on('click', function () {
+                $(document).ready(function () {
+                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                    $.ajax({
+                        url: '../controller/reportBoletin.php',
+                        data: {fechaibo: '', fechafbo: ''},
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#div_print').html(sucess);
+                        }
+                    });
                     if (($('#fechaibo').val().trim() === '') && ($('#fechafbo').val().trim() === '')) {
                         alert("No hay fechas a evaluar.");
                     } else {
@@ -255,22 +254,21 @@ and open the template in the editor.
             });
         </script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-
-                $.ajax({
-                    url: '../controller/reportMultas.php',
-                    data: {fechaicomu: '', fechafcomu: ''},
-                    type: "GET",
-                    dataType: "text",
-                    error: function () {
-                        console.log("Error en llamada ajax.");
-                    },
-                    success: function (sucess) {
-                        $('#div_print').html(sucess);
-                    }
-                });
-                $('#btn-preview').on('click', function () {
+            $('#btn-preview').on('click', function () {
+                $(document).ready(function () {
+                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                    $.ajax({
+                        url: '../controller/reportMultas.php',
+                        data: {fechaicomu: '', fechafcomu: ''},
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#div_print').html(sucess);
+                        }
+                    });
                     if (($('#fechaicomu').val().trim() === '') && ($('#fechafcomu').val().trim() === '')) {
                         alert("No hay fechas a evaluar.");
                     } else {
@@ -291,22 +289,21 @@ and open the template in the editor.
             });
         </script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-
-                $.ajax({
-                    url: '../controller/reportCatMes.php',
-                    data: {fechaiecpm: '', fechafecpm: ''},
-                    type: "GET",
-                    dataType: "text",
-                    error: function () {
-                        console.log("Error en llamada ajax.");
-                    },
-                    success: function (sucess) {
-                        $('#contenedor').html(sucess);
-                    }
-                });
-                $('#btn-preview').on('click', function () {
+            $('#btn-preview').on('click', function () {
+                $(document).ready(function () {
+                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                    $.ajax({
+                        url: '../controller/reportCatMes.php',
+                        data: {fechaiecpm: '', fechafecpm: ''},
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#contenedor').html(sucess);
+                        }
+                    });
                     if (($('#fechaiecpm').val().trim() === '') && ($('#fechafecpm').val().trim() === '')) {
                         alert("No hay fechas a evaluar.");
                     } else {
@@ -329,7 +326,6 @@ and open the template in the editor.
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#t_reporte').on('change', function (e) {
-
                     var boletin = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechaibo' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechafbo' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
                     var comu = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique la fecha de prestamo</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha de Inicial a evaluar:</label><div class='col-sm-2'><input id='fechaicomu' type='date' class='form-control'></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de Final a evaluar:</label><div class='col-sm-2'><input id='fechafcomu' type='date' class='form-control'></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
                     var ecapormes = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechaiecpm' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechafecpm' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";

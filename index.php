@@ -140,7 +140,6 @@
                 </div>
             </div>
         </nav>
-
         <div class="container-fluid">
             <div class="row">
                 <div class="container">
@@ -284,10 +283,9 @@
         <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
         <script src="../../assets/js/vendor/holder.min.js"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> 
         <script src="js/jquery.min.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="js/materialize-css/dist/js/materialize.min.js"></script> 
         <script>
                             $(document).ready(function () {
                                 var mb = "<div class='text-center form-group bottom-right'><hr><i onclick='myFunction(this)' class='fa fa-thumbs-up'></i><button onclick='verMas(this)' id='btn-mas' type='button' class='btn btn-info'><span class='glyphicon glyphicon-plus'></span> Ver más</button><button type='button' class='btn btn-warning'><span class='glyphicon glyphicon-refresh'></span> Modificar</button><button type='button' class='btn btn-danger'><span class='glyphicon glyphicon-trash'></span> Eliminar</button><button id='favorite' type='button' class='btn btn-primary'><span class='glyphicon glyphicon-star'></span> Agregar a favoritos</butotn></div>";
@@ -297,27 +295,27 @@
                             });
         </script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+            $('#btn-buscar').on('click', function () {
+                $(document).ready(function () {
+                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
 
-                $.ajax({
-                    url: 'controller/searchCoba.php',
-                    data: 'criterio=' + '',
-                    type: "GET",
-                    dataType: "text",
-                    error: function () {
-                        console.log("Error en llamada ajax.");
-                    },
-                    success: function (sucess) {
-                        $('#contenedor').html(sucess);
-                    }
-                });
-                $('#btn-recargar').on('click', function () {
-                    $('#buscarCoba').val('');
-                    $('#buscarCoba').focus();
-                });
+                    $.ajax({
+                        url: 'controller/searchCoba.php',
+                        data: 'criterio=' + '',
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#contenedor').html(sucess);
+                        }
+                    });
+                    $('#btn-recargar').on('click', function () {
+                        $('#buscarCoba').val('');
+                        $('#buscarCoba').focus();
+                    });
 
-                $('#btn-buscar').on('click', function () {
                     if ($('#buscarCoba').val().trim() === '') {
                         $.ajax({
                             url: 'controller/searchCoba.php',
@@ -349,22 +347,21 @@
             });
         </script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-
-                $.ajax({
-                    url: 'controller/searchTitulo.php',
-                    data: {buscarTitulo: '', buscarAutor: '', biblioteca: '', select: '', orden: ''},
-                    type: "GET",
-                    dataType: "text",
-                    error: function () {
-                        console.log("Error en llamada ajax.");
-                    },
-                    success: function (sucess) {
-                        $('#contenedor').html(sucess);
-                    }
-                });
-                $('#btn-buscar').on('click', function () {
+            $('#btn-buscar').on('click', function () {
+                $(document).ready(function () {
+                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                    $.ajax({
+                        url: 'controller/searchTitulo.php',
+                        data: {buscarTitulo: '', buscarAutor: '', biblioteca: '', select: '', orden: ''},
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#contenedor').html(sucess);
+                        }
+                    });
                     if (($('#buscarTitulo').val().trim() === '') && ($('#buscarAutor').val().trim() === '') && ($('#biblioteca').val().trim() === '') && ($('#select').val().trim() === '') && ($('#orden').val().trim() === '')) {
                         $.ajax({
                             url: 'controller/searchTitulo.php',
@@ -396,59 +393,13 @@
             });
         </script>
         <script type="text/javascript">
-            function verMas(x) {
-                $(document).ready(function () {
-                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-                    $.ajax({
-                        url: 'controller/searchMore.php',
-                        data: 'codba=' + '',
-                        type: "GET",
-                        dataType: "text",
-                        error: function () {
-                            console.log("Error en llamada ajax.");
-                        },
-                        success: function (sucess) {
-                            $('#contenedor').html(sucess);
-                        }
-                    });
-                    if ($('#codba').val().trim() === '') {
-                        $.ajax({
-                            url: 'controller/searchMore.php',
-                            data: 'codba=' + '',
-                            type: "GET",
-                            dataType: "text",
-                            error: function () {
-                                console.log("Error en llamada ajax.");
-                            },
-                            success: function (sucess) {
-                                $('#contenedor').html(sucess);
-                            }
-                        });
-                    } else {
-                        $.ajax({
-                            url: 'controller/searchMore.php',
-                            data: 'codba=' + $('#codba').val().trim(),
-                            type: "GET",
-                            dataType: "text",
-                            error: function () {
-                                console.log("Error en llamada ajax.");
-                            },
-                            success: function (sucess) {
-                                $('#contenedor').html(sucess);
-                            }
-                        });
-                    }
-                });
-            }
+            $('#btn-ver').on('click', function () {
+                alert("Boton ver más");
+            });
         </script>
         <script language="javascript">
             function addNew(form) {
                 window.location.replace("views/addbiblioteca.php");
-            }
-        </script>
-        <script language="javascript">
-            function login(form) {
-                window.location.replace("views/login.php");
             }
         </script>
         <script>

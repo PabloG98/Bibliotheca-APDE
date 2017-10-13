@@ -102,7 +102,7 @@ if ($buscarTitulo === '' && $buscarAutor === '' && $biblioteca === '' && $select
             echo '<div class="text-center form-group bottom-right">';
             echo '<hr>';
             echo '<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>';
-            echo '<button type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Ver más</button>';
+            echo '<button id="btn-ver" type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Ver más</button>';
             echo '<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span> Modificar</button>';
             echo '<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Eliminar</button>';
             echo '<button id="favorite" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-star"></span> Agregar a favoritos</butotn>';
