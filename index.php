@@ -288,35 +288,21 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script>
                             $(document).ready(function () {
+                                var empty_uno = $('#contenedor').is(':empty');
                                 var mb = "<div class='text-center form-group bottom-right'><hr><i onclick='myFunction(this)' class='fa fa-thumbs-up'></i><button onclick='verMas(this)' id='btn-mas' type='button' class='btn btn-info'><span class='glyphicon glyphicon-plus'></span> Ver más</button><button type='button' class='btn btn-warning'><span class='glyphicon glyphicon-refresh'></span> Modificar</button><button type='button' class='btn btn-danger'><span class='glyphicon glyphicon-trash'></span> Eliminar</button><button id='favorite' type='button' class='btn btn-primary'><span class='glyphicon glyphicon-star'></span> Agregar a favoritos</butotn></div>";
-                                if ($('#contenedor') === '') {
-                                    document.getElementById('mbt').innerHTML = mb;
-                                }
+                                $('#btn-buscar').on('click', function () {
+                                    if (!empty_uno) {
+                                        document.getElementById('mbt').innerHTML = mb;
+                                    }
+                                });
                             });
         </script>
         <script type="text/javascript">
             $('#btn-buscar').on('click', function () {
-                $(document).ready(function () {
-                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-
-                    $.ajax({
-                        url: 'controller/searchCoba.php',
-                        data: 'criterio=' + '',
-                        type: "GET",
-                        dataType: "text",
-                        error: function () {
-                            console.log("Error en llamada ajax.");
-                        },
-                        success: function (sucess) {
-                            $('#contenedor').html(sucess);
-                        }
-                    });
-                    $('#btn-recargar').on('click', function () {
-                        $('#buscarCoba').val('');
-                        $('#buscarCoba').focus();
-                    });
-
-                    if ($('#buscarCoba').val().trim() === '') {
+                if ($('#buscarCoba').val().trim() === '') {
+                } else {
+                    $(document).ready(function () {
+                        $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
                         $.ajax({
                             url: 'controller/searchCoba.php',
                             data: 'criterio=' + '',
@@ -329,73 +315,80 @@
                                 $('#contenedor').html(sucess);
                             }
                         });
-                    } else {
-                        $.ajax({
-                            url: 'controller/searchCoba.php',
-                            data: 'criterio=' + $('#buscarCoba').val().trim(),
-                            type: "GET",
-                            dataType: "text",
-                            error: function () {
-                                console.log("Error en llamada ajax.");
-                            },
-                            success: function (sucess) {
-                                $('#contenedor').html(sucess);
-                            }
-                        });
-                    }
-                });
+                        if ($('#buscarCoba').val().trim() === '') {
+                            $.ajax({
+                                url: 'controller/searchCoba.php',
+                                data: 'criterio=' + '',
+                                type: "GET",
+                                dataType: "text",
+                                error: function () {
+                                    console.log("Error en llamada ajax.");
+                                },
+                                success: function (sucess) {
+                                    $('#contenedor').html(sucess);
+                                }
+                            });
+                        } else {
+                            $.ajax({
+                                url: 'controller/searchCoba.php',
+                                data: 'criterio=' + $('#buscarCoba').val().trim(),
+                                type: "GET",
+                                dataType: "text",
+                                error: function () {
+                                    console.log("Error en llamada ajax.");
+                                },
+                                success: function (sucess) {
+                                    $('#contenedor').html(sucess);
+                                }
+                            });
+                        }
+                    });
+                }
             });
         </script>
         <script type="text/javascript">
             $('#btn-buscar').on('click', function () {
-                $(document).ready(function () {
-                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-                    $.ajax({
-                        url: 'controller/searchTitulo.php',
-                        data: {buscarTitulo: '', buscarAutor: '', biblioteca: '', select: '', orden: ''},
-                        type: "GET",
-                        dataType: "text",
-                        error: function () {
-                            console.log("Error en llamada ajax.");
-                        },
-                        success: function (sucess) {
-                            $('#contenedor').html(sucess);
+                if (($('#buscarTitulo').val().trim() === '') && ($('#buscarAutor').val().trim() === '') && ($('#biblioteca').val().trim() === '') && ($('#select').val().trim() === '') && ($('#orden').val().trim() === '')) {
+                    return 0;
+                } else {
+                    $(document).ready(function () {
+                        $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                        
+                        if (($('#buscarTitulo').val().trim() === '') && ($('#buscarAutor').val().trim() === '') && ($('#biblioteca').val().trim() === '') && ($('#select').val().trim() === '') && ($('#orden').val().trim() === '')) {
+                            $.ajax({
+                                url: 'controller/searchTitulo.php',
+                                data: {buscarTitulo: '', buscarAutor: '', biblioteca: '', select: '', orden: ''},
+                                type: "GET",
+                                dataType: "text",
+                                error: function () {
+                                    console.log("Error en llamada ajax.");
+                                },
+                                success: function (sucess) {
+                                    $('#contenedor').html(sucess);
+                                }
+                            });
+                        } else {
+                            $.ajax({
+                                url: 'controller/searchTitulo.php',
+                                data: {buscarTitulo: $('#buscarTitulo').val().trim(), buscarAutor: $('#buscarAutor').val().trim(), biblioteca: $('#biblioteca').val().trim(), select: $('#select').val().trim(), orden: $('#orden').val().trim()},
+                                type: "GET",
+                                dataType: "text",
+                                error: function () {
+                                    console.log("Error en llamada ajax.");
+                                },
+                                success: function (sucess) {
+                                    $('#contenedor').html(sucess);
+                                }
+                            });
                         }
                     });
-                    if (($('#buscarTitulo').val().trim() === '') && ($('#buscarAutor').val().trim() === '') && ($('#biblioteca').val().trim() === '') && ($('#select').val().trim() === '') && ($('#orden').val().trim() === '')) {
-                        $.ajax({
-                            url: 'controller/searchTitulo.php',
-                            data: {buscarTitulo: '', buscarAutor: '', biblioteca: '', select: '', orden: ''},
-                            type: "GET",
-                            dataType: "text",
-                            error: function () {
-                                console.log("Error en llamada ajax.");
-                            },
-                            success: function (sucess) {
-                                $('#contenedor').html(sucess);
-                            }
-                        });
-                    } else {
-                        $.ajax({
-                            url: 'controller/searchTitulo.php',
-                            data: {buscarTitulo: $('#buscarTitulo').val().trim(), buscarAutor: $('#buscarAutor').val().trim(), biblioteca: $('#biblioteca').val().trim(), select: $('#select').val().trim(), orden: $('#orden').val().trim()},
-                            type: "GET",
-                            dataType: "text",
-                            error: function () {
-                                console.log("Error en llamada ajax.");
-                            },
-                            success: function (sucess) {
-                                $('#contenedor').html(sucess);
-                            }
-                        });
-                    }
-                });
+                }
             });
         </script>
         <script type="text/javascript">
-            $('#btn-ver').on('click', function () {
-                alert("Boton ver más");
-            });
+            function verMas(form) {
+                window.location.replace("views/addbiblioteca.php");
+            }
         </script>
         <script language="javascript">
             function addNew(form) {
