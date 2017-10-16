@@ -378,18 +378,6 @@
             function verMas(form) {
                 $(document).ready(function () {
                         $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-                        $.ajax({
-                            url: 'controller/searchMore.php',
-                            data: 'codba=' + '',
-                            type: "GET",
-                            dataType: "text",
-                            error: function () {
-                                console.log("Error en llamada ajax.");
-                            },
-                            success: function (sucess) {
-                                $('#contenedor').html(sucess);
-                            }
-                        });
                         if ($('#codba').val().trim() === '') {
                             $.ajax({
                                 url: 'controller/searchMore.php',

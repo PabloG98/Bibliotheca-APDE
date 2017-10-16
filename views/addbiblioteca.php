@@ -86,8 +86,8 @@ and open the template in the editor.
                     <ul class="nav nav-sidebar">
                         <li><a href="../index.php" style="color:white"><span class="glyphicon glyphicon-search"></span> Catalogación</a></li>
                         <li class="active"><a href="" style="color:white"><span class="glyphicon glyphicon-plus"></span> Agregar Libro</a></li>
-                        <!--<li><a href="#">Analytics</a></li>
-                        <li><a href="#">Export</a></li>-->
+                        <li><a href="circulacion.php" style="color:white"><span class="glyphicon glyphicon-globe"></span> Circulación</a></li>
+                        <li><a href="reportes.php" style="color:white"><span class="glyphicon glyphicon-list-alt"></span> Reportes</a></li>
                     </ul>
                     <ul class="nav nav-sidebar">
                         <!--<li><a href="">Nav item</a></li>
