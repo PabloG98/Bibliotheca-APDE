@@ -137,12 +137,6 @@ and open the template in the editor.
                                     </div>
                                 </div>
                             </div>
-                            <div id="funpres" class="btn-group">
-                                <button id="btn-prestar" type="button" class="btn btn-primary"><scan class="glyphicon glyphicon-save"></scan> Prestar</button>
-                                <button id="btn-devolver" type="button" class="btn btn-info"><span class="glyphicon glyphicon-circle-arrow-left"></span> Devolver</button>
-                                <button id="btn-renovar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span> Renovar</button>
-                                <button id="btn-pagar" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Pagar Multa</button>
-                            </div>
                         </div>
                     </div>
                     <div class="container" id="datos_u"></div>
@@ -167,8 +161,8 @@ and open the template in the editor.
         }
     </script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('#btn-prestar').on('click', function () {
+        function prestar(form) {
+            $(document).ready(function () {
                 var empty_dos = $('#datos_u').is(':empty');
                 var vacio = $('#vacio').is(':empty');
                 var prestamo = "<h2 class='text-center'>Datos del libro</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label>Datos del libro</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Co. Barras:</label><div class='col-sm-2'><input id='id_co' type='text' class='form-control' value=''></div><div class='btn-group'><button id='btn-buscarco' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div><div id='d_libro' class='container'></div></div>";
@@ -181,7 +175,11 @@ and open the template in the editor.
                     document.getElementById('prestamo').innerHTML = prestamo;
                 }
             });
-            $('#btn-devolver').on('click', function () {
+        }
+    </script>
+    <script type="text/javascript">
+        function devolver(form) {
+            $(document).ready(function () {
                 var empty_dos = $('#datos_u').is(':empty');
                 var empty_uno = $('#prestamo').is(':empty');
                 if (empty_dos || empty_uno) {
@@ -191,7 +189,11 @@ and open the template in the editor.
                     document.getElementById('').innerHTML = prestamo;
                 }
             });
-            $('#btn-renovar').on('click', function () {
+        }
+    </script>
+    <script type="text/javascript">
+        function renovar(form) {
+            $(document).ready(function () {
                 var empty_uno = $('#prestamo').is(':empty');
                 var empty_dos = $('#datos_u').is(':empty');
                 if (empty_dos || empty_uno) {
@@ -201,7 +203,25 @@ and open the template in the editor.
                     document.getElementById('').innerHTML = prestamo;
                 }
             });
-            $('#btn-pagar').on('click', function () {
+        }
+    </script>
+    <script type="text/javascript">
+        function renovar(form) {
+            $(document).ready(function () {
+                var empty_uno = $('#prestamo').is(':empty');
+                var empty_dos = $('#datos_u').is(':empty');
+                if (empty_dos || empty_uno) {
+                    alert("No hay datos, por favor rellenar los campos");
+                } else {
+                    alert("Renovación en proceso...");
+                    document.getElementById('').innerHTML = prestamo;
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function pagar(form) {
+            $(document).ready(function () {
                 var empty_uno = $('#prestamo').is(':empty');
                 var empty_dos = $('#datos_u').is(':empty');
                 if (empty_dos || empty_uno) {
@@ -211,7 +231,7 @@ and open the template in the editor.
                     document.getElementById('').innerHTML = prestamo;
                 }
             });
-        });
+        }
     </script>
     <script type="text/javascript">
         $('#btn-buscar').on('click', function () {
