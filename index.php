@@ -31,11 +31,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             .card {
+                background-color: #b3e0ff;
+                border-color: #002C5B;
                 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
                 transition: 0.3s;
                 width: 100%;
             }
-
             .card:hover {
                 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
             }
@@ -180,13 +181,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Título:</label>
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-6">
                                         <input id="buscarTitulo" type="search" class="form-control" placeholder="Título" value="" autofocus="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Autor (es):</label>
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-6">
                                         <input id="buscarAutor" type="text" class="form-control" placeholder="Autor" value="">
                                     </div>
                                 </div>
@@ -287,53 +288,53 @@
         <script src="js/jquery.min.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript">
-            $('#btn-buscar').on('click', function () {
-                if ($('#buscarCoba').val().trim() === '') {
-                } else {
-                    $(document).ready(function () {
-                        $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-                        $.ajax({
-                            url: 'controller/searchCoba.php',
-                            data: 'criterio=' + '',
-                            type: "GET",
-                            dataType: "text",
-                            error: function () {
-                                console.log("Error en llamada ajax.");
-                            },
-                            success: function (sucess) {
-                                $('#contenedor').html(sucess);
-                            }
-                        });
-                        if ($('#buscarCoba').val().trim() === '') {
-                            $.ajax({
-                                url: 'controller/searchCoba.php',
-                                data: 'criterio=' + '',
-                                type: "GET",
-                                dataType: "text",
-                                error: function () {
-                                    console.log("Error en llamada ajax.");
-                                },
-                                success: function (sucess) {
-                                    $('#contenedor').html(sucess);
+                            $('#btn-buscar').on('click', function () {
+                                if ($('#buscarCoba').val().trim() === '') {
+                                } else {
+                                    $(document).ready(function () {
+                                        $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                                        $.ajax({
+                                            url: 'controller/searchCoba.php',
+                                            data: 'criterio=' + '',
+                                            type: "GET",
+                                            dataType: "text",
+                                            error: function () {
+                                                console.log("Error en llamada ajax.");
+                                            },
+                                            success: function (sucess) {
+                                                $('#contenedor').html(sucess);
+                                            }
+                                        });
+                                        if ($('#buscarCoba').val().trim() === '') {
+                                            $.ajax({
+                                                url: 'controller/searchCoba.php',
+                                                data: 'criterio=' + '',
+                                                type: "GET",
+                                                dataType: "text",
+                                                error: function () {
+                                                    console.log("Error en llamada ajax.");
+                                                },
+                                                success: function (sucess) {
+                                                    $('#contenedor').html(sucess);
+                                                }
+                                            });
+                                        } else {
+                                            $.ajax({
+                                                url: 'controller/searchCoba.php',
+                                                data: 'criterio=' + $('#buscarCoba').val().trim(),
+                                                type: "GET",
+                                                dataType: "text",
+                                                error: function () {
+                                                    console.log("Error en llamada ajax.");
+                                                },
+                                                success: function (sucess) {
+                                                    $('#contenedor').html(sucess);
+                                                }
+                                            });
+                                        }
+                                    });
                                 }
                             });
-                        } else {
-                            $.ajax({
-                                url: 'controller/searchCoba.php',
-                                data: 'criterio=' + $('#buscarCoba').val().trim(),
-                                type: "GET",
-                                dataType: "text",
-                                error: function () {
-                                    console.log("Error en llamada ajax.");
-                                },
-                                success: function (sucess) {
-                                    $('#contenedor').html(sucess);
-                                }
-                            });
-                        }
-                    });
-                }
-            });
         </script>
         <script type="text/javascript">
             $('#btn-buscar').on('click', function () {
@@ -342,7 +343,7 @@
                 } else {
                     $(document).ready(function () {
                         $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-                        
+
                         if (($('#buscarTitulo').val().trim() === '') && ($('#buscarAutor').val().trim() === '') && ($('#biblioteca').val().trim() === '') && ($('#select').val().trim() === '') && ($('#orden').val().trim() === '')) {
                             $.ajax({
                                 url: 'controller/searchTitulo.php',
@@ -377,35 +378,35 @@
         <script type="text/javascript">
             function verMas(form) {
                 $(document).ready(function () {
-                        $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-                        if ($('#codba').val().trim() === '') {
-                            $.ajax({
-                                url: 'controller/searchMore.php',
-                                data: 'codba=' + '',
-                                type: "GET",
-                                dataType: "text",
-                                error: function () {
-                                    console.log("Error en llamada ajax.");
-                                },
-                                success: function (sucess) {
-                                    $('#contenedor').html(sucess);
-                                }
-                            });
-                        } else {
-                            $.ajax({
-                                url: 'controller/searchMore.php',
-                                data: 'codba=' + $('#codba').val().trim(),
-                                type: "GET",
-                                dataType: "text",
-                                error: function () {
-                                    console.log("Error en llamada ajax.");
-                                },
-                                success: function (sucess) {
-                                    $('#contenedor').html(sucess);
-                                }
-                            });
-                        }
-                    });
+                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                    if ($('#codba').val().trim() === '') {
+                        $.ajax({
+                            url: 'controller/searchMore.php',
+                            data: 'codba=' + '',
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#contenedor').html(sucess);
+                            }
+                        });
+                    } else {
+                        $.ajax({
+                            url: 'controller/searchMore.php',
+                            data: 'codba=' + $('#codba').val().trim(),
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#contenedor').html(sucess);
+                            }
+                        });
+                    }
+                });
                 //window.location.replace("views/addbiblioteca.php");
             }
         </script>
@@ -420,13 +421,43 @@
             }
         </script>
         <script>
-            function update(form){
+            function update(form) {
                 alert("Modificando");
             }
         </script>
         <script>
-            function borrar(form){
-                alert("Borrando");
+            function borrar(form) {
+                alert(confirm("¿Desea continuar?"));
+                $(document).ready(function () {
+                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                    if ($('#codiba').val().trim() === '') {
+                        $.ajax({
+                            url: 'controller/deleteBook.php',
+                            data: 'codiba=' + '',
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#contenedor').html(sucess);
+                            }
+                        });
+                    } else {
+                        $.ajax({
+                            url: 'controller/deleteBook.php',
+                            data: 'codiba=' + $('#codiba').val().trim(),
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#contenedor').html(sucess);
+                            }
+                        });
+                    }
+                });
             }
         </script>
     </body>

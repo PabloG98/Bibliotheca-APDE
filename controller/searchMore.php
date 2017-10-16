@@ -16,7 +16,7 @@ if ($codba === '') {
                     INNER JOIN materiales
                     ON inventario.num_material = materiales.num_material
                     WHERE inventario.num_inventario = '" . $codba . "';");
-    echo '<hr><h2 class="text-center">Datos completos del libro ' . $row["titulo_disp"] . '</h2>';
+    echo '<hr><h2 class="text-center">Datos completos del libro <u>' . $row["titulo_disp"] . '</u></h2>';
     echo '<hr>';
     $row_cnt = $query->num_rows;
     echo '<div class="text-center">';
@@ -31,7 +31,13 @@ if ($codba === '') {
             echo '<div class="card-block container"';
             $query1 = mysqli_query(Connection::getInstance()->conectar(), "SELECT nombre_autor_disp FROM autores WHERE
                         num_autor IN (SELECT num_autor FROM librarydb.autor_titulo WHERE num_titulo = " . $row["num_titulo"] . ");");
-            echo '<input type="hidden" class="form-control" id="codba" value="' . $row["num_inventario"] . '">';
+            echo '<input type="hidden" class="form-control" id="codiba" value="' . $row["num_inventario"] . '">';
+            echo '<b><label>Código de barras:</label></b> ' . $row["num_inventario"] . '<br>';
+            if($row["isbn"] === ''){
+            echo '<b><label>ISBN:</label></b> No hay ISBN en la base de datos<br>';
+            } else {
+                echo '<b><label>ISBN:</label></b> '. $row["isbn"]. '<br>';
+            }
             echo '<b><label>Titulo: </label></b>';
             echo ' ' . $row["titulo_disp"] . '<br>';
             while ($row1 = mysqli_fetch_array($query1)) {

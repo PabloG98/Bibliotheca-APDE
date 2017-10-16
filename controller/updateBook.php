@@ -1,8 +1,9 @@
 <?php
+require_once '../php/Connection.php';
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+$titulo = filter_input(INPUT_POST, 'titulo');
+$autor = filter_input(INPUT_POST, 'autor');
+$editorial = filter_input(INPUT_POST, 'editorial');
+$clasificacion = filter_input(INPUT_POST, 'clasificacion');
+$biblioteca = filter_input(INPUT_POST, 'biblioteca');
 

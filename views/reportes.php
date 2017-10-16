@@ -220,26 +220,13 @@ and open the template in the editor.
         </script>
         <script type="text/javascript">
             $('#btn-previeww').on('click', function () {
-                $(document).ready(function () {
-                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-                    $.ajax({
-                        url: '../controller/reportBoletin.php',
-                        data: {fechaibo: '', fechafbo: ''},
-                        type: "GET",
-                        dataType: "text",
-                        error: function () {
-                            console.log("Error en llamada ajax.");
-                        },
-                        success: function (sucess) {
-                            $('#div_print').html(sucess);
-                        }
-                    });
-                    if (($('#fechaibo').val().trim() === '') && ($('#fechafbo').val().trim() === '')) {
-                        alert("No hay fechas a evaluar.");
-                    } else {
+                if (($('#fechaibo').val().trim() === '') && ($('#fechafbo').val().trim() === '')) {
+                } else {
+                    $(document).ready(function () {
+                        $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
                         $.ajax({
                             url: '../controller/reportBoletin.php',
-                            data: {fechaibo: $('#fechaibo').val().trim(), fechafbo: $('#fechafbo').val().trim()},
+                            data: {fechaibo: '', fechafbo: ''},
                             type: "GET",
                             dataType: "text",
                             error: function () {
@@ -249,67 +236,61 @@ and open the template in the editor.
                                 $('#div_print').html(sucess);
                             }
                         });
-                    }
-                });
+                        if (($('#fechaibo').val().trim() === '') && ($('#fechafbo').val().trim() === '')) {
+                            alert("No hay fechas a evaluar.");
+                        } else {
+                            $.ajax({
+                                url: '../controller/reportBoletin.php',
+                                data: {fechaibo: $('#fechaibo').val().trim(), fechafbo: $('#fechafbo').val().trim()},
+                                type: "GET",
+                                dataType: "text",
+                                error: function () {
+                                    console.log("Error en llamada ajax.");
+                                },
+                                success: function (sucess) {
+                                    $('#div_print').html(sucess);
+                                }
+                            });
+                        }
+                    });
+                }
             });
         </script>
         <script type="text/javascript">
             $('#btn-preview').on('click', function () {
-                $(document).ready(function () {
-                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-                    $.ajax({
-                        url: '../controller/reportMultas.php',
-                        data: {fechaicomu: '', fechafcomu: ''},
-                        type: "GET",
-                        dataType: "text",
-                        error: function () {
-                            console.log("Error en llamada ajax.");
-                        },
-                        success: function (sucess) {
-                            $('#div_print').html(sucess);
+                if (($('#fechaicomu').val().trim() === '') && ($('#fechafcomu').val().trim() === '')) {
+                } else {
+                    $(document).ready(function () {
+                        $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                        if (($('#fechaicomu').val().trim() === '') && ($('#fechafcomu').val().trim() === '')) {
+                            alert("No hay fechas a evaluar.");
+                        } else {
+                            $.ajax({
+                                url: '../controller/reportMultas.php',
+                                data: {fechaicomu: $('#fechaicomu').val().trim(), fechafcomu: $('#fechafcomu').val().trim()},
+                                type: "GET",
+                                dataType: "text",
+                                error: function () {
+                                    console.log("Error en llamada ajax.");
+                                },
+                                success: function (sucess) {
+                                    $('#div_print').html(sucess);
+                                }
+                            });
                         }
                     });
-                    if (($('#fechaicomu').val().trim() === '') && ($('#fechafcomu').val().trim() === '')) {
-                        alert("No hay fechas a evaluar.");
-                    } else {
-                        $.ajax({
-                            url: '../controller/reportMultas.php',
-                            data: {fechaicomu: $('#fechaicomu').val().trim(), fechafcomu: $('#fechafcomu').val().trim()},
-                            type: "GET",
-                            dataType: "text",
-                            error: function () {
-                                console.log("Error en llamada ajax.");
-                            },
-                            success: function (sucess) {
-                                $('#div_print').html(sucess);
-                            }
-                        });
-                    }
-                });
+                }
             });
         </script>
         <script type="text/javascript">
             $('#btn-preview').on('click', function () {
-                $(document).ready(function () {
-                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-                    $.ajax({
-                        url: '../controller/reportCatMes.php',
-                        data: {fechaiecpm: '', fechafecpm: ''},
-                        type: "GET",
-                        dataType: "text",
-                        error: function () {
-                            console.log("Error en llamada ajax.");
-                        },
-                        success: function (sucess) {
-                            $('#contenedor').html(sucess);
-                        }
-                    });
-                    if (($('#fechaiecpm').val().trim() === '') && ($('#fechafecpm').val().trim() === '')) {
-                        alert("No hay fechas a evaluar.");
-                    } else {
+                if (($('#fechaiecpm').val().trim() === '') && ($('#fechafecpm').val().trim() === '')) {
+                } else {
+                    $(document).ready(function () {
+                        $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
                         $.ajax({
                             url: '../controller/reportCatMes.php',
-                            data: {fechai: $('#fechaiecpm').val().trim(), fechaf: $('#fechafecpm').val().trim()},
+                            data: {fechaiecpm: '', fechafecpm: ''},
                             type: "GET",
                             dataType: "text",
                             error: function () {
@@ -319,8 +300,24 @@ and open the template in the editor.
                                 $('#contenedor').html(sucess);
                             }
                         });
-                    }
-                });
+                        if (($('#fechaiecpm').val().trim() === '') && ($('#fechafecpm').val().trim() === '')) {
+                            alert("No hay fechas a evaluar.");
+                        } else {
+                            $.ajax({
+                                url: '../controller/reportCatMes.php',
+                                data: {fechai: $('#fechaiecpm').val().trim(), fechaf: $('#fechafecpm').val().trim()},
+                                type: "GET",
+                                dataType: "text",
+                                error: function () {
+                                    console.log("Error en llamada ajax.");
+                                },
+                                success: function (sucess) {
+                                    $('#contenedor').html(sucess);
+                                }
+                            });
+                        }
+                    });
+                }
             });
         </script>
         <script type="text/javascript">

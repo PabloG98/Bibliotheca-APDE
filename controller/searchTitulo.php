@@ -101,10 +101,9 @@ if ($buscarTitulo === '' && $buscarAutor === '' && $biblioteca === '' && $select
             echo '</div>';
             echo '<div class="text-center form-group bottom-right">';
             echo '<hr>';
-            echo '<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>';
-            echo '<button onclick="verMas(this.form)" type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Ver más</button>';
+            echo '<button onclick="verMas(this.form)" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Ver más</button>';
             echo '</div>';
-            echo '</div>';
+            echo '</div><br>';
         }
     } else {
         echo '<div class="text-center">';
