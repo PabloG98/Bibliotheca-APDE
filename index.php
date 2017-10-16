@@ -286,17 +286,6 @@
         <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> 
         <script src="js/jquery.min.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script>
-                            $(document).ready(function () {
-                                var empty_uno = $('#contenedor').is(':empty');
-                                var mb = "<div class='text-center form-group bottom-right'><hr><i onclick='myFunction(this)' class='fa fa-thumbs-up'></i><button onclick='verMas(this)' id='btn-mas' type='button' class='btn btn-info'><span class='glyphicon glyphicon-plus'></span> Ver más</button><button type='button' class='btn btn-warning'><span class='glyphicon glyphicon-refresh'></span> Modificar</button><button type='button' class='btn btn-danger'><span class='glyphicon glyphicon-trash'></span> Eliminar</button><button id='favorite' type='button' class='btn btn-primary'><span class='glyphicon glyphicon-star'></span> Agregar a favoritos</butotn></div>";
-                                $('#btn-buscar').on('click', function () {
-                                    if (!empty_uno) {
-                                        document.getElementById('mbt').innerHTML = mb;
-                                    }
-                                });
-                            });
-        </script>
         <script type="text/javascript">
             $('#btn-buscar').on('click', function () {
                 if ($('#buscarCoba').val().trim() === '') {
@@ -387,7 +376,49 @@
         </script>
         <script type="text/javascript">
             function verMas(form) {
-                window.location.replace("views/addbiblioteca.php");
+                $(document).ready(function () {
+                        $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                        $.ajax({
+                            url: 'controller/searchMore.php',
+                            data: 'codba=' + '',
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#contenedor').html(sucess);
+                            }
+                        });
+                        if ($('#codba').val().trim() === '') {
+                            $.ajax({
+                                url: 'controller/searchMore.php',
+                                data: 'codba=' + '',
+                                type: "GET",
+                                dataType: "text",
+                                error: function () {
+                                    console.log("Error en llamada ajax.");
+                                },
+                                success: function (sucess) {
+                                    $('#contenedor').html(sucess);
+                                }
+                            });
+                        } else {
+                            $.ajax({
+                                url: 'controller/searchMore.php',
+                                data: 'codba=' + $('#codba').val().trim(),
+                                type: "GET",
+                                dataType: "text",
+                                error: function () {
+                                    console.log("Error en llamada ajax.");
+                                },
+                                success: function (sucess) {
+                                    $('#contenedor').html(sucess);
+                                }
+                            });
+                        }
+                    });
+                //window.location.replace("views/addbiblioteca.php");
             }
         </script>
         <script language="javascript">
@@ -398,6 +429,16 @@
         <script>
             function myFunction(x) {
                 x.classList.toggle("fa-thumbs-down");
+            }
+        </script>
+        <script>
+            function update(form){
+                alert("Modificando");
+            }
+        </script>
+        <script>
+            function borrar(form){
+                alert("Borrando");
             }
         </script>
     </body>

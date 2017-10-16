@@ -15,7 +15,7 @@ if ($codba === '') {
                     ON inventario.num_biblioteca = bibliotecas.num_biblioteca
                     INNER JOIN materiales
                     ON inventario.num_material = materiales.num_material
-                    WHERE invetario.num_inventario = '" . $codba . "';");
+                    WHERE inventario.num_inventario = '" . $codba . "';");
     echo '<hr><h2 class="text-center">Datos completos del libro ' . $row["titulo_disp"] . '</h2>';
     echo '<hr>';
     $row_cnt = $query->num_rows;
@@ -95,11 +95,8 @@ if ($codba === '') {
             echo '</div>';
             echo '<div class="text-center form-group bottom-right">';
             echo '<hr>';
-            echo '<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>';
-            echo '<button id="btn-mas" type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Ver más</button>';
-            echo '<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span> Modificar</button>';
-            echo '<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Eliminar</button>';
-            echo '<button id="favorite" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-star"></span> Agregar a favoritos</butotn>';
+            echo '<button onclick="update(this.form)" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span> Modificar</button>';
+            echo '<button onclick="borrar(this.form)" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Eliminar</button>';
             echo '</div>';
             echo '</div>';
         }

@@ -34,10 +34,10 @@ if ($buscarTitulo === '' && $buscarAutor === '' && $biblioteca === '' && $select
             echo '<div class="card container">';
             echo '<h1>' . $numero . '.' . '</h1>';
             $numero ++;
-            echo '<div class="card-block container"';
+            echo '<div class="card-block container">';
             $query1 = mysqli_query(Connection::getInstance()->conectar(), "SELECT nombre_autor_disp FROM autores WHERE
                         num_autor IN (SELECT num_autor FROM librarydb.autor_titulo WHERE num_titulo = " . $row["num_titulo"] . ");");
-            echo '<input type="hidden" class="form-control" id="codba" value="1111' . $row["num_inventario"] . '">';
+            echo '<input type="hidden" class="form-control" id="codba" value="' . $row["num_inventario"] . '">';
             echo '<b><label>Titulo: </label></b>';
             echo ' ' . $row["titulo_disp"] . '<br>';
             while ($row1 = mysqli_fetch_array($query1)) {
@@ -103,9 +103,6 @@ if ($buscarTitulo === '' && $buscarAutor === '' && $biblioteca === '' && $select
             echo '<hr>';
             echo '<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>';
             echo '<button onclick="verMas(this.form)" type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Ver más</button>';
-            echo '<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span> Modificar</button>';
-            echo '<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Eliminar</button>';
-            echo '<button id="favorite" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-star"></span> Agregar a favoritos</butotn>';
             echo '</div>';
             echo '</div>';
         }
