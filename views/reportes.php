@@ -29,6 +29,10 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <style>
+            .panel-primary > .panel-heading{
+                background-color: #0c2c5a;
+                border-color: #0c2c5a;
+            }
             /* The Modal (background) */
             .modal {
                 display: none; /* Hidden by default */
@@ -85,7 +89,7 @@ and open the template in the editor.
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" style="background: #0c2c5a">
             <div class="container-fluid">
-                <img class="responsive" style="float: left;height:50px;margin :2px 1%" src="https://pbs.twimg.com/profile_images/769193451036352512/68WIEQyg.jpg"/>
+                <img class="responsive" style="float: left;height:55px;width:65px;margin:2px 1%" src="https://pbs.twimg.com/profile_images/769193451036352512/68WIEQyg.jpg"/>
                 <div class="text-center navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
@@ -93,7 +97,7 @@ and open the template in the editor.
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Bibliotheca</a>
+                    <p style="color:white" class="navbar-brand">Bibliotheca</p>
                 </div>
             </div>
         </nav>
@@ -120,9 +124,9 @@ and open the template in the editor.
                         <li><a href="">Another nav item</a></li>-->
                     </ul>
                 </div>
-                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div class="container col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <h1 class="page-header text-center"><b>Reportes</b></h1>
-                    <div class="form-group">
+                    <div class="container form-group">
                         <label class="col-sm-2 control-label">Tipo de reporte:</label>
                         <div class="col-sm-2">
                             <select class="form-control" name="t_reporte" id="t_reporte">
@@ -144,15 +148,9 @@ and open the template in the editor.
                                 <option value="t10">Top 10 libros</option>
                             </select>
                         </div>
-                        <div class="btn-group">
-                            <button id="btn-preview" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-picture"></span> Preview</button>
-                            <button id="b_print" name="b_print" type="button" class="btn btn-info ipt"><scan class="glyphicon glyphicon-print"></scan> Print</button>
-                            <button id="btn-exportar" type="button" class="btn btn-success"><scan class="glyphicon glyphicon-save"></scan> Save as PDF</button>
-                        </div>
                     </div>
-                    <div id="reportes">
-                    </div>
-                    <div id="div_print"></div>
+                    <div class="container" id="reportes"></div>
+                    <div class="container" id="div_print"></div>
                 </div>
             </div>
         </div>
@@ -192,11 +190,6 @@ and open the template in the editor.
                 });
             });
         </script>
-        <script language="javascript">
-            function ignorar(form) {
-                window.location.replace("../index.php");
-            }
-        </script>
         <script>
             // wait for the DOM to be loaded 
             //$(document).ready(function () {
@@ -207,26 +200,40 @@ and open the template in the editor.
             //});
         </script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                $('#b_print').on('click', function () {
+            function exportar(form) {
+                $(document).ready(function () {
+                    var doc = new jsPDF();
+                    var imgHeight = 140;
+                    var imgWidth = 140;
+                    var positionY = 20;
+                    var positionX = 20;
                     var empty = $('#div_print').is(':empty');
                     if (!empty) {
-                        window.print();
+                        doc.setFontSize(15);
+                        doc.text(15, 15, "Reportes Bibliotheca APDE");
+                        html2canvas($("#div_print"), {
+                            onrendered: function (canvas) {
+                                var img = canvas.toDataURL("../img/logoapde.jpg");
+				doc.addImage(img, 'JPEG', positionX ,  positionY, 140, imgWidth);
+                                doc.save('reportes.pdf');
+                            }
+                        });
                     } else {
-                        alert("No hay datos para imprimir");
+                        alert("No hay datos para generar su PDF");
                     }
                 });
-            });
+            }
         </script>
         <script type="text/javascript">
-            $('#btn-previeww').on('click', function () {
-                if (($('#fechaibo').val().trim() === '') && ($('#fechafbo').val().trim() === '')) {
-                } else {
-                    $(document).ready(function () {
-                        $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+            function boletin(form) {
+                $(document).ready(function () {
+                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                    if (($('#fechaibo').val().trim() === '') && ($('#fechafbo').val().trim() === '')) {
+                        alert("No hay fechas a evaluar.");
+                    } else {
                         $.ajax({
                             url: '../controller/reportBoletin.php',
-                            data: {fechaibo: '', fechafbo: ''},
+                            data: {fechaibo: $('#fechaibo').val().trim(), fechafbo: $('#fechafbo').val().trim()},
                             type: "GET",
                             dataType: "text",
                             error: function () {
@@ -236,61 +243,43 @@ and open the template in the editor.
                                 $('#div_print').html(sucess);
                             }
                         });
-                        if (($('#fechaibo').val().trim() === '') && ($('#fechafbo').val().trim() === '')) {
-                            alert("No hay fechas a evaluar.");
-                        } else {
-                            $.ajax({
-                                url: '../controller/reportBoletin.php',
-                                data: {fechaibo: $('#fechaibo').val().trim(), fechafbo: $('#fechafbo').val().trim()},
-                                type: "GET",
-                                dataType: "text",
-                                error: function () {
-                                    console.log("Error en llamada ajax.");
-                                },
-                                success: function (sucess) {
-                                    $('#div_print').html(sucess);
-                                }
-                            });
-                        }
-                    });
-                }
-            });
+                    }
+                });
+            }
         </script>
         <script type="text/javascript">
-            $('#btn-preview').on('click', function () {
-                if (($('#fechaicomu').val().trim() === '') && ($('#fechafcomu').val().trim() === '')) {
-                } else {
-                    $(document).ready(function () {
-                        $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-                        if (($('#fechaicomu').val().trim() === '') && ($('#fechafcomu').val().trim() === '')) {
-                            alert("No hay fechas a evaluar.");
-                        } else {
-                            $.ajax({
-                                url: '../controller/reportMultas.php',
-                                data: {fechaicomu: $('#fechaicomu').val().trim(), fechafcomu: $('#fechafcomu').val().trim()},
-                                type: "GET",
-                                dataType: "text",
-                                error: function () {
-                                    console.log("Error en llamada ajax.");
-                                },
-                                success: function (sucess) {
-                                    $('#div_print').html(sucess);
-                                }
-                            });
-                        }
-                    });
-                }
-            });
+            function multas(form) {
+                $(document).ready(function () {
+                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                    if (($('#fechaicomu').val().trim() === '') && ($('#fechafcomu').val().trim() === '')) {
+                        alert("No hay fechas a evaluar.");
+                    } else {
+                        $.ajax({
+                            url: '../controller/reportMultas.php',
+                            data: {fechaicomu: $('#fechaicomu').val().trim(), fechafcomu: $('#fechafcomu').val().trim()},
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#div_print').html(sucess);
+                            }
+                        });
+                    }
+                });
+            }
         </script>
         <script type="text/javascript">
-            $('#btn-preview').on('click', function () {
-                if (($('#fechaiecpm').val().trim() === '') && ($('#fechafecpm').val().trim() === '')) {
-                } else {
-                    $(document).ready(function () {
-                        $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+            function catpormes(form) {
+                $(document).ready(function () {
+                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                    if (($('#fechaiecpm').val().trim() === '') && ($('#fechafecpm').val().trim() === '')) {
+                        alert("No hay fechas a evaluar.");
+                    } else {
                         $.ajax({
                             url: '../controller/reportCatMes.php',
-                            data: {fechaiecpm: '', fechafecpm: ''},
+                            data: {fechai: $('#fechaiecpm').val().trim(), fechaf: $('#fechafecpm').val().trim()},
                             type: "GET",
                             dataType: "text",
                             error: function () {
@@ -300,33 +289,17 @@ and open the template in the editor.
                                 $('#contenedor').html(sucess);
                             }
                         });
-                        if (($('#fechaiecpm').val().trim() === '') && ($('#fechafecpm').val().trim() === '')) {
-                            alert("No hay fechas a evaluar.");
-                        } else {
-                            $.ajax({
-                                url: '../controller/reportCatMes.php',
-                                data: {fechai: $('#fechaiecpm').val().trim(), fechaf: $('#fechafecpm').val().trim()},
-                                type: "GET",
-                                dataType: "text",
-                                error: function () {
-                                    console.log("Error en llamada ajax.");
-                                },
-                                success: function (sucess) {
-                                    $('#contenedor').html(sucess);
-                                }
-                            });
-                        }
-                    });
-                }
-            });
+                    }
+                });
+            }
         </script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#t_reporte').on('change', function (e) {
-                    var boletin = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechaibo' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechafbo' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
-                    var comu = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique la fecha de prestamo</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha de Inicial a evaluar:</label><div class='col-sm-2'><input id='fechaicomu' type='date' class='form-control'></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de Final a evaluar:</label><div class='col-sm-2'><input id='fechafcomu' type='date' class='form-control'></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
-                    var ecapormes = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechaiecpm' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechafecpm' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
-                    var epormes = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el tipo de reporte que desea</label></div><div class='container'><div class='form-group'><label class='col-sm-2 control-label'>Tipo de reporte:</label><div class='col-sm-2'><select class='form-control' name='t_repor' id='t_repor'><option>Elija una opción</option><option value='pres'>Préstamos</option><option value='ps'>Préstamos en sala</option><option value='pad'>Préstamos a domicilio</option></select></div></div></div><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechai' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechaf' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";
+                    var boletin = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechaibo' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechafbo' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div><div class='text-center btn-group'><button onclick='boletin(this.form)' type='button' class='btn btn-primary'><span class='glyphicon glyphicon-picture'></span> Preview</button><button id='b_print' name='b_print' type='button' class='btn btn-info ipt'><scan class='glyphicon glyphicon-print'></scan> Print</button><button onclick='exportar(this.form)' type='button' class='btn btn-success'><scan class='glyphicon glyphicon-save'></scan> Save as PDF</button></div></div></div></div>";
+                    var comu = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique la fecha de prestamo</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha de Inicial a evaluar:</label><div class='col-sm-2'><input id='fechaicomu' type='date' class='form-control'></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de Final a evaluar:</label><div class='col-sm-2'><input id='fechafcomu' type='date' class='form-control'></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div><div class='btn-group'><button onclick='multas(this.form)' type='button' class='btn btn-primary'><span class='glyphicon glyphicon-picture'></span> Preview</button><button id='b_print' name='b_print' type='button' class='btn btn-info ipt'><scan class='glyphicon glyphicon-print'></scan> Print</button><button onclick='exportar(this.form)' type='button' class='btn btn-success'><scan class='glyphicon glyphicon-save'></scan> Save as PDF</button></div></div></div></div>";
+                    var ecapormes = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechaiecpm' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechafecpm' type='text' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div><div class='btn-group'><button onclick='catpormes(this.form)' type='button' class='btn btn-primary'><span class='glyphicon glyphicon-picture'></span> Preview</button><button id='b_print' name='b_print' type='button' class='btn btn-info ipt'><scan class='glyphicon glyphicon-print'></scan> Print</button><button id='btn-exportar' type='button' class='btn btn-success'><scan class='glyphicon glyphicon-save'></scan> Save as PDF</button></div></div></div></div>";
+                    var epormes = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el tipo de reporte que desea</label></div><div class='container'><div class='form-group'><label class='col-sm-2 control-label'>Tipo de reporte:</label><div class='col-sm-2'><select class='form-control' name='t_repor' id='t_repor'><option>Elija una opción</option><option value='pres'>Préstamos</option><option value='ps'>Préstamos en sala</option><option value='pad'>Préstamos a domicilio</option></select></div></div></div><div class='form-group'><label> Indique el rango de fecha</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha inicial:</label><div class='col-sm-2'><input id='fechai' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha final:</label><div class='col-sm-2'><input id='fechaf' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div><div class='btn-group'><button onclick'' type='button' class='btn btn-primary'><span class='glyphicon glyphicon-picture'></span> Preview</button><button type='button' class='btn btn-info ipt'><scan class='glyphicon glyphicon-print'></scan> Print</button><button onclick='exportar(this.form)' type='button' class='btn btn-success'><scan class='glyphicon glyphicon-save'></scan> Save as PDF</button></div></div></div></div>";
                     var e = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el tipo de reporte que desea</label></div><div class='container'><div class='form-group'><label class='col-sm-2 control-label'>Tipo de reporte:</label><div class='col-sm-2'><select class='form-control' name='t_report' id='t_repor'><option>Elija una opción</option><option value='cont'>Continuas</option><option value='discont'>Discontinuas</option></select></div></div></div><div class='form-group'><label> Ingrese los códigos de barra</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Items:</label><div class='col-sm-2'><input id='coi' type='text' class='form-control'></div><label class='col-sm-2 control-label'>al</label><div class='col-sm-2'><input id='cof' type='text' class='form-control'></div></div></div><div class='form-group'><label> Ingrese la posición donde empezará a imprimir</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fila:</label><div class='col-sm-2'><input id='fila' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Columna:</label><div class='col-sm-2'><input id='columna' ";
                     var et = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique rango de no. de inventario</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>No. Inicial:</label><div class='col-sm-2'><input id='ri' type='text' class='form-control'></div></div><div class='form-group'><label class='col-sm-2 control-label'>No. Final:</label><div class='col-sm-2'><input id='rf' type='text' class='form-control'></div></div></div><div class='form-group'><label> Ingrese la posición donde empezará a imprimir</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fila:</label><div class='col-sm-2'><input id='fila' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Columna:</label><div class='col-sm-2'><input id='columna' type='text' class='form-control' placeholder='' value=''></div></div></div></div></div>";
                     var hmo = "<hr><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label> Indique el mfn que desea consultar</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>mfn:</label><div class='col-sm-2'><input id='mfn' type='text' class='form-control' placeholder='' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de reporte:</label><div class='col-sm-2'><input disabled='' name='fecha' value='<?php echo date('Y-m-d'); ?>' type='date' class='form-control' placeholder='Fecha'></div></div></div></div></div>";

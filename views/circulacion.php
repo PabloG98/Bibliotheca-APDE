@@ -29,6 +29,10 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <style>
+            .panel-primary > .panel-heading{
+                background-color: #0c2c5a;
+                border-color: #0c2c5a;
+            }
             .card {
                 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
                 transition: 0.3s;
@@ -79,7 +83,7 @@ and open the template in the editor.
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" style="background: #0c2c5a">
             <div class="container-fluid">
-                <img class="responsive" style="float: left;height:50px;margin :2px 1%" src="https://pbs.twimg.com/profile_images/769193451036352512/68WIEQyg.jpg"/>
+                <img class="responsive" style="float: left;height:55px;width:65px;margin:2px 1%" src="https://pbs.twimg.com/profile_images/769193451036352512/68WIEQyg.jpg"/>
                 <div class="text-center navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
@@ -87,7 +91,7 @@ and open the template in the editor.
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Bibliotheca</a>
+                    <p style="color:white" class="navbar-brand">Bibliotheca</p>
                 </div>
             </div>
         </nav>

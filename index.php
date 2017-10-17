@@ -30,6 +30,9 @@
         <![endif]-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
+            .body {
+                background-color: #d2efff;
+            }
             .card {
                 background-color: #b3e0ff;
                 border-color: #002C5B;
@@ -124,7 +127,7 @@
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" style="background: #002C5B">
             <div class="container-fluid">
-                <img class="img-circle" style="float: left;height:50px;margin :2px 1%" src="https://pbs.twimg.com/profile_images/769193451036352512/68WIEQyg.jpg"/>
+                <img class="img-circle" style="float: left;height:55px;width:65px;margin:2px 1%" src="https://pbs.twimg.com/profile_images/769193451036352512/68WIEQyg.jpg"/>
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
@@ -132,7 +135,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Bibliotheca</a>
+                    <p style="color:white" class="navbar-brand">Bibliotheca</p>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -146,7 +149,7 @@
                 <div class="container">
                     <div class="col-sm-3 col-md-2 sidebar" style="background: #002C5B">
                         <ul class="nav nav-sidebar">
-                            <li class="active"><a href="#" style="color:white"><span class="glyphicon glyphicon-search"></span> Catalogación</a></li>
+                            <li class="active"><a href="" style="color:white"><span class="glyphicon glyphicon-search"></span> Catalogación</a></li>
                             <li><a href="views/circulacion.php" style="color:white"><span class="glyphicon glyphicon-globe"></span> Circulación</a></li>
                             <li><a href="views/reportes.php" style="color:white"><span class="glyphicon glyphicon-list-alt"></span> Reportes</a></li>
                             <!--<li><a href="#">Export</a></li>-->
@@ -288,53 +291,41 @@
         <script src="js/jquery.min.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript">
-                            $('#btn-buscar').on('click', function () {
-                                if ($('#buscarCoba').val().trim() === '') {
-                                } else {
-                                    $(document).ready(function () {
-                                        $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-                                        $.ajax({
-                                            url: 'controller/searchCoba.php',
-                                            data: 'criterio=' + '',
-                                            type: "GET",
-                                            dataType: "text",
-                                            error: function () {
-                                                console.log("Error en llamada ajax.");
-                                            },
-                                            success: function (sucess) {
-                                                $('#contenedor').html(sucess);
-                                            }
-                                        });
-                                        if ($('#buscarCoba').val().trim() === '') {
-                                            $.ajax({
-                                                url: 'controller/searchCoba.php',
-                                                data: 'criterio=' + '',
-                                                type: "GET",
-                                                dataType: "text",
-                                                error: function () {
-                                                    console.log("Error en llamada ajax.");
-                                                },
-                                                success: function (sucess) {
-                                                    $('#contenedor').html(sucess);
-                                                }
-                                            });
-                                        } else {
-                                            $.ajax({
-                                                url: 'controller/searchCoba.php',
-                                                data: 'criterio=' + $('#buscarCoba').val().trim(),
-                                                type: "GET",
-                                                dataType: "text",
-                                                error: function () {
-                                                    console.log("Error en llamada ajax.");
-                                                },
-                                                success: function (sucess) {
-                                                    $('#contenedor').html(sucess);
-                                                }
-                                            });
-                                        }
-                                    });
+            $('#btn-buscar').on('click', function () {
+                if ($('#buscarCoba').val().trim() === '') {
+                } else {
+                    $(document).ready(function () {
+                        $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                        if ($('#buscarCoba').val().trim() === '') {
+                            $.ajax({
+                                url: 'controller/searchCoba.php',
+                                data: 'criterio=' + '',
+                                type: "GET",
+                                dataType: "text",
+                                error: function () {
+                                    console.log("Error en llamada ajax.");
+                                },
+                                success: function (sucess) {
+                                    $('#contenedor').html(sucess);
                                 }
                             });
+                        } else {
+                            $.ajax({
+                                url: 'controller/searchCoba.php',
+                                data: 'criterio=' + $('#buscarCoba').val().trim(),
+                                type: "GET",
+                                dataType: "text",
+                                error: function () {
+                                    console.log("Error en llamada ajax.");
+                                },
+                                success: function (sucess) {
+                                    $('#contenedor').html(sucess);
+                                }
+                            });
+                        }
+                    });
+                }
+            });
         </script>
         <script type="text/javascript">
             $('#btn-buscar').on('click', function () {
