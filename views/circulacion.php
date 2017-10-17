@@ -141,6 +141,8 @@ and open the template in the editor.
                     </div>
                     <div class="container" id="datos_u"></div>
                     <div class="container" id="prestamo"></div>
+                    <div class="container" id="devolver"></div>
+                    <div class="container" id="d_libro"></div>
                 </div>
             </div>
         </div>
@@ -165,10 +167,10 @@ and open the template in the editor.
             $(document).ready(function () {
                 var empty_dos = $('#datos_u').is(':empty');
                 var vacio = $('#vacio').is(':empty');
-                var prestamo = "<h2 class='text-center'>Datos del libro</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label>Datos del libro</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Co. Barras:</label><div class='col-sm-2'><input id='id_co' type='text' class='form-control' value=''></div><div class='btn-group'><button id='btn-buscarco' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div><div id='d_libro' class='container'></div></div>";
+                var prestamo = "<h2 class='text-center'>Datos del libro</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label>Datos del libro</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Co. Barras:</label><div class='col-sm-2'><input id='criterio' type='text' class='form-control' value=''></div><div class='btn-group'><button onclick='buscarco(this.form)' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div><div id='d_libro' class='container'></div></div>";
                 if (empty_dos) {
                     alert("No hay datos, por favor rellenar los campos");
-                } else if (!vacio || vacio) {
+                } else if (vacio) {
                     alert("Los datos son incorrectos, ingrese un ID válido.");
                 } else {
                     alert("Prestamo en proceso...");
@@ -180,27 +182,12 @@ and open the template in the editor.
     <script type="text/javascript">
         function devolver(form) {
             $(document).ready(function () {
-                var empty_dos = $('#datos_u').is(':empty');
-                var empty_uno = $('#prestamo').is(':empty');
-                if (empty_dos || empty_uno) {
+                var datos_u = $('#datos_u').is(':empty');
+                var devolver = "<h2 class='text-center'>Datos del prestamo</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Código de préstamo</label><div class='col-sm-2'><input id='prestamo' type='text' class='form-control' value=''></div><div class='btn-group'><button onclick='buscarco(this.form)' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div><div id='d_libro' class='container'></div></div>";
+                if (datos_u) {
                     alert("No hay prestamo creado para devolver");
                 } else {
-                    alert("Devolución en proceso...");
-                    document.getElementById('').innerHTML = prestamo;
-                }
-            });
-        }
-    </script>
-    <script type="text/javascript">
-        function renovar(form) {
-            $(document).ready(function () {
-                var empty_uno = $('#prestamo').is(':empty');
-                var empty_dos = $('#datos_u').is(':empty');
-                if (empty_dos || empty_uno) {
-                    alert("No hay datos, por favor rellenar los campos");
-                } else {
-                    alert("Renovación en proceso...");
-                    document.getElementById('').innerHTML = prestamo;
+                    document.getElementById('devolver').innerHTML = devolver;
                 }
             });
         }
@@ -269,25 +256,13 @@ and open the template in the editor.
         });
     </script>
     <script type="text/javascript">
-        $('#btn-buscarco').on('click', function () {
+        function buscarco(form) {
             $(document).ready(function () {
                 $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-                $.ajax({
-                    url: 'controller/prestamo.php',
-                    data: 'id_co=' + '',
-                    type: "GET",
-                    dataType: "text",
-                    error: function () {
-                        console.log("Error en llamada ajax.");
-                    },
-                    success: function (sucess) {
-                        $('#d_libro').html(sucess);
-                    }
-                });
-                if ($('#id_co').val().trim() === '') {
+                if ($('#criterio').val().trim() === '') {
                     $.ajax({
-                        url: 'controller/prestamo.php',
-                        data: 'id_co=' + '',
+                        url: '../controller/searchCoba.php',
+                        data: 'criterio=' + '',
                         type: "GET",
                         dataType: "text",
                         error: function () {
@@ -299,8 +274,8 @@ and open the template in the editor.
                     });
                 } else {
                     $.ajax({
-                        url: 'controller/prestamo.php',
-                        data: 'id_co=' + $('#id_co').val().trim(),
+                        url: '../controller/searchCoba.php',
+                        data: 'criterio=' + $('#criterio').val().trim(),
                         type: "GET",
                         dataType: "text",
                         error: function () {
@@ -312,7 +287,7 @@ and open the template in the editor.
                     });
                 }
             });
-        });
+        }
     </script>
 </body>
 </html>
