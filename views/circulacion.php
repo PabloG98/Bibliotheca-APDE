@@ -171,11 +171,11 @@ and open the template in the editor.
             $(document).ready(function () {
                 var empty_dos = $('#datos_u').is(':empty');
                 var vacio = $('#vacio').is(':empty');
-                var prestamo = "<h2 class='text-center'>Datos del libro</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label>Datos del libro</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Co. Barras:</label><div class='col-sm-2'><input id='criterio' type='text' class='form-control' value=''></div><div class='btn-group'><button onclick='buscarco(this.form)' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div><div id='d_libro' class='container'></div></div>";
+                var prestamo = "<h2 class='text-center'>Datos del libro</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label>Datos del libro</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Co. Barras:</label><div class='col-sm-2'><input id='idco' type='text' class='form-control' value=''></div><div class='btn-group'><button onclick='buscarco(this.form)' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div><div id='d_libro' class='container'></div></div>";
                 if (empty_dos) {
                     alert("No hay datos, por favor rellenar los campos");
-                } else if (vacio) {
-                    alert("Los datos son incorrectos, ingrese un ID válido.");
+                } else if(vacio){
+                    document.getElementById('prestamo').innerHTML = '';
                 } else {
                     alert("Prestamo en proceso...");
                     document.getElementById('prestamo').innerHTML = prestamo;
@@ -228,20 +228,8 @@ and open the template in the editor.
         $('#btn-buscar').on('click', function () {
             $(document).ready(function () {
                 $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-                $.ajax({
-                    url: '../controller/prestamo.php',
-                    data: 'id=' + '',
-                    type: "GET",
-                    dataType: "text",
-                    error: function () {
-                        console.log("Error en llamada ajax.");
-                    },
-                    success: function (sucess) {
-                        $('#datos_u').html(sucess);
-                    }
-                });
                 if ($('#id').val().trim() === '') {
-                    alert("No hay datos a buscar");
+                    alert("No hay ID para buscar");
                 } else {
                     $.ajax({
                         url: '../controller/prestamo.php',
@@ -263,10 +251,10 @@ and open the template in the editor.
         function buscarco(form) {
             $(document).ready(function () {
                 $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-                if ($('#criterio').val().trim() === '') {
+                if ($('#idco').val().trim() === '') {
                     $.ajax({
-                        url: '../controller/searchCoba.php',
-                        data: 'criterio=' + '',
+                        url: '../controller/prestamoLibro.php',
+                        data: 'idco=' + '',
                         type: "GET",
                         dataType: "text",
                         error: function () {
@@ -278,8 +266,8 @@ and open the template in the editor.
                     });
                 } else {
                     $.ajax({
-                        url: '../controller/searchCoba.php',
-                        data: 'criterio=' + $('#criterio').val().trim(),
+                        url: '../controller/prestamoLibro.php',
+                        data: 'idco=' + $('#idco').val().trim(),
                         type: "GET",
                         dataType: "text",
                         error: function () {
