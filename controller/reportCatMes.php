@@ -15,8 +15,8 @@ if ($fechaiecpm === '' && $fechafecpm === '') {
     echo '<div class="text-center">';
     echo '<b>' . $row_cnt . ' elementos encotrados.</b><hr>';
     echo '</div>';
-    echo '<hr><h2 class="text-center">ESTADÍSTICAS DE CATALOGACIÓN POR MES DEL ' . '<u>' . $fechaiecpm . '</u>' . ' AL ' . '<u>' . $fechafecpm . '</u>' . '</h2>';
-    echo '<div>';
+    echo '<div id="div_exportar" class="container">';
+    echo '<h2 class="text-center">ESTADÍSTICAS DE CATALOGACIÓN POR MES DEL ' . '<u>' . $fechaiecpm . '</u>' . ' AL ' . '<u>' . $fechafecpm . '</u>' . '</h2>';
     echo '<table>';
     echo '<tr>';
     echo '<th>Categoría';

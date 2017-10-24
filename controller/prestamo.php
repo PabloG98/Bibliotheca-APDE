@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 require_once '../php/Connection.php';
 $id = filter_input(INPUT_GET, 'id');

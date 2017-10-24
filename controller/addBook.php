@@ -1,19 +1,18 @@
 <?php
-	require_once '../php/config.php';	
-	
-	$query = array('nombre_biblioteca' => new MongoRegex('/^'.preg_quote($_POST['nombre_biblioteca']).'$/i'));	
-	$cursor = $collection->find($query)->count();
-	if($cursor == 0){
-		$document = array(
-		"nombre_biblioteca" => $_POST['nombre_biblioteca'],
-		"num_biblioteca" => $_POST['num_biblioteca']
-		);
-		$collection->insert($document);
-		$document['_id'] = $document['_id'];
-		echo json_encode($document);
-	}
-	else{
-		echo 0;	
-	}
-	
-?>
+
+require_once '../php/Connection.php';
+$fecha_entrada = $_POST['fecha_entrada'];
+$num_inve = $_POST['num_inve'];
+$isbn = $_POST['isbn'];
+$idioma = $_POST['idioma'];
+$dewey = $_POST['dewey'];
+$titulo = $_POST['titulo'];
+$autor = $_POST['autor'];
+
+if($num_inve === '' && $isbn === '' && $idioma === '' && $dewey === '' && $titulo === '' && $autor === ''){
+    
+} else {
+    $insert = mysqli_query(Connection::getInstance()->conectar(), "INSERT INTO librarydb.invetario (num_inventario, num_titulo, fecha_entrada) VALUES ();");
+    $insert2 = mysqli_query(Connection::getInstance()->conectar(), "INSERT INTO librarydb.titulos () VALUES ();");
+    $insert3 = mysqli_query(Connection::getInstance()->conectar(), "INSERT INTO librarydb");
+}

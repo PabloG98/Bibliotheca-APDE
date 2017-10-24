@@ -89,7 +89,7 @@ and open the template in the editor.
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" style="background: #0c2c5a">
             <div class="container-fluid">
-                <img class="responsive" style="float: left;height:55px;width:65px;margin:2px 1%" src="https://pbs.twimg.com/profile_images/769193451036352512/68WIEQyg.jpg"/>
+                <img style="float: left;height:55px;width:65px;margin:2px 1%" src="../img/logoapde.jpg"/>
                 <div class="text-center navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
@@ -110,18 +110,6 @@ and open the template in the editor.
                         <li class="active"><a href="" style="color:white"><span class="glyphicon glyphicon-list-alt"></span> Reportes</a></li>
                         <!--<li><a href="#">Analytics</a></li>
                         <li><a href="#">Export</a></li>-->
-                    </ul>
-                    <ul class="nav nav-sidebar">
-                        <!--<li><a href="">Nav item</a></li>
-                        <li><a href="">Nav item again</a></li>
-                        <li><a href="">One more nav</a></li>
-                        <li><a href="">Another nav item</a></li>
-                        <li><a href="">More navigation</a></li>-->
-                    </ul>
-                    <ul class="nav nav-sidebar">
-                        <!--<li><a href="">Nav item again</a></li>
-                        <li><a href="">One more nav</a></li>
-                        <li><a href="">Another nav item</a></li>-->
                     </ul>
                 </div>
                 <div class="container col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -147,7 +135,7 @@ and open the template in the editor.
                                 <option value="mco">Materiales consultados</option>
                                 <option value="t10">Top 10 libros</option>
                             </select>
-                        </div>
+                        </div> 
                     </div>
                     <div class="container" id="reportes"></div>
                     <div class="container" id="div_print"></div>
@@ -205,13 +193,13 @@ and open the template in the editor.
                     var doc = new jsPDF();
                     var imgHeight = 140;
                     var imgWidth = 140;
-                    var positionY = 20;
+                    var positionY = 20; 
                     var positionX = 20;
                     var empty = $('#div_print').is(':empty');
                     if (!empty) {
                         doc.setFontSize(15);
                         doc.text(15, 15, "Reportes Bibliotheca APDE");
-                        html2canvas($("#div_print"), {
+                        html2canvas($("#div_exportar"), {
                             onrendered: function (canvas) {
                                 var img = canvas.toDataURL("../img/logoapde.jpg");
 				doc.addImage(img, 'JPEG', positionX ,  positionY, 140, imgWidth);

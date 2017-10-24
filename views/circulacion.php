@@ -83,7 +83,7 @@ and open the template in the editor.
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" style="background: #0c2c5a">
             <div class="container-fluid">
-                <img class="responsive" style="float: left;height:55px;width:65px;margin:2px 1%" src="https://pbs.twimg.com/profile_images/769193451036352512/68WIEQyg.jpg"/>
+                <img class="responsive" style="float: left;height:55px;width:65px;margin:2px 1%" src="../img/logoapde.jpg"/>
                 <div class="text-center navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>

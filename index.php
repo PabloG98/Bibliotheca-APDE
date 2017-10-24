@@ -12,16 +12,8 @@
 
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
         <!-- Custom styles for this template -->
         <link href="css/dashboard.css" rel="stylesheet">
-
-        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-        <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -122,12 +114,20 @@
             .fa:hover {
                 color: darkblue;
             }
+            #myBar {
+                width: 10%;
+                height: 30px;
+                background-color: #4CAF50;
+                text-align: center; /* To center it horizontally (if you want) */
+                line-height: 30px; /* To center it vertically */
+                color: white; 
+            }
         </style>
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" style="background: #002C5B">
             <div class="container-fluid">
-                <img class="img-circle" style="float: left;height:55px;width:65px;margin:2px 1%" src="https://pbs.twimg.com/profile_images/769193451036352512/68WIEQyg.jpg"/>
+                <img class="img-circle" style="float: left;height:55px;width:65px;margin:2px 1%" src="img/logoapde.jpg"/>
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
@@ -154,26 +154,14 @@
                             <li><a href="views/reportes.php" style="color:white"><span class="glyphicon glyphicon-list-alt"></span> Reportes</a></li>
                             <!--<li><a href="#">Export</a></li>-->
                         </ul>
-                        <ul class="nav nav-sidebar">
-                            <!--<li><a href="">Nav item</a></li>
-                            <li><a href="">Nav item again</a></li>
-                            <li><a href="">One more nav</a></li>
-                            <li><a href="">Another nav item</a></li>
-                            <li><a href="">More navigation</a></li>-->
-                        </ul>
-                        <ul class="nav nav-sidebar">
-                            <!--<li><a href="">Nav item again</a></li>
-                            <li><a href="">One more nav</a></li>
-                            <li><a href="">Another nav item</a></li>-->
-                        </ul>
                     </div>
                 </div>
                 <div class="container">
                     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
                         <h1 class="page-header text-center">Consulta al catálogo</h1>
                         <div class="form-horizontal text-center">
-                            <div>
-                                <button class="btn btn-default btn-primary" type="button" onclick="addNew(this.form)"><span class="glyphicon glyphicon-plus-sign"></span> Agregar Libro</button>
+                            <div class="container">
+                                <button class="btn btn-default btn-primary" type="button" onclick="addNew(this.form)"><span class="glyphicon glyphicon-plus-sign"></span> Agregar Libro</button><hr>
                             </div>
                             <div class="form-horizontal">
                                 <div class="form-group">
@@ -239,7 +227,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center form-group bottom-right">
-                                    <button id="btn-buscar" class="btn btn-default btn-success" type="submit"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                                    <button onclick="move(this.form)" id="btn-buscar" class="btn btn-default btn-success" type="submit"><span class="glyphicon glyphicon-search"></span> Buscar</button>
                                     <button onclick="window.location.reload()" class="btn btn-default btn-warning" type="button"><span class="glyphicon glyphicon-search"></span> Nueva busqueda</button>
                                 </div>
                                 <div id="mbt"></div>
@@ -283,54 +271,51 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-        <script src="../../dist/js/bootstrap.min.js"></script>
-        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-        <script src="../../assets/js/vendor/holder.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> 
+        <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.min.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript">
-            $('#btn-buscar').on('click', function () {
-                if ($('#buscarCoba').val().trim() === '') {
-                } else {
-                    $(document).ready(function () {
-                        $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-                        if ($('#buscarCoba').val().trim() === '') {
-                            $.ajax({
-                                url: 'controller/searchCoba.php',
-                                data: 'criterio=' + '',
-                                type: "GET",
-                                dataType: "text",
-                                error: function () {
-                                    console.log("Error en llamada ajax.");
-                                },
-                                success: function (sucess) {
-                                    $('#contenedor').html(sucess);
+                            $('#btn-buscar').on('click', function () {
+                                if ($('#buscarCoba').val().trim() === '') {
+                                    return 0;
+                                } else {
+                                    $(document).ready(function () {
+                                        $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                                        if ($('#buscarCoba').val().trim() === '') {
+                                            $.ajax({
+                                                url: 'controller/searchCoba.php',
+                                                data: 'criterio=' + '',
+                                                type: "GET",
+                                                dataType: "text",
+                                                error: function () {
+                                                    console.log("Error en llamada ajax.");
+                                                },
+                                                success: function (sucess) {
+                                                    $('#contenedor').html(sucess);
+                                                }
+                                            });
+                                        } else {
+                                            $.ajax({
+                                                url: 'controller/searchCoba.php',
+                                                data: 'criterio=' + $('#buscarCoba').val().trim(),
+                                                type: "GET",
+                                                dataType: "text",
+                                                error: function () {
+                                                    console.log("Error en llamada ajax.");
+                                                },
+                                                success: function (sucess) {
+                                                    $('#contenedor').html(sucess);
+                                                }
+                                            });
+                                        }
+                                    });
                                 }
                             });
-                        } else {
-                            $.ajax({
-                                url: 'controller/searchCoba.php',
-                                data: 'criterio=' + $('#buscarCoba').val().trim(),
-                                type: "GET",
-                                dataType: "text",
-                                error: function () {
-                                    console.log("Error en llamada ajax.");
-                                },
-                                success: function (sucess) {
-                                    $('#contenedor').html(sucess);
-                                }
-                            });
-                        }
-                    });
-                }
-            });
         </script>
         <script type="text/javascript">
             $('#btn-buscar').on('click', function () {
                 if (($('#buscarTitulo').val().trim() === '') && ($('#buscarAutor').val().trim() === '') && ($('#biblioteca').val().trim() === '') && ($('#select').val().trim() === '') && ($('#orden').val().trim() === '')) {
-                    return 0;
+                    exit(0);
                 } else {
                     $(document).ready(function () {
                         $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
@@ -398,7 +383,6 @@
                         });
                     }
                 });
-                //window.location.replace("views/addbiblioteca.php");
             }
         </script>
         <script language="javascript">
@@ -411,9 +395,39 @@
                 x.classList.toggle("fa-thumbs-down");
             }
         </script>
-        <script>
+        <script type="text/javascript">
             function update(form) {
                 alert("Modificando");
+                $(document).ready(function () {
+                    $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                    if ($('#codigba').val().trim() === '') {
+                        $.ajax({
+                            url: 'controller/searchUpdateBook.php',
+                            data: 'codigba=' + '',
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#contenedor').html(sucess);
+                            }
+                        });
+                    } else {
+                        $.ajax({
+                            url: 'controller/searchUpdateBook.php',
+                            data: 'codigba=' + $('#codigba').val().trim(),
+                            type: "GET",
+                            dataType: "text",
+                            error: function () {
+                                console.log("Error en llamada ajax.");
+                            },
+                            success: function (sucess) {
+                                $('#contenedor').html(sucess);
+                            }
+                        });
+                    }
+                });
             }
         </script>
         <script>

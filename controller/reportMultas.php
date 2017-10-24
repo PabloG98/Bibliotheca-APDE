@@ -14,8 +14,8 @@ if ($fechaicomu === '' && $fechafcomu === '') {
     echo '<b>' . $row_cnt . ' elementos encotrados.</b><hr>';
     echo '</div>';
     if (mysqli_num_rows($query) != o) {
-        echo '<hr><h2 class="text-center">CONTROL DE MULTAS DEL ' . '<u>' . $fechaicomu . '</u>' . ' AL <u>' . $fechafcomu . '</u>' . '</h2>';
-        echo '<div class="container">';
+        echo '<div id="div_exportar" class="container">';
+        echo '<h2 class="text-center">CONTROL DE MULTAS DEL ' . '<u>' . $fechaicomu . '</u>' . ' AL <u>' . $fechafcomu . '</u>' . '</h2>';
         echo '<table>';
         echo '<tr>';
         echo '<th>Fecha y Hora';

@@ -31,7 +31,7 @@ if ($codba === '') {
             echo '<div class="card-block container"';
             $query1 = mysqli_query(Connection::getInstance()->conectar(), "SELECT nombre_autor_disp FROM autores WHERE
                         num_autor IN (SELECT num_autor FROM librarydb.autor_titulo WHERE num_titulo = " . $row["num_titulo"] . ");");
-            echo '<input type="hidden" class="form-control" id="codiba" value="' . $row["num_inventario"] . '">';
+            echo '<input type="hidden" class="form-control" id="codigba" value="' . $row["num_inventario"] . '">';
             echo '<b><label>Código de barras:</label></b> ' . $row["num_inventario"] . '<br>';
             if($row["isbn"] === ''){
             echo '<b><label>ISBN:</label></b> No hay ISBN en la base de datos<br>';
