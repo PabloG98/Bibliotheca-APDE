@@ -15,9 +15,10 @@ if ($idco === '') {
             echo '<div class="card container">';
             echo '<h1>' . $numero . '.' . '</h1>';
             $numero ++;
-            echo '<div class="card-block container"';
+            echo '<div class="card-block container">';
             $query1 = mysqli_query(Connection::getInstance()->conectar(), "SELECT nombre_autor_disp FROM autores WHERE
                         num_autor IN (SELECT num_autor FROM librarydb.autor_titulo WHERE num_titulo = " . $row["num_titulo"] . ");");
+            echo '<input type="hidden" class="form-control" id="codba" value="' . $row["num_inventario"] . '">';
             echo '<b><label>Titulo: </label></b>';
             echo ' ' . $row["titulo_disp"] . '<br>';
             while ($row1 = mysqli_fetch_array($query1)) {
@@ -79,7 +80,7 @@ if ($idco === '') {
             echo '</div>';
             echo '<div class="text-center form-group bottom-right">';
             echo '<hr>';
-            echo '<button id="addPrestamo" type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Prestar</button>';
+            echo '<button onclick="cprestamo(this.form)" type="button" class="btn btn-info">Continuar <span class="glyphicon glyphicon-chevron-right"></span></button>';
             echo '</div>';
             echo '</div>';
         }

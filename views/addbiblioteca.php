@@ -638,80 +638,113 @@ and open the template in the editor.
     <script type="text/javascript">
         $(document).ready(function () {
             $("#btn-isbn").on('click', function () {
-                if (confirm("¿Seguro que desea eliminar esta etiqueta?") == true) {
-                    document.getElementById("e020").innerHTML = "";
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") === true) { 
+                    $("#e020").remove();
                 } else {
                 }
             });
             $("#btn-idioma").on('click', function () {
-                if (confirm("¿Seguro que desea eliminar esta etiqueta?") == true) {
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") === true) {
                     $("#041").remove();
                 } else {
                 }
             });
             $("#btn-dewey").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#082").remove();
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") === true) {
+                    $("#082").remove();
+                } else {
+                }
             });
             $("#btn-tesis").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#094").remove();
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") ==== true) {
+                    $("#094").remove();
+                } else {
+                }
             });
             $("#btn-clasific").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#099").remove();
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") ==== true) {
+                    $("#099").remove();
+                } else {
+                }
             });
             $("#btn-autor").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#100").remove();
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") === true) {
+                    $("#100").remove();
+                } else {
+                }
             });
             $("#btn-titulo").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#245").remove();
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") === true) {
+                    $("#245").remove();
+                } else {
+                }
             });
             $("#btn-edicion").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#250").remove();
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") === true) {
+                    $("#250").remove();
+                } else {
+
+                }
             });
             $("#btn-editorial").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#260").remove();
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") === true) {
+                    $("#260").remove();
+                } else {
+                }
             });
             $("#btn-desc").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#300").remove();
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") === true) {
+                    $("#300").remove();
+                } else {
+                }
             });
             $("#btn-serie").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#440").remove();
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") === true) {
+                    $("#440").remove();
+                } else {
+                }
             });
             $("#btn-ng").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#500").remove();
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") === true) {
+                    $("#500").remove();
+                } else {
+                }
             });
             $("#btn-nt").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#502").remove();
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") === true) {
+                    $("#502").remove();
+                } else {
+                }
             });
             $("#btn-nb").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#504").remove();
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") === true) {
+                    $("#504").remove();
+                } else {
+                }
             });
             $("#btn-nc").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#505").remove();
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") === true) {
+                    $("#505").remove();
+                } else {
+                }
             });
             $("#btn-resumen").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#520").remove();
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") === true) {
+                    $("#520").remove();
+                } else {
+                }
             });
             $("#btn-temas").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#650").remove();
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") === true) {
+                    $("#650").remove();
+                } else {
+                }
             });
             $("#btn-pers").on('click', function () {
-                alert("¿Seguro que desea eliminar esta etiqueta?");
-                $("#700").remove();
+                if (confirm("¿Seguro que desea eliminar esta etiqueta?") === true) {
+                    $("#700").remove();
+                } else {
+                }
             });
         });
     </script>
@@ -774,7 +807,7 @@ and open the template in the editor.
                         $("#700").append("<div class='input-group'><span class='input-group-addon' style='background-color:#80d4ff'><strong>Personal 700</strong></span><span class='input-group-btn'><button data-toogle='tooltip' title='Nombre del autor' class='btn btn-warning' type='button'>$a</button></span><input name='extensión' type='text' class='form-control' value=''><span class='input-group-btn'><button data-toogle='tooltip' title='Fechas' class='btn btn-basic' type='button'>$d</button></span><input type='text' class='form-control'><span class='input-group-btn'><button data-toogle='tooltip' title='Relación' class='btn btn-warning' type='button'>$e</button></span><input type='text' class='form-control'><span class='input-group-btn'><button data-toogle='tooltip' title='Pseudonimo' class='btn btn-success' type='button'>$j</button></span><input type='text' class='form-control'><span class='input-group-btn'><button id='btn-pers' class='btn btn-danger' type='button'><i class='glyphicon glyphicon-trash'></i></button></span></div>");
                         break;
                     default:
-                        if ($('#eti').val().trim() === '') {
+                        if ($('#eti').val().trim() ==== '') {
                             alert("ERROR: El campo está vacío, introduzca una etiqueta.")
                         } else {
                             alert("ERROR: Etiqueta inválida, ingrese una correcta.")
@@ -793,7 +826,7 @@ and open the template in the editor.
                 success: function (data) {
                     $('#nombre_biblioteca, #num_biblioteca').val('');
                     $('#newModal').modal('hide');
-                    if (data == 0) {
+                    if (data === 0) {
                         alertify.error('Error! Duplicate Entry');
                     } else {
                         $('#list-table tbody').prepend('<tr><td class="_id hidden">' + data['_id']['$id'] + '</td><td class="nombre_biblioteca">' + data['nombre_biblioteca'] + '</td><td class="num_biblioteca">' + data['num_biblioteca'] + '</td><td class="text-center"><button type="button" class="edit btn btn-link btn-xs btn-block pull-right"><span class="text-primary"><i class="fa fa-pencil"></i> Edit</span></button></td><td class="text-center"><button type="button" class="delete btn btn-link btn-xs btn-block pull-right"><span class="text-danger"><i class="fa fa-trash"></i> Delete</span></button></td></tr>');

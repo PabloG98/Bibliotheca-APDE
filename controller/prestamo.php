@@ -12,7 +12,8 @@ if ($id === '') {
             echo '<hr><h2 class="text-center">Préstamo</h2>';
             echo '<h2 class="text-center">Datos del usuario</h2>';
             echo '<div class="card container">';
-            echo '<div class="card-block container"';
+            echo '<div class="card-block container">';
+            echo '<input type="hidden" class="form-control" id="id_usuario" value="' . $row["num_usuario"] . '">';
             echo '<b><label>Carné: </label></b>';
             echo ' ' . $row["carnet"] . '<br>';
             echo '<b><label>Nombre: </label></b>';

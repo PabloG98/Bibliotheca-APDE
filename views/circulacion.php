@@ -147,6 +147,7 @@ and open the template in the editor.
                     <div class="container" id="prestamo"></div>
                     <div class="container" id="devolver"></div>
                     <div class="container" id="d_libro"></div>
+                    <div class="container" id="c_prestamo"></div>
                 </div>
             </div>
         </div>
@@ -167,6 +168,14 @@ and open the template in the editor.
         }
     </script>
     <script type="text/javascript">
+        function cprestamo(form) {
+            $(document).ready(function () {
+                var prestamo = "<h2 class='text-center'>Rango de fecha</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label>Rango de fechas</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha de entrada:</label><div class='col-sm-3'><input id='fecha_entrada' type='date' class='form-control' value='<?php echo date("Y-m-d"); ?>'></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de devolución:</label><div class='col-sm-3'><input id='fecha_devolucion' type='date' class='form-control' value=''></div></div><div class='text-center btn-group'><button onclick='buscarco(this.form)' type='button' class='btn btn-success'><span class='glyphicon glyphicon-ok'></span> Crear Prestamo</button></div></div></div></div></div>";
+                document.getElementById('c_prestamo').innerHTML = prestamo;
+            });
+        }
+    </script>
+    <script type="text/javascript">
         function prestar(form) {
             $(document).ready(function () {
                 var empty_dos = $('#datos_u').is(':empty');
@@ -174,7 +183,7 @@ and open the template in the editor.
                 var prestamo = "<h2 class='text-center'>Datos del libro</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label>Datos del libro</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Co. Barras:</label><div class='col-sm-2'><input id='idco' type='text' class='form-control' value=''></div><div class='btn-group'><button onclick='buscarco(this.form)' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div><div id='d_libro' class='container'></div></div>";
                 if (empty_dos) {
                     alert("No hay datos, por favor rellenar los campos");
-                } else if(vacio){
+                } else if (vacio) {
                     document.getElementById('prestamo').innerHTML = '';
                 } else {
                     alert("Prestamo en proceso...");
