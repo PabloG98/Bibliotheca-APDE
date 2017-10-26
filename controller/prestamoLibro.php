@@ -89,7 +89,7 @@ if ($idco === '') {
         echo '<img class="center-block" src="http://www.freeiconspng.com/uploads/warning-error-icon-png-33.png" width="350" height="350">';
         echo '<br>';
         echo '<b><label>Código de barras:</label></b>';
-        echo ' '. $criterio . '<br>';
+        echo ' '. $idco . '<br>';
         echo '</div>';
         echo '</div>';
         echo '</div>';

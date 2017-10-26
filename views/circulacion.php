@@ -83,7 +83,7 @@ and open the template in the editor.
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" style="background: #0c2c5a">
             <div class="container-fluid">
-                <img class="responsive" style="float: left;height:55px;width:65px;margin:2px 1%" src="../img/logoapde.jpg"/>
+                <img class="img-circle" style="float: left;height:55px;width:65px;margin:2px 1%" src="../img/logoapde.jpg"/>
                 <div class="text-center navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
@@ -102,20 +102,6 @@ and open the template in the editor.
                         <li><a href="../index.php" style="color:white"><span class="glyphicon glyphicon-search"></span> Catalogación</a></li>
                         <li class="active"><a href="" style="color:white"><span class="glyphicon glyphicon-globe"></span> Circulación</a></li>
                         <li><a href="reportes.php" style="color:white"><span class="glyphicon glyphicon-list-alt"></span> Reportes</a></li>
-                        <!--<li><a href="#">Analytics</a></li>
-                        <li><a href="#">Export</a></li>-->
-                    </ul>
-                    <ul class="nav nav-sidebar">
-                        <!--<li><a href="">Nav item</a></li>
-                        <li><a href="">Nav item again</a></li>
-                        <li><a href="">One more nav</a></li>
-                        <li><a href="">Another nav item</a></li>
-                        <li><a href="">More navigation</a></li>-->
-                    </ul>
-                    <ul class="nav nav-sidebar">
-                        <!--<li><a href="">Nav item again</a></li>
-                        <li><a href="">One more nav</a></li>
-                        <li><a href="">Another nav item</a></li>-->
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -170,7 +156,7 @@ and open the template in the editor.
     <script type="text/javascript">
         function cprestamo(form) {
             $(document).ready(function () {
-                var prestamo = "<h2 class='text-center'>Rango de fecha</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label>Rango de fechas</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha de entrada:</label><div class='col-sm-3'><input id='fecha_entrada' type='date' class='form-control' value='<?php echo date("Y-m-d"); ?>'></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de devolución:</label><div class='col-sm-3'><input id='fecha_devolucion' type='date' class='form-control' value=''></div></div><div class='text-center btn-group'><button onclick='buscarco(this.form)' type='button' class='btn btn-success'><span class='glyphicon glyphicon-ok'></span> Crear Prestamo</button></div></div></div></div></div>";
+                var prestamo = "<h2 class='text-center'>Rango de fecha</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label>Rango de fechas</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha de entrada:</label><div class='col-sm-3'><input id='fecha_entrada' type='date' class='form-control' value='<?php echo date("Y-m-d"); ?>'></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de devolución:</label><div class='col-sm-3'><input id='fecha_devolucion' type='date' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Catalogador:</label><div class='col-sm-2'><select class='form-control' name='id_catalogador' id='id_catalogador'><option>Eliga un usuario</option><option value='135'>Byron Fuentes</option><option value='156'>Gabriela Camacho</option><option value='160'>Nanci Sigüénza</option><option value='149'>Patricia Brañas</option></select></div></div><div class='text-center btn-group'><button onclick='crearPrestamo(this.form)' type='button' class='btn btn-success'><span class='glyphicon glyphicon-ok'></span> Crear Prestamo</button></div></div></div></div></div>";
                 document.getElementById('c_prestamo').innerHTML = prestamo;
             });
         }
@@ -180,7 +166,7 @@ and open the template in the editor.
             $(document).ready(function () {
                 var empty_dos = $('#datos_u').is(':empty');
                 var vacio = $('#vacio').is(':empty');
-                var prestamo = "<h2 class='text-center'>Datos del libro</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label>Datos del libro</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Co. Barras:</label><div class='col-sm-2'><input id='idco' type='text' class='form-control' value=''></div><div class='btn-group'><button onclick='buscarco(this.form)' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div><div id='d_libro' class='container'></div></div>";
+                var prestamo = "<h2 class='text-center'>Datos del libro</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label>Datos del libro</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Co. Barras:</label><div class='col-sm-2'><input id='idco' type='text' class='form-control' value='' autofocus=''></div><div class='btn-group'><button onclick='buscarco(this.form)' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div><div id='d_libro' class='container'></div></div>";
                 if (empty_dos) {
                     alert("No hay datos, por favor rellenar los campos");
                 } else if (vacio) {
@@ -284,6 +270,29 @@ and open the template in the editor.
                         },
                         success: function (sucess) {
                             $('#d_libro').html(sucess);
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function crearPrestamo(form) {
+            $(document).ready(function () {
+                $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                if (($('#id_usuario').val().trim() === '') && ($('#codba').val().trim() === '') && ($('#fecha_prestamo').val().trim() === '') && ($('#fecha_devolucion').val().trim() === '') && ($('#id_catalogador').val().trim() === '')) {
+                    alert("No están completos los datos, por favor revisar");
+                } else {
+                    $.ajax({
+                        url: '../controller/crearPrestamo.php',
+                        data: {fechai: $('#fechaiecpm').val().trim(), fechaf: $('#fechafecpm').val().trim()},
+                        type: "POST",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#c_prestamo').html(sucess);
                         }
                     });
                 }
