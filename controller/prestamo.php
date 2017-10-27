@@ -42,6 +42,15 @@ if ($id === '') {
         echo '<br>';
         echo '<h4>Usuario no encontrado</h4>';
         echo '</div>';
+        echo '<script type="text/javascript">';
+        echo '$(document).ready(function () {';
+        echo '$("#prestamo").empty();';
+        echo '$("#devolver").empty();';
+        echo '$("#renovar").empty();';
+        echo '$("#d_libro").empty();';
+        echo '$("#c_prestamo").empty();';
+        echo '});';
+        echo '</script>';
     }
 }
 
