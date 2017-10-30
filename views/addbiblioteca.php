@@ -1,31 +1,17 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html><link rel="icon" href="../img/ico-apde.ico" type="image/x-icon">
-    <head>
-        <meta charset="UTF-8">
+<html lang="en">
+    <head><link rel="icon" href="../img/ico-apde.ico" type="image/x-icon">
+        <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="../../favicon.ico">
         <title>Agregar - APDE Bibliotheca</title>
         <!-- Bootstrap core CSS -->
         <link href="../css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
         <!-- Custom styles for this template -->
         <link href="../css/dashboard.css" rel="stylesheet">
-
-        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-        <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
         <style>
         </style>
     </head>
@@ -614,11 +600,6 @@ and open the template in the editor.
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
     <script src="../js/jquery.min.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <script language="javascript">
@@ -815,29 +796,6 @@ and open the template in the editor.
                 }
             });
         });
-    </script>
-    <script type="text/javascript">
-        function addBook() {
-            $.ajax({
-                url: '../controller/addBook.php',
-                type: 'POST',
-                dataType: 'JSON',
-                data: {fecha: fecha, buscable: buscable, catalogador: catalogador},
-                success: function (data) {
-                    $('#nombre_biblioteca, #num_biblioteca').val('');
-                    $('#newModal').modal('hide');
-                    if (data == 0) {
-                        alertify.error('Error! Duplicate Entry');
-                    } else {
-                        $('#list-table tbody').prepend('<tr><td class="_id hidden">' + data['_id']['$id'] + '</td><td class="nombre_biblioteca">' + data['nombre_biblioteca'] + '</td><td class="num_biblioteca">' + data['num_biblioteca'] + '</td><td class="text-center"><button type="button" class="edit btn btn-link btn-xs btn-block pull-right"><span class="text-primary"><i class="fa fa-pencil"></i> Edit</span></button></td><td class="text-center"><button type="button" class="delete btn btn-link btn-xs btn-block pull-right"><span class="text-danger"><i class="fa fa-trash"></i> Delete</span></button></td></tr>');
-                        alertify.success('Saved Successfully');
-                        $('#list-table tbody tr').first().addClass('alert alert-success');
-                        removeActive($('#list-table tbody tr').first());
-                    }
-                }
-            });
-        }
-
     </script>
 </body>
 </html>

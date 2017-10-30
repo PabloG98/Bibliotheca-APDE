@@ -18,7 +18,7 @@ if ($idco === '') {
             echo '<div class="card-block container">';
             $query1 = mysqli_query(Connection::getInstance()->conectar(), "SELECT nombre_autor_disp FROM autores WHERE
                         num_autor IN (SELECT num_autor FROM librarydb.autor_titulo WHERE num_titulo = " . $row["num_titulo"] . ");");
-            echo '<input type="hidden" class="form-control" id="codba" value="' . $row["num_inventario"] . '">';
+            echo '<input type="hidden" class="form-control" id="codba" name="codba" value="' . $row["num_inventario"] . '">';
             echo '<b><label>Titulo: </label></b>';
             echo ' ' . $row["titulo_disp"] . '<br>';
             while ($row1 = mysqli_fetch_array($query1)) {

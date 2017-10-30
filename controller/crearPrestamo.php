@@ -11,12 +11,12 @@ if ($id_ususario === '' && $codba === '' && $fecha_prestamo === '' && $fecha_dev
     
 } else {
     $prestamo = mysqli_query(Connection::getInstance()->conectar(), "INSERT INTO librarydb.prestamos (id_usuario, codba, fecha_prestamo, fecha_devolucion, id_catalogador) VALUES (" . $id_ususario . ", '" . $codba . "', '" . $fecha_prestamo . "', '" . $fecha_devolucion . "', " . $id_catalogador . ");");
-    if (mysqli_num_rows($prestamo) === TRUE) {
+    if (mysqli_num_rows($prestamo) != o) {
         echo '<div class="container">';
         echo '<hr>';
         echo '<div class="alert alert-success alert-dismissable fade in">';
         echo '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
-        echo '<strong>Excelente!</strong> Préstamo creado con éxito. Este es su código de préstamo: <u>' . $prestam["id_prestamo"] . '</u>';
+        echo '<strong>Excelente!</strong> Préstamo creado con éxito. Este es su código de préstamo: <u>' . $prestamo["id_prestamo"] . '</u>';
         echo '</div>';
         echo '</div>';
     } else {

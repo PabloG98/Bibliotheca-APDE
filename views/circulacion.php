@@ -4,28 +4,20 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html><link rel="icon" href="../img/ico-apde.ico" type="image/x-icon">
-    <head>
+<html lang="en">
+    <head><link rel="icon" href="../img/ico-apde.ico" type="image/x-icon">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="../../favicon.ico">
         <title>Circulación - APDE Bibliotheca</title>
         <!-- Bootstrap core CSS -->
         <link href="../css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
         <!-- Custom styles for this template -->
         <link href="../css/dashboard.css" rel="stylesheet">
-
-        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-        <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <style>
@@ -78,6 +70,21 @@ and open the template in the editor.
                 text-decoration: none;
                 cursor: pointer;
             }
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
         </style>
     </head>
     <body>
@@ -129,23 +136,21 @@ and open the template in the editor.
                             </div>
                         </div>
                     </div>
-                    <div class="container" id="datos_u"></div>
-                    <div class="container" id="prestamo"></div>
-                    <div class="container" id="devolver"></div>
-                    <div class="container" id="renovar"></div>
-                    <div class="container" id="d_libro"></div>
-                    <div class="container" id="c_prestamo"></div>
+                    <form action="../controller/crearPrestamo.php" method="post">
+                        <div class="container" id="datos_u"></div>
+                        <div class="container" id="prestamo"></div>
+                        <div class="container" id="devolver"></div>
+                        <div class="container" id="renovar"></div>
+                        <div class="container" id="pagar"></div>
+                        <div class="container" id="d_libro"></div>
+                        <div class="container" id="c_prestamo"></div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
     <script src="../js/jquery.min.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <script type="text/javascript">
@@ -157,7 +162,7 @@ and open the template in the editor.
     <script type="text/javascript">
         function cprestamo(form) {
             $(document).ready(function () {
-                var prestamo = "<h2 class='text-center'>Rango de fecha</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label>Rango de fechas</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha de entrada:</label><div class='col-sm-3'><input id='fecha_prestamo' type='date' class='form-control' value='<?php echo date("Y-m-d"); ?>'></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de devolución:</label><div class='col-sm-3'><input id='fecha_devolucion' type='date' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Catalogador:</label><div class='col-sm-3'><select class='form-control' name='id_catalogador' id='id_catalogador'><option>Eliga un usuario</option><option value='135'>Byron Fuentes</option><option value='156'>Gabriela Camacho</option><option value='160'>Nanci Sigüénza</option><option value='149'>Patricia Brañas</option></select></div></div><div class='text-center btn-group'><button onclick='crearPrestamo(this.form)' type='button' class='btn btn-success'><span class='glyphicon glyphicon-ok'></span> Crear Prestamo</button></div></div></div></div></div>";
+                var prestamo = "<h2 class='text-center'>Rango de fecha</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-group'><label>Rango de fechas</label></div><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Fecha de entrada:</label><div class='col-sm-3'><input id='fecha_prestamo' name='fecha_prestamo' type='date' class='form-control' value='<?php echo date("Y-m-d"); ?>'></div></div><div class='form-group'><label class='col-sm-2 control-label'>Fecha de devolución:</label><div class='col-sm-3'><input id='fecha_devolucion' name='fecha_devolucion' type='date' class='form-control' value=''></div></div><div class='form-group'><label class='col-sm-2 control-label'>Catalogador:</label><div class='col-sm-3'><select class='form-control' name='id_catalogador' id='id_catalogador'><option>Eliga un usuario</option><option value='135'>Byron Fuentes</option><option value='156'>Gabriela Camacho</option><option value='160'>Nanci Sigüénza</option><option value='149'>Patricia Brañas</option></select></div></div><div class='text-center btn-group'><button onclick='crearPrestamo(this.form)' type='submit' class='btn btn-success'><span class='glyphicon glyphicon-ok'></span> Crear Prestamo</button></div></div></div></div></div>";
                 document.getElementById('c_prestamo').innerHTML = prestamo;
             });
         }
@@ -178,55 +183,7 @@ and open the template in the editor.
                     $("#d_libro").empty();
                     $("#devolver").empty();
                     $("#renovar").empty();
-                }
-            });
-        }
-    </script>
-    <script type="text/javascript">
-        function devolver(form) {
-            $(document).ready(function () {
-                var datos_u = $('#datos_u').is(':empty');
-                var devolver = "<hr><h2 class='text-center'>Devolución</h2><h2 class='text-center'>Datos del préstamo</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Código de préstamo</label><div class='col-sm-2'><input id='prestamo' type='text' class='form-control' value=''></div><div class='btn-group'><button onclick='buscarco(this.form)' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div><div id='d_libro' class='container'></div></div>";
-                if (datos_u) {
-                    alert("No hay prestamo creado para devolver");
-                } else {
-                    document.getElementById('devolver').innerHTML = devolver;
-                    $("#prestamo").empty();
-                    $("#renovar").empty();
-                    $("#d_libro").empty();
-                    $("#c_prestamo").empty();
-                }
-            });
-        }
-    </script>
-    <script type="text/javascript">
-        function renovar(form) {
-            $(document).ready(function () {
-                var renovar = "<hr><h2 class='text-center'>Renovación</h2><h2 class='text-center'>Datos del préstamo</h2><div class='container'><div class='panel panel-primary'><div class='panel-heading'></div><div class='panel-body'><div class='form-horizontal'><div class='form-group'><label class='col-sm-2 control-label'>Código de préstamo</label><div class='col-sm-2'><input id='renovacion' type='text' class='form-control' value=''></div><div class='btn-group'><button onclick='buscarco(this.form)' type='button' class='btn btn-success'><span class='glyphicon glyphicon-search'></span> Buscar</button></div></div></div></div></div><div id='d_libro' class='container'></div></div>";
-                var datos_u = $('#datos_u').is(':empty');
-                if (datos_u) {
-                    alert("No hay datos, por favor rellenar los campos");
-                } else {
-                    alert("Renovación en proceso...");
-                    document.getElementById('renovar').innerHTML = renovar;
-                    $("#prestamo").empty();
-                    $("#devolver").empty();
-                    $("#d_libro").empty();
-                    $("#c_prestamo").empty();
-                }
-            });
-        }
-    </script>
-    <script type="text/javascript">
-        function pagar(form) {
-            $(document).ready(function () {
-                var empty_uno = $('#prestamo').is(':empty');
-                var empty_dos = $('#datos_u').is(':empty');
-                if (empty_dos || empty_uno) {
-                    alert("No hay datos, por favor rellenar los campos");
-                } else {
-                    alert("Pago en proceso...");
-                    document.getElementById('').innerHTML = prestamo;
+                    $("#pagar").empty();
                 }
             });
         }
@@ -305,6 +262,123 @@ and open the template in the editor.
                         },
                         success: function (sucess) {
                             $('#c_prestamo').html(sucess);
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function renovar(form) {
+            $(document).ready(function () {
+                $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                if ($('#id_usuario').val().trim() === '') {
+                    $.ajax({
+                        url: '../controller/renovarPrestamo.php',
+                        data: 'id_usuario=' + '',
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#renovar').html(sucess);
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        url: '../controller/renovarPrestamo.php',
+                        data: 'id_usuario=' + $('#id_usuario').val().trim(),
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#renovar').html(sucess);
+                            $('#devolver').empty();
+                            $("#prestamo").empty();
+                            $("#pagar").empty();
+                            $("#d_libro").empty();
+                            $("#c_prestamo").empty();
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function devolver(form) {
+            $(document).ready(function () {
+                $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                if ($('#id_usuario').val().trim() === '') {
+                    $.ajax({
+                        url: '../controller/devolverPrestamo.php',
+                        data: 'id_usuario=' + '',
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#devolver').html(sucess);
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        url: '../controller/devolverPrestamo.php',
+                        data: 'id_usuario=' + $('#id_usuario').val().trim(),
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#devolver').html(sucess);
+                            $("#prestamo").empty();
+                            $("#renovar").empty();
+                            $("#pagar").empty();
+                            $("#d_libro").empty();
+                            $("#c_prestamo").empty();
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function pagar(form) {
+            $(document).ready(function () {
+                $.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
+                if ($('#id_usuario').val().trim() === '') {
+                    $.ajax({
+                        url: '../controller/pagarMulta.php',
+                        data: 'id_usuario=' + '',
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#pagar').html(sucess);
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        url: '../controller/pagarMulta.php',
+                        data: 'id_usuario=' + $('#id_usuario').val().trim(),
+                        type: "GET",
+                        dataType: "text",
+                        error: function () {
+                            console.log("Error en llamada ajax.");
+                        },
+                        success: function (sucess) {
+                            $('#pagar').html(sucess);
+                            $('#devolver').empty();
+                            $("#prestamo").empty();
+                            $("#renovar").empty();
+                            $("#d_libro").empty();
+                            $("#c_prestamo").empty();
                         }
                     });
                 }

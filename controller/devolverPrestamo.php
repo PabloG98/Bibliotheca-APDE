@@ -21,9 +21,9 @@ if ($id_usuario === '') {
             echo '<td>' . $row["id_usuario"];
             echo '<td>' . $row["codba"];
             echo '<td>' . $row["fecha_prestamo"];
-            echo '<td><input id="n_fecha_devolucion" class="form-control" type="date" value="' . $row["fecha_devolucion"] . '">';
+            echo '<td>' . $row["fecha_devolucion"];
             echo '<td>' . $row["id_catalogador"];
-            echo '<td><button id="c_renovar" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-refresh"></span> Renovar</button></td>';
+            echo '<td><button id="c_devolver" class="btn btn-info" type="button"><span class="glyphicon glyphicon-circle-arrow-left"></span> Devolver</button></td>';
             echo '</tr>';
         }
         echo '</table>';
